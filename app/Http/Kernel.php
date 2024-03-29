@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \App\Http\Middleware\SideBarModuleAccess::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \App\Http\Middleware\Localization::class,
         ],
         // 'cms_web' => [
         //     \App\Http\Middleware\EncryptCookies::class,
@@ -81,6 +82,7 @@ class Kernel extends HttpKernel
         'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'visitingcounter' => \App\Http\Middleware\VisitCounters::class,
         'prevent-back-history' => \App\Http\Middleware\PreventBackHistory::class,
         'logs' => \App\Http\Middleware\AdminLogs::class,
         'apithrottle' => \App\Http\Middleware\ThrottleMiddleware::class,

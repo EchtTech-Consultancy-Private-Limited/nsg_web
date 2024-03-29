@@ -36,11 +36,13 @@ Artisan::call('route:clear');
 Artisan::call('config:clear');
 
 require __DIR__ .'/cms_web.php';
-
+Route::middleware(['visitingcounter'])->group(function () {
+Route::get('/set-language',[HomeController::class,'SetLang']);
 /** Below the URL set login on home */
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('/{slug}', [HomeController::class, 'getAllPageContent']);
 
+});
 //default behaviour, always keep as last entry
 Route::any('{url}', function(){
     return redirect('/');

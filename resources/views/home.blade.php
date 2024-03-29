@@ -6,7 +6,7 @@
 <div class="row align-items-center">
    <div class="col-md-2 p-0">
       <h3 class="news-title">
-         News and Updates
+         @if(Session::get('locale') == 'hi') {{ config('staticTextLang.nau_hi') }} @else {{ config('staticTextLang.nau_en') }} @endif
       </h3>
    </div>
    <div class="col-md-10 pe-0">
@@ -14,36 +14,22 @@
          <div class="news-list">
             <marquee class="marquee" direction="left" loop="">
                <ul>
-                  <li>
-                     <a href="#">
-                     Police Commemoration Day 2023
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     Live Webscast of Police Commemoration Day Function 2023
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     Mass Yoga Program of NSG
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     Police Commemoration Day 2023
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     Police Commemoration Day 2023
-                     </a>
-                  </li>
+                  @if(isset($news_management) && count($news_management)>0 )
+                     @foreach($news_management as $news_managements)
+                        <li>
+                           <a href="{{ $news_managements->public_url }}" target="@php if($news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
+                              @if(Session::get('locale') == 'hi')  {{ $news_managements->title_name_hi }} @else {{ $news_managements->title_name_en }} @endif
+                           </a>
+                        </li>
+                     @endforeach
+                  @else
+                     <li><a>@if(Session::get('locale') == 'hi') {{ config('staticTextLang.No_Data_Available_hi') }} @else {{ config('staticTextLang.No_Data_Available_en') }} @endif!</a></li>
+                  @endif
                </ul>
             </marquee>
          </div>
          <div class="btn-wrap">
-            <button class="btn btn-yellow-outline">View All</button>
+            <button class="btn btn-yellow-outline">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.View_All_hi') }} @else {{ config('staticTextLang.View_All_en') }} @endif</button>
          </div>
       </div>
    </div>
@@ -72,21 +58,15 @@
          <div class="col-md-12 col-lg-6">
             <div class="banner-slider" id="common-slider">
                <div class="owl-carousel owl-theme" id="bannerSlider">
-                  <div class="item">
+                  @if(isset($banner) && count($banner)>0)
+                     @foreach($banner as $banners)
+                     <div class="item">
+                        <img src="{{ asset('resources/uploads/banner/'.$banners->public_url)}}" alt="{{ $banners->title_name_en }}" class="img-fluid" />
+                     </div>
+                     @endforeach
+                  @else
                      <img src="{{ asset('assets-nsg/images/banner1.png')}}" alt="banner" class="img-fluid" />
-                  </div>
-                  <div class="item">
-                     <img src="{{ asset('assets-nsg/images/banner1.png')}}" alt="banner" class="img-fluid" />
-                  </div>
-                  <div class="item">
-                     <img src="{{ asset('assets-nsg/images/banner1.png')}}" alt="banner" class="img-fluid" />
-                  </div>
-                  <div class="item">
-                     <img src="{{ asset('assets-nsg/images/banner1.png')}}" alt="banner" class="img-fluid" />
-                  </div>
-                  <div class="item">
-                     <img src="{{ asset('assets-nsg/images/banner1.png')}}" alt="banner" class="img-fluid" />
-                  </div>
+                  @endif
                </div>
             </div>
          </div>
@@ -130,10 +110,10 @@
             <div class="card-wrap card-white mb-3 mb-lg-0" data-aos="fade-up" data-aos-duration="1000">
                <div class="d-flex align-items-center justify-content-between pb-3">
                   <h2 class="heading-red">
-                     Achievements
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Achievements_hi') }} @else {{ config('staticTextLang.Achievements_en') }} @endif
                   </h2>
                   <a href="#" class="link-yellow">
-                  Browse All
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
                <div class="img-wrap mb-4">
@@ -158,10 +138,10 @@
             <div class="card-wrap card-white mb-3 mb-lg-0" data-aos="fade-up" data-aos-duration="2000">
                <div class="d-flex align-items-center justify-content-between pb-3">
                   <h2 class="heading-red">
-                     Latest News
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ln_hi') }} @else {{ config('staticTextLang.ln_en') }} @endif
                   </h2>
                   <a href="#" class="link-yellow">
-                  Browse All
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
                <div class="list-wrap">
@@ -220,32 +200,22 @@
             <div class="gallery-slider">
                <div class="d-flex align-items-center justify-content-between pb-3">
                   <h2 class="heading-red">
-                     Photo Gallery
+                     @if(Session::get('locale') == 'hi') {{ config('staticTextLang.pg_hi') }} @else {{ config('staticTextLang.pg_en') }} @endif
                   </h2>
                   <a href="#" class="link-yellow">
-                  Browse All
+                     @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
                <div id="photoCarousel" class="carousel slide photo-slider" data-interval="false">
                   <div class="carousel-inner">
-                     <div class="carousel-item active">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery1.png')}}" class="img-fluid" alt="slide" />
-                     </div>
-                     <div class="carousel-item">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery2.png')}}" class="img-fluid" alt="slide" />
-                     </div>
-                     <div class="carousel-item">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery3.png')}}" class="img-fluid" alt="slide" />
-                     </div>
-                     <div class="carousel-item">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery1.png')}}" class="img-fluid" alt="slide" />
-                     </div>
-                     <div class="carousel-item">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery2.png')}}" class="img-fluid" alt="slide" />
-                     </div>
-                     <div class="carousel-item">
-                        <img src="{{ asset('assets-nsg/images/photo-gallery3.png')}}" class="img-fluid" alt="slide" />
-                     </div>
+                     
+                     @if(isset($galleryData) && count($galleryData)>0)
+                        @foreach($galleryData as $galleryDatas)
+                        <div class="carousel-item active">
+                           <img src="{{ asset('resources/uploads/GalleryManagement')}}" class="img-fluid" alt="slide" />
+                        </div>
+                        @endforeach
+                     @endif
                   </div>
                   <div class="carousel-indicators common-scrollbar">
                      <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"
@@ -297,7 +267,7 @@
                      </li>
                   </ul>
                   <a href="#" class="link-yellow">
-                  Browse All
+                     @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
                <div class="tab-content" id="blackTabContent">
@@ -455,7 +425,7 @@
                   Recogntion of Gallant, hard work & dedication towards the Nation.
                </p>
                <div class="btn-wrap">
-                  <button class="btn btn-red">Continue</button>
+                  <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
                </div>
             </div>
          </div>
@@ -473,7 +443,7 @@
                   therefore, to be used only in exceptional circumstances to thwart serious acts of terrorism.
                </p>
                <div class="btn-wrap">
-                  <button class="btn btn-red">Continue</button>
+                  <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
                </div>
             </div>
          </div>
@@ -489,7 +459,7 @@
                   Our Martyrs - "Pride of the Nation"
                </p>
                <div class="btn-wrap">
-                  <button class="btn btn-red">Continue</button>
+                  <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
                </div>
             </div>
          </div>
@@ -503,7 +473,7 @@
       <div class="eliminator-content m-neg"  data-aos="fade-up" data-aos-duration="3000">
          <div class="heading-wrap">
             <h2 class="heading">
-               NSG:The Eliminators
+            @if(Session::get('locale') == 'hi') {{ config('staticTextLang.nsgte_hi') }} @else {{ config('staticTextLang.nsgte_en') }} @endif
             </h2>
          </div>
          <div class="eliminator-video">

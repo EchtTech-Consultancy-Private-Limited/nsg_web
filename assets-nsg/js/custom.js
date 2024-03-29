@@ -85,3 +85,15 @@ $(document).ready(function() {
     button.classList.add('active');
   }
 });
+//language change
+function setlang(value) {
+  //alert(value)
+  $.ajax({
+    url: "set-language",
+    data: { data: value },
+    success: function (result) {
+      location.reload();
+    }
+  });
+}
+

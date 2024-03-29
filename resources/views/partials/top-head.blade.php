@@ -2,7 +2,9 @@
     <div class="col-lg-4">
     <div class="header-top-left">
         <div class="content">
-        <h3 class="title">Welcome to Official Website of National Security Guard</h3>
+            <h3 class="title">
+                @if(Session::get('locale') == 'hi') {{ config('staticTextLang.wtowonsg_hi') }} @else {{ config('staticTextLang.wtowonsg_en') }} @endif
+            </h3>
         </div>
     </div>
     </div>
@@ -10,10 +12,10 @@
     <div class="header-top-right">
         <div class="content">
         <ul>
-            <li><a href="#">Sitemap</a></li>
-            <li><a href="#">Feedback</a></li>
-            <li><a href="#">Screen Reader Access</a></li>
-            <li><a href="#">Skip to Main Content</a></li>
+            <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Sitemap_hi') }} @else {{ config('staticTextLang.Sitemap_en') }} @endif</a></li>
+            <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Feedback_hi') }} @else {{ config('staticTextLang.Feedback_en') }} @endif</a></li>
+            <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.sra_hi') }} @else {{ config('staticTextLang.sra_en') }} @endif</a></li>
+            <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.stmc_hi') }} @else {{ config('staticTextLang.stmc_en') }} @endif</a></li>
             <li>
             <div class="theme-wrap">
                 <div class="form-check form-switch">
@@ -31,16 +33,16 @@
             <li>
             <div class="select-wrap">
                 <img src="{{ asset('assets-nsg/images/globe.svg')}}" alt="globe" class="img-fluid">
-                <select class="form-select">
-                <option value="en">English</option>
-                <option value="hi">हिन्दी</option>
+                <select class="form-select" onchange="setlang(value);">
+                    <option value="en" @if (Session::get('locale')=='en' ) selected @endif>English</option>
+                    <option value="hi" @if (Session::get('locale')=='hi' ) selected @endif>हिन्दी</option>
                 </select>
             </div>
             </li>
             <li>
             <div class="screen-reader">
                 <button class="btn btn-white btn-outline-black mx-2 ms-md-4">
-                <img src="{{ asset('assets-nsg/images/screen-reader.svg')}}" alt="screen-reader" class="img-fluid" />
+                    <img src="{{ asset('assets-nsg/images/screen-reader.svg')}}" alt="screen-reader" class="img-fluid" />
                 </button>
             </div>
             </li>
