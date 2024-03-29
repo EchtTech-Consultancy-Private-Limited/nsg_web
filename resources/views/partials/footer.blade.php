@@ -57,7 +57,7 @@
             </div>
             <div class="col-md-3">
               <div class="img-wrap text-end">
-                <img src="assets/images/cqw-logo.png" alt="cqw-logo" class="img-fluid" />
+                <img src="{{ asset('assets-nsg/images/cqw-logo.png') }}" alt="cqw-logo" class="img-fluid" />
               </div>
             </div>
           </div>
@@ -79,17 +79,17 @@
               <ul>
                 <li>
                   <a href="#">
-                    <img src="assets/images/facebook.svg" alt="facebook" class="img-fluid" />
+                    <img src="{{ asset('assets-nsg/images/facebook.svg') }}" alt="facebook" class="img-fluid" />
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <img src="assets/images/twitter.svg" alt="twitter" class="img-fluid" />
+                    <img src="{{ asset('assets-nsg/images/twitter.svg') }}" alt="twitter" class="img-fluid" />
                   </a>
                 </li>
                 <li>
                   <a href="#">
-                    <img src="assets/images/insta.svg" alt="insta" class="img-fluid" />
+                    <img src="{{ asset('assets-nsg/images/insta.svg') }}" alt="insta" class="img-fluid" />
                   </a>
                 </li>
               </ul>

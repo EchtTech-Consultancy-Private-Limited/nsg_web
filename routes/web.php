@@ -39,6 +39,7 @@ require __DIR__ .'/cms_web.php';
 
 /** Below the URL set login on home */
 Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('/{slug}', [HomeController::class, 'getAllPageContent']);
 
 //default behaviour, always keep as last entry
 Route::any('{url}', function(){

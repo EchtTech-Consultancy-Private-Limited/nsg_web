@@ -110,8 +110,11 @@ class CommonComposer
 
             $quickLink = DB::table('website_menu_management')->where('menu_place',4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
 
-            $view->with(['notification'=>$notification,'press_release'=>$press_release,'social_links' => $social_links, 'logo' => $logo, 'visitCounter' => $visitCounter, 'quickLink' => $quickLink, 'alertMessage' => $this->checkLanguage(), 'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 'banner' => $banner, 'news_management' => $news_management,
-             'tender_management' => $tender_management,'galleryData'=>$galleryData,'galleryVideo' => $galleryVideo]);
+            $view->with(['notification'=>$notification,'press_release'=>$press_release,'social_links' => $social_links, 
+                    'logo' => $logo, 'visitCounter' => $visitCounter, 
+                    'quickLink' => $quickLink, 'alertMessage' => $this->checkLanguage(), 'headerMenu' => $menuName, 
+                    'footerMenu' => $footerMenu, 'banner' => $banner, 'news_management' => $news_management,
+                    'tender_management' => $tender_management,'galleryData'=>$galleryData,'galleryVideo' => $galleryVideo]);
       
         } catch (\Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
