@@ -208,35 +208,23 @@
                </div>
                <div id="photoCarousel" class="carousel slide photo-slider" data-interval="false">
                   <div class="carousel-inner">
-                     
-                     @if(isset($galleryData) && count($galleryData)>0)
-                        @foreach($galleryData as $galleryDatas)
+                     @if(isset($homegallery) && count($homegallery)>0)
+                        @foreach($homegallery as $homegallerys)
                         <div class="carousel-item active">
-                           <img src="{{ asset('resources/uploads/GalleryManagement')}}" class="img-fluid" alt="slide" />
+                           <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="slide" />
                         </div>
                         @endforeach
                      @endif
                   </div>
                   <div class="carousel-indicators common-scrollbar">
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery1.png')}}" class="img-fluid" alt="thumbnail" />
+                     @if(isset($homegallery) && count($homegallery)>0)
+                     @foreach($homegallery as $key=>$homegallerys)
+                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class="active"
+                        aria-current="true" aria-label="Slide {{$key}}">
+                        <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="thumbnail" />
                      </button>
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="1" aria-label="Slide 2">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery2.png')}}" class="img-fluid" alt="thumbnail" />
-                     </button>
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="2" aria-label="Slide 3">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery3.png')}}" class="img-fluid" alt="thumbnail" />
-                     </button>
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="3" aria-label="Slide 4">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery1.png')}}" class="img-fluid" alt="thumbnail" />
-                     </button>
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="4" aria-label="Slide 5">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery2.png')}}" class="img-fluid" alt="thumbnail" />
-                     </button>
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="5" aria-label="Slide 6">
-                     <img src="{{ asset('assets-nsg/images/photo-gallery3.png')}}" class="img-fluid" alt="thumbnail" />
-                     </button>
+                     @endforeach
+                     @endif
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
