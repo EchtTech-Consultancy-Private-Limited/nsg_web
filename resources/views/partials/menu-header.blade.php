@@ -1,5 +1,5 @@
 <div class="container-fluid px-lg-5">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('/') }}">
         <img src="{{ asset('assets-nsg/images/nsg-logo.png')}}" alt="National Security Guard" class="img-fluid">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"

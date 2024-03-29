@@ -22,9 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {
-        //
+        $titleName = 'Page';
+        return view('master-page', ['title' => $titleName]);
     }
 
     /**
