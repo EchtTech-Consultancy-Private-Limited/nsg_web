@@ -56,6 +56,12 @@ class CommonComposer
                                 ->select('tender_management.*')
                                 ->get();
             // gallery photo
+            $galleryHome = DB::table('gallery_details')
+                ->where('type', 0)
+                ->where('status', 3)
+                ->where('soft_delete', 0)
+                ->latest('created_at')->take(20)
+                ->get();
             $galleryData = [];
             $gallery = DB::table('gallery_management')
                 ->where('type', 0)
@@ -112,7 +118,8 @@ class CommonComposer
             'visitCounter' => $visitCounter, 'quickLink' => $quickLink, 'alertMessage' => $this->checkLanguage(),
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 'banner' => $banner,
              'news_management' => $news_management,
-             'tender_management' => $tender_management,'galleryData'=>$galleryData,'galleryVideo' => $galleryVideo]);
+             'tender_management' => $tender_management,'galleryData'=>$galleryData,'homegallery' =>$galleryHome,
+             'galleryVideo' => $galleryVideo]);
       
         } catch (\Exception $e) {
             \Log::error('An exception occurred: ' . $e->getMessage());
