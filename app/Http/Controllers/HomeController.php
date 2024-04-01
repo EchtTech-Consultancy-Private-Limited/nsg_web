@@ -32,7 +32,7 @@ class HomeController extends Controller
     public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {   
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
-        
+        dd($metaData);
         if($metaData == null){
             $titleName = 'Error';
             return view('pages.error', ['title' => $titleName]);

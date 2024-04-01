@@ -210,7 +210,7 @@
                   <div class="carousel-inner">
                      @if(isset($homegallery) && count($homegallery)>0)
                         @foreach($homegallery as $homegallerys)
-                        <div class="carousel-item active">
+                        <div class="carousel-item">
                            <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="slide" />
                         </div>
                         @endforeach
@@ -219,8 +219,8 @@
                   <div class="carousel-indicators common-scrollbar">
                      @if(isset($homegallery) && count($homegallery)>0)
                      @foreach($homegallery as $key=>$homegallerys)
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class="active"
-                        aria-current="true" aria-label="Slide {{$key}}">
+                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class=""
+                        aria-current="true" aria-label="Slide {{$key+1}}">
                         <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="thumbnail" />
                      </button>
                      @endforeach
