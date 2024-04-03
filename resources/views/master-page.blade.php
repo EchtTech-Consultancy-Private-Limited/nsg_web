@@ -36,7 +36,7 @@
                </div>
                   <p class="desc-black">
                   @if(isset($pageData->pageContents))
-                     @if(Session::get('locale') == 'hi') {{ $pageData->pageContents->page_content_hi }} @else {{ $pageData->pageContents->page_content_en }} @endif
+                     @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi !!} @else {!! $pageData->pageContents->page_content_en !!} @endif
                   @endif
                   </p>
                   <div class="common-table table-responsive">
@@ -142,131 +142,6 @@
                            </tr>
                         </tbody>
                      </table>
-               </div>
-            </div>
-            <div class="common-card p-4 mb-3">
-               <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
-                  <h3 class="heading-red">
-                     Images without Title
-                  </h3>
-                  <a href="#" class="link-yellow">
-                  View All
-                  </a>
-               </div>
-               <div class="master-gallery-wrap mt-3">
-                  <div class="row">
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                     <div class="col-md-4">
-                        <div class="img-wrap">
-                           <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="common-card p-4 mb-3">
-               <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
-                  <h3 class="heading-red">
-                     Images with Title
-                  </h3>
-                  <a href="#" class="link-yellow">
-                  View All
-                  </a>
-               </div>
-               <div class="master-gallery-wrap mt-3">
-                  <div class="master-galler-slider" id="common-slider">
-                     <div class="owl-carousel owl-theme" id="masterGallerSlider">
-                        <div class="item">
-                           <div class="img-wrap">
-                              <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                              <div class="d-flex align-items-center justify-content-between p-3">
-                                 <p class="title">
-                                    Sed ut perspiciatis unde omnis
-                                 </p>
-                                 <a href="#" class="view-more">
-                                 <img src="{{ asset('assets-nsg/images/view.svg') }}" alt="view" class="img-fluid" />
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="img-wrap">
-                              <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                              <div class="d-flex align-items-center justify-content-between p-3">
-                                 <p class="title">
-                                    Sed ut perspiciatis unde omnis
-                                 </p>
-                                 <a href="#" class="view-more">
-                                 <img src="{{ asset('assets-nsg/images/view.svg') }}" alt="view" class="img-fluid" />
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="img-wrap">
-                              <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                              <div class="d-flex align-items-center justify-content-between p-3">
-                                 <p class="title">
-                                    Sed ut perspiciatis unde omnis
-                                 </p>
-                                 <a href="#" class="view-more">
-                                 <img src="{{ asset('assets-nsg/images/view.svg') }}" alt="view" class="img-fluid" />
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="img-wrap">
-                              <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                              <div class="d-flex align-items-center justify-content-between p-3">
-                                 <p class="title">
-                                    Sed ut perspiciatis unde omnis
-                                 </p>
-                                 <a href="#" class="view-more">
-                                 <img src="{{ asset('assets-nsg/images/view.svg') }}" alt="view" class="img-fluid" />
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                        <div class="item">
-                           <div class="img-wrap">
-                              <img src="{{ asset('assets-nsg/images/taj.png') }}" alt="taj" class="img-fluid" />
-                              <div class="d-flex align-items-center justify-content-between p-3">
-                                 <p class="title">
-                                    Sed ut perspiciatis unde omnis
-                                 </p>
-                                 <a href="#" class="view-more">
-                                 <img src="{{ asset('assets-nsg/images/view.svg') }}" alt="view" class="img-fluid" />
-                                 </a>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
                </div>
             </div>
          </div>
