@@ -3,39 +3,6 @@
 {{ __('National Security Guard | Home') }}
 @endsection
 @section('content')
-<div class="row align-items-center">
-   <div class="col-md-2 p-0">
-      <h3 class="news-title">
-         @if(Session::get('locale') == 'hi') {{ config('staticTextLang.nau_hi') }} @else {{ config('staticTextLang.nau_en') }} @endif
-      </h3>
-   </div>
-   <div class="col-md-10 pe-0">
-      <div class="news-list-wrap pe-lg-5">
-         <div class="news-list">
-            <marquee class="marquee" direction="left" loop="">
-               <ul>
-                  @if(isset($news_management) && count($news_management)>0 )
-                     @foreach($news_management as $news_managements)
-                        <li>
-                           <a href="{{ $news_managements->public_url }}" target="@php if($news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
-                              @if(Session::get('locale') == 'hi')  {{ $news_managements->title_name_hi }} @else {{ $news_managements->title_name_en }} @endif
-                           </a>
-                        </li>
-                     @endforeach
-                  @else
-                     <li><a>@if(Session::get('locale') == 'hi') {{ config('staticTextLang.No_Data_Available_hi') }} @else {{ config('staticTextLang.No_Data_Available_en') }} @endif!</a></li>
-                  @endif
-               </ul>
-            </marquee>
-         </div>
-         <div class="btn-wrap">
-            <button class="btn btn-yellow-outline">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.View_All_hi') }} @else {{ config('staticTextLang.View_All_en') }} @endif</button>
-         </div>
-      </div>
-   </div>
-</div>
-</div>
-</section>
 <section class="hero-wrap">
    <div class="container-fluid px-lg-5">
       <div class="row">
@@ -455,53 +422,22 @@
    </div>
 </section>
 <section class="eliminator-wrap">
-<div class="container">
-<div class="row justify-content-center">
-   <div class="col-md-10">
-      <div class="eliminator-content m-neg"  data-aos="fade-up" data-aos-duration="3000">
-         <div class="heading-wrap">
-            <h2 class="heading">
-            @if(Session::get('locale') == 'hi') {{ config('staticTextLang.nsgte_hi') }} @else {{ config('staticTextLang.nsgte_en') }} @endif
-            </h2>
-         </div>
-         <div class="eliminator-video">
-            <iframe height="450" src="https://www.youtube.com/embed/">
-            </iframe>
-         </div>
-      </div>
-   </div>
-   <div class="col-md-10">
-      <div class="client-wrap py-5"  data-aos="fade-up" data-aos-duration="3000">
-         <div class="client-slider px-5" id="common-slider">
-            <div class="owl-carousel owl-theme" id="clientSlider">
-               <div class="item">
-                  <a href="#" class="client-slider-content">
-                  <img src="{{ asset('assets-nsg/images/india-gov.svg')}}" alt="india-gov" class="img-fluid" />
-                  </a>
+   <div class="container">
+      <div class="row justify-content-center">
+         <div class="col-md-10">
+            <div class="eliminator-content m-neg"  data-aos="fade-up" data-aos-duration="3000">
+               <div class="heading-wrap">
+                  <h2 class="heading">
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.nsgte_hi') }} @else {{ config('staticTextLang.nsgte_en') }} @endif
+                  </h2>
                </div>
-               <div class="item">
-                  <a href="#" class="client-slider-content">
-                  <img src="{{ asset('assets-nsg/images/data-gov.svg')}}" alt="data-gov" class="img-fluid" />
-                  </a>
-               </div>
-               <div class="item">
-                  <a href="#" class="client-slider-content">
-                  <img src="{{ asset('assets-nsg/images/mygov.svg')}}" alt="mygov" class="img-fluid" />
-                  </a>
-               </div>
-               <div class="item">
-                  <a href="#" class="client-slider-content">
-                  <img src="{{ asset('assets-nsg/images/digital-india.svg')}}" alt="digital-india" class="img-fluid" />
-                  </a>
-               </div>
-               <div class="item">
-                  <a href="#" class="client-slider-content">
-                  <img src="{{ asset('assets-nsg/images/ministry-of-ayush.svg')}}" alt="ministry-of-ayush" class="img-fluid" />
-                  </a>
+               <div class="eliminator-video">
+                  <iframe height="450" src="https://www.youtube.com/embed/">
+                  </iframe>
                </div>
             </div>
          </div>
       </div>
    </div>
-</div>
+</section>
 @endsection
