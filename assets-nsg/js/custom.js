@@ -28,6 +28,7 @@ $('#clientSlider').owlCarousel({
     loop: true,
     margin: 30,
     nav: false,
+    dots: false,
     responsive: {
         0: {
             items: 1,
@@ -42,6 +43,25 @@ $('#clientSlider').owlCarousel({
             dots: false
         }
     }
+});
+
+$('#masterGallerSlider').owlCarousel({
+  loop: true,
+  margin: 30,
+  nav: false,
+  dots: true,
+  responsive: {
+      0: {
+          items: 1,
+      },
+      600: {
+          items: 2,
+      },
+      1000: {
+          items: 3,
+          dots: true,
+      }
+  }
 });
 
 $(document).ready(function() {

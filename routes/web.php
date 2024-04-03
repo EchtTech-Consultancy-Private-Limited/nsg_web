@@ -37,10 +37,13 @@ Artisan::call('config:clear');
 
 require __DIR__ .'/cms_web.php';
 Route::middleware(['visitingcounter'])->group(function () {
-Route::get('/set-language',[HomeController::class,'SetLang']);
-/** Below the URL set login on home */
-Route::get('/', [HomeController::class, 'index'])->name('/');
-Route::get('/{slug}', [HomeController::class, 'getAllPageContent']);
+    Route::get('/set-language',[HomeController::class,'SetLang']);
+    /** Below the URL set login on home */
+    Route::get('/', [HomeController::class, 'index'])->name('/');
+    Route::get('contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+    Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
+    Route::get('register-for-ncnc', [HomeController::class, 'RegisterForNCNC'])->name('register-for-ncnc');
+    Route::get('/{slug}', [HomeController::class, 'getAllPageContent']);
 
 });
 //default behaviour, always keep as last entry

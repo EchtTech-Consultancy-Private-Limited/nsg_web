@@ -31,8 +31,9 @@ class HomeController extends Controller
      */
     public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {   
+        
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
-        dd($metaData);
+        //dd($metaData);
         if($metaData == null){
             $titleName = 'Error';
             return view('pages.error', ['title' => $titleName]);
@@ -42,6 +43,27 @@ class HomeController extends Controller
             $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
             $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
         }
+        /** get menu submenu */
+        
+        if($slug){
+            $menu = new \stdClass;
+            $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
+            if($single_menu){
+                $menu->name =$single_menu;
+                $sing_menu = DB::table('website_menu_management')->where('uid',$single_menu->parent_id)->where('soft_delete', 0)->where('status', 3)->first();
+                if($sing_menu){
+                    $menu->name =$sing_menu;  
+                }
+            }
+            if($sing_menu){
+                $side_menu = DB::table('website_menu_management')->where('parent_id',$sing_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                if($side_menu){
+                    $menu->name =$side_menu;  
+                }
+            }
+            
+        }
+        //dd($menu->name);
         $data = new \stdClass;
         $data->metaDatas =$metaData;
         $data->pageContents =$pageContent;
@@ -49,18 +71,40 @@ class HomeController extends Controller
         $data->pageGallerys =$pageGallery;
         $data->pageBanners =$pageBanner;
         $titleName = $metaData->page_title_en ?? 'NSG';
-        return view('master-page', ['title' => $titleName, 'pageData'=>$data]);
+
+        //dd($data);
+
+        return view('master-page', ['title' => $titleName, 'sideMenu'=>$menu->name, 'pageData'=>$data]);
     }
 
+
+    function getMenuTree($menus, $parentId)
+    {
+        $branch = array();
+        
+        foreach ($menus as $menu) {
+
+            if ($menu->parent_id == $parentId) {
+
+                $children = $this->getMenuTree($menus, $menu->uid);
+                if ($children) {
+                    $menu->children = $children;
+                }
+                $branch[] = $menu;
+            }
+        }
+        return $branch;
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function contactUs(Request $request)
     {
-        //
+        $titleName = 'Contact Us';
+       return view('pages.contact-us',['title' => $titleName]);
     }
 
     /**
@@ -69,9 +113,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function RegisterForNCNC(Request $request)
     {
-        //
+        $titleName = 'Register For NCNC';
+        return view('pages.contact-us',['title' => $titleName]);
     }
 
     /**
@@ -80,9 +125,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function feedbackDataSave(Request $request)
     {
-        //
+        $titleName = 'Feed Back';
+        return view('pages.contact-us',['title' => $titleName]);
     }
 
     /**
