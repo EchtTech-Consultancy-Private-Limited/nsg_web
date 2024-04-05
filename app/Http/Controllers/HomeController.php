@@ -7,11 +7,17 @@ use Session, App, DB;
 
 class HomeController extends Controller
 {
+    protected $app;
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(App $app)
+    {
+        $this->app = $app;
+    }
+
     public function index()
     {
         $titleName = 'Home';
@@ -31,9 +37,9 @@ class HomeController extends Controller
      */
     public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
     {   
-        
+       // dd($request->route('slug'));
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
-        //dd($metaData);
+       // dd($metaData);
         if($slug){
             $menu = new \stdClass;
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
@@ -44,11 +50,13 @@ class HomeController extends Controller
                     $menu->name =$sing_menu;  
                 }
             }
-            if($sing_menu){
+            if(isset($sing_menu) && $sing_menu){
                 $side_menu = DB::table('website_menu_management')->where('parent_id',$sing_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
                 if($side_menu){
                     $menu->name =$side_menu;  
                 }
+            }else{
+                return view('pages.error'); 
             }
             
         }
@@ -59,8 +67,8 @@ class HomeController extends Controller
         }
 
         if($metaData == null){
-            $titleName = 'Error';
-            return view('pages.error', ['title' => $titleName,'sideMenu'=>$menu->name, 
+            if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
+            return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
             'manMenu' =>$mainMenu,]);
         }else{
             $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
@@ -70,7 +78,6 @@ class HomeController extends Controller
         }
         /** get menu submenu */
         
-        
         //dd($mainMenu);
         $data = new \stdClass;
         $data->metaDatas =$metaData;
@@ -78,14 +85,16 @@ class HomeController extends Controller
         $data->pagePdfs =$pagePdf;
         $data->pageGallerys =$pageGallery;
         $data->pageBanners =$pageBanner;
-        $titleName = $metaData->page_title_en ?? 'NSG';
+        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'NSG'; } else {  $titleName =$metaData->page_title_en ?? 'NSG';  }
 
-       // dd($titleName);
+        //dd($data);
 
         return view('master-page', ['title' => $titleName,
                     'sideMenu'=>$menu->name, 
                     'manMenu' =>$mainMenu,
-                    'pageData'=>$data]);
+                    'pageData'=>$data,
+                    'slug' =>$request->route('slug')??''
+                ]);
     }
 
 
@@ -127,7 +136,7 @@ class HomeController extends Controller
     public function RegisterForNCNC(Request $request)
     {
         $titleName = 'Register For NCNC';
-        return view('pages.contact-us',['title' => $titleName]);
+        return view('pages.register-for-ncnc',['title' => $titleName]);
     }
 
     /**
@@ -139,7 +148,7 @@ class HomeController extends Controller
     public function feedbackDataSave(Request $request)
     {
         $titleName = 'Feed Back';
-        return view('pages.contact-us',['title' => $titleName]);
+        return view('pages.feedback',['title' => $titleName]);
     }
 
     /**
@@ -149,9 +158,10 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function siteMapList(Request $request)
     {
-        //
+        $titleName = 'Site Map';
+        return view('pages.sitemap',['title' => $titleName]);
     }
 
     /**

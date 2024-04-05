@@ -84,7 +84,7 @@
                                                 <label class="form-label">Term of Service <span class="char-red">*</span></label>
                                                 <div class="upload-wrap">
                                                     <div class="btn-wrap">
-                                                        <img src="assets/images/upload.svg" alt="upload" class="me-3 img-fluid /">
+                                                        <img src="{{ asset('assets-nsg/images/upload.svg') }}" alt="upload" class="me-3 img-fluid /">
                                                         <div class="btn-red btn-upload">
                                                             <label for="file">Choose File</label>
                                                         </div>
@@ -149,7 +149,7 @@
                                                 <div class="input-group captcha-input-wrap">
                                                     <input class="form-control" value="634620" disabled>
                                                     <a class="input-group-text">
-                                                        <img src="assets/images/refresh.svg" alt="refresh-icon" class="img-fluid">
+                                                        <img src="{{ asset('assets-nsg/images/refresh.svg') }}" alt="refresh-icon" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>

@@ -12,8 +12,8 @@
         <div class="header-top-right">
             <div class="content">
                 <ul>
-                    <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Sitemap_hi') }} @else {{ config('staticTextLang.Sitemap_en') }} @endif</a></li>
-                    <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Feedback_hi') }} @else {{ config('staticTextLang.Feedback_en') }} @endif</a></li>
+                    <li><a href="{{ route('sitemap') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Sitemap_hi') }} @else {{ config('staticTextLang.Sitemap_en') }} @endif</a></li>
+                    <li><a href="{{ route('feedback') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Feedback_hi') }} @else {{ config('staticTextLang.Feedback_en') }} @endif</a></li>
                     <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.sra_hi') }} @else {{ config('staticTextLang.sra_en') }} @endif</a></li>
                     <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.stmc_hi') }} @else {{ config('staticTextLang.stmc_en') }} @endif</a></li>
                     <li>

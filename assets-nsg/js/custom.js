@@ -45,9 +45,9 @@ $('#clientSlider').owlCarousel({
     }
 });
 
-$('#masterGallerSlider').owlCarousel({
+$('#masterGallerySlider').owlCarousel({
   loop: true,
-  margin: 30,
+  margin: 15,
   nav: false,
   dots: true,
   responsive: {
@@ -63,6 +63,29 @@ $('#masterGallerSlider').owlCarousel({
       }
   }
 });
+
+$(document).ready(function(){
+  $(".photoGallerySlider").each(function(index) {
+      $(this).owlCarousel({
+          loop: true,
+          margin: 15,
+          nav: true,
+          dots: false,
+          responsive: {
+              0: {
+                  items: 1,
+              },
+              600: {
+                  items: 2,
+              },
+              1000: {
+                  items: 3,
+              }
+          }
+      });
+  });
+});
+
 
 $(document).ready(function() {
   const decrementBtn = document.getElementById('decrementBtn');
@@ -124,12 +147,12 @@ new DataTable('#nsg_datatable', {
   columnDefs: [
       {
           target: 2,
-          visible: false,
-          searchable: false
+          visible: true,
+          searchable: true
       },
       {
           target: 3,
-          visible: false
+          visible: true
       }
   ]
 });

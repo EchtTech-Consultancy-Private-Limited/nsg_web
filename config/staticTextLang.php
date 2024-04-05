@@ -2,6 +2,8 @@
 
 
 return [
+    'home_en' => 'Home',
+    'home_hi' => 'घर',
     'wtowonsg_en'=>'Welcome to Official Website of National Security Guard',
     'wtowonsg_hi'=>'राष्ट्रीय सुरक्षा गार्ड की आधिकारिक वेबसाइट में आपका स्वागत है',
     'Sitemap_en' => 'Sitemap',
@@ -34,4 +36,7 @@ return [
     'No_Data_Available_hi'=> 'कोई डेटा मौजूद नहीं',
     '404_en'=> 'The page you are looking for is not found',
     '404_hi'=> 'आप जिस पृष्ठ की तलाश कर रहे हैं वह नहीं मिला है',
+    'comingsoon_en' => 'Coming Soon',
+    'comingsoon_hi' => 'जल्द आ रहा है',
+    
 ];

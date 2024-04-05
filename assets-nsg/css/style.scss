@@ -1433,6 +1433,132 @@ ul {
 
 }
 
+.form{
+  &-wrap{
+    .btn-red{
+      padding: 10px 20px;
+      &:hover{
+        border-color: #000000;
+        color: #000000;
+      }
+    }
+  }
+  &-card-bdr {
+    border: 1px solid #E1E1E1;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 35px;
+    .title-black {
+      width: fit-content;
+      margin-top: -30px;
+      font-size: 1.25em;
+      font-weight: 600;
+      color: #000000;
+      background: #ffffff;
+      padding: 0 5px;
+    }
+    .form-label {
+      color: #000000;
+      font-size: 0.75em;
+      font-weight: 500;
+      .char-red {
+        color: red;
+      }
+    }
+    .form-control, .form-select {
+      border: 1px solid #A5A3A3;
+      border-radius: 8px;
+      height: 48px;
+      font-size: 0.875em;
+      color: #000000;
+      &::placeholder {
+        color: #A5A3A3;
+      }
+      &:focus {
+        outline: none;
+        box-shadow: none;
+        border-color: #000;
+      }
+    }
+    .form-control-textarea{
+      width: 100%;
+      padding: .375rem .75rem;
+      border: 1px solid #A5A3A3;
+      border-radius: 8px;
+      font-size: 0.875em;
+      color: #000000;
+      resize: none;
+      &:focus-visible {
+        outline: none;
+        border-color: #000;
+      }
+    }
+    .upload-wrap {
+      border: 1px dashed #8E8E8E;
+      border-radius: 8px;
+      height: 118px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #FBFBFB;
+      .btn-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        .btn-upload{
+          background: #cc2832;
+          color: #ffffff;
+          border-color: #cc2832;
+          label{
+            cursor: pointer;
+          }
+        }
+        img {
+          height: 24px;
+        }
+      }
+      .upload-text {
+        font-size: 0.75em;
+        line-height: 21px;
+        color: #8F8F8F;
+        margin: 15px 0 0 0;
+        text-align: center;
+      }
+    }
+    .form-desc {
+      font-size: 1.25em;
+      color: #000000;
+      margin: 0;
+    }
+    .captcha-input-wrap{
+      .input-group-text {
+        background: #393939;
+        border-radius: 8px !important;
+        position: absolute;
+        right: -15px;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        padding: 10px;
+        z-index: 1000;
+        cursor: pointer;
+      }
+    
+      input{
+          border-radius: 8px !important;
+          padding-right: 50px;
+          font-size: 1.5em;
+          font-weight: 600;
+          text-decoration: line-through;
+          font-style: italic;
+          &:disabled{
+            background-color: #ffffff;
+          }
+      }
+    }
+  }
+}
 
 .site-footer {
   &-top {
