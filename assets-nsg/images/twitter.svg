@@ -1,3 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="15.425" height="13.942" viewBox="0 0 15.425 13.942">
-  <path id="X_logo_2023" d="M13.4,2.25h2.365L10.6,8.156l6.079,8.037h-4.76L8.191,11.318,3.925,16.192H1.559L7.085,9.875,1.254,2.25H6.135L9.5,6.705Zm-.83,12.527h1.311L5.422,3.591H4.016Z" transform="translate(-1.254 -2.25)" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.264" y1="0.113" x2="0.771" y2="0.945" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#4f4f4f"/>
+      <stop offset="1"/>
+    </linearGradient>
+  </defs>
+  <g id="Twitter" transform="translate(-1537.5 -3066.5)">
+    <g id="Group_64930" data-name="Group 64930" transform="translate(-1968 -47)">
+      <circle id="Ellipse_5458" data-name="Ellipse 5458" cx="15.5" cy="15.5" r="15.5" transform="translate(3506 3114)" fill="#fff" stroke="rgba(0,0,0,0)" stroke-width="1"/>
+    </g>
+    <g id="Group_64931" data-name="Group 64931" transform="translate(0.02 0.283)">
+      <g id="Group_64912" data-name="Group 64912" transform="translate(1540.98 3069.717)">
+        <ellipse id="Ellipse_5451" data-name="Ellipse 5451" cx="12.783" cy="12.783" rx="12.783" ry="12.783" fill="url(#linear-gradient)"/>
+      </g>
+      <path id="path1009" d="M-329.922,93.629l5.1,6.817-5.13,5.54h1.155l4.491-4.852,3.628,4.852h3.929l-5.385-7.2,4.775-5.158h-1.154l-4.136,4.467-3.342-4.467Zm1.7.85h1.8l7.97,10.657h-1.8Z" transform="translate(1877.116 2982.906)" fill="#fff"/>
+    </g>
+  </g>
 </svg>

@@ -34,17 +34,6 @@ class HomeController extends Controller
         
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         //dd($metaData);
-        if($metaData == null){
-            $titleName = 'Error';
-            return view('pages.error', ['title' => $titleName]);
-        }else{
-            $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
-            $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
-            $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
-            $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
-        }
-        /** get menu submenu */
-        
         if($slug){
             $menu = new \stdClass;
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
@@ -63,7 +52,26 @@ class HomeController extends Controller
             }
             
         }
-        //dd($menu->name);
+        if($sing_menu){
+            $mainMenu = $sing_menu;
+        }else{
+            $mainMenu ='';
+        }
+
+        if($metaData == null){
+            $titleName = 'Error';
+            return view('pages.error', ['title' => $titleName,'sideMenu'=>$menu->name, 
+            'manMenu' =>$mainMenu,]);
+        }else{
+            $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
+            $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
+            $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
+            $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
+        }
+        /** get menu submenu */
+        
+        
+        //dd($mainMenu);
         $data = new \stdClass;
         $data->metaDatas =$metaData;
         $data->pageContents =$pageContent;
@@ -72,9 +80,12 @@ class HomeController extends Controller
         $data->pageBanners =$pageBanner;
         $titleName = $metaData->page_title_en ?? 'NSG';
 
-        //dd($data);
+       // dd($titleName);
 
-        return view('master-page', ['title' => $titleName, 'sideMenu'=>$menu->name, 'pageData'=>$data]);
+        return view('master-page', ['title' => $titleName,
+                    'sideMenu'=>$menu->name, 
+                    'manMenu' =>$mainMenu,
+                    'pageData'=>$data]);
     }
 
 

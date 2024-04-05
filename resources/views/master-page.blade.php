@@ -6,10 +6,21 @@
 <section class="wrapper common-bg-right">
    <div class="container">
       <div class="row">
+         <div class="col-md-12">
+            <div class="breadcrumb-wrap mb-4">
+               <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                     <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+                     <li class="breadcrumb-item">{{$manMenu->name_en??''}}</li>
+                     <li class="breadcrumb-item active" aria-current="page">{{$title??''}}</li>
+                  </ol>
+               </nav>
+            </div>
+         </div>
          <div class="col-md-4">
             <div class="link-wrap mb-3">
                <h3 class="heading-white">
-                  About
+                   {{$manMenu->name_en??''}}
                </h3>
                <ul>
                   @if(isset($sideMenu))
@@ -18,7 +29,7 @@
                      <a 
                      href="@php if(isset($sideMenus->url) && $sideMenus->url == '#'){ echo 'javascript:void(0)'; }else{ echo $sideMenus->url; } @endphp"
                       target="@php if($sideMenus->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
-                     <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
+                        <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
                         @if(Session::get('locale') == 'hi') {{ $sideMenus->name_hi }} @else {{ $sideMenus->name_en }} @endif
                      </a>
                   </li>
@@ -39,110 +50,48 @@
                      @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi !!} @else {!! $pageData->pageContents->page_content_en !!} @endif
                   @endif
                   </p>
+                  @if()
                   <div class="common-table table-responsive">
-                     <table class="table table-striped mb-0">
+                     <table id="nsg_datatable" class="display" style="width:100%">
                         <thead>
-                           <tr>
-                              <th scope="col" class="text-center">S.No</th>
-                              <th scope="col">Seminars/Conferences</th>
-                              <th scope="col">Code No.</th>
-                              <th scope="col">Actions</th>
-                           </tr>
+                              <tr>
+                                 <th>Name</th>
+                                 <th>Position</th>
+                                 <th>Office</th>
+                                 <th>Age</th>
+                                 <th>Start date</th>
+                                 <th>Salary</th>
+                              </tr>
                         </thead>
                         <tbody>
-                           <tr>
-                              <td class="text-center">1</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="text-center">2</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="text-center">3</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="text-center">4</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="text-center">5</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
-                           <tr>
-                              <td class="text-center">6</td>
-                              <td>Sed ut perspiciatis unde omnis iste natus error sit</td>
-                              <td>A124</td>
-                              <td>
-                                 <div class="btn-wrap d-flex align-items-center">
-                                    <button class="btn edit-btn p-0 me-3">
-                                    <img src="{{ asset('assets-nsg/images/edit.svg') }}" alt="edit" class="img-fluid" />
-                                    </button>
-                                    <button class="btn delete-btn p-0">
-                                    <img src="{{ asset('assets-nsg/images/delete.svg') }}" alt="delete" class="img-fluid" />
-                                    </button>
-                                 </div>
-                              </td>
-                           </tr>
+                              <tr>
+                                 <td>Tiger Nixon</td>
+                                 <td>System Architect</td>
+                                 <td>Edinburgh</td>
+                                 <td>61</td>
+                                 <td>2011-04-25</td>
+                                 <td>$320,800</td>
+                              </tr>
+                              <tr>
+                                 <td>Garrett Winters</td>
+                                 <td>Accountant</td>
+                                 <td>Tokyo</td>
+                                 <td>63</td>
+                                 <td>2011-07-25</td>
+                                 <td>$170,750</td>
+                              </tr>
+                              <tr>
+                                 <td>Ashton Cox</td>
+                                 <td>Junior Technical Author</td>
+                                 <td>San Francisco</td>
+                                 <td>66</td>
+                                 <td>2009-01-12</td>
+                                 <td>$86,000</td>
+                              </tr>
                         </tbody>
                      </table>
-               </div>
+                  </div>
+                  @endif
             </div>
          </div>
       </div>
