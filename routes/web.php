@@ -42,6 +42,7 @@ Route::middleware(['visitingcounter'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
+    Route::get('sitemap', [HomeController::class, 'siteMapList'])->name('sitemap');
     Route::get('register-for-ncnc', [HomeController::class, 'RegisterForNCNC'])->name('register-for-ncnc');
     Route::get('/{slug}', [HomeController::class, 'getAllPageContent']);
 

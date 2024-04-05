@@ -77,6 +77,7 @@
             <div class="card-wrap card-white mb-3 mb-lg-0" data-aos="fade-up" data-aos-duration="1000">
                <div class="d-flex align-items-center justify-content-between pb-3">
                   <h2 class="heading-red">
+                     {{ __('messages.Latest_News') }}
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Achievements_hi') }} @else {{ config('staticTextLang.Achievements_en') }} @endif
                   </h2>
                   <a href="#" class="link-yellow">

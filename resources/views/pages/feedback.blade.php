@@ -63,7 +63,7 @@
                                                 <div class="input-group captcha-input-wrap">
                                                     <input class="form-control" value="634620" disabled>
                                                     <a class="input-group-text">
-                                                        <img src="assets/images/refresh.svg" alt="refresh-icon" class="img-fluid">
+                                                        <img src="{{ asset('assets-nsg/images/refresh.svg') }}" alt="refresh-icon" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>

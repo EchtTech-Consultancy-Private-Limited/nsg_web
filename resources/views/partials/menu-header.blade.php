@@ -57,7 +57,7 @@
          @endif
       </ul>
       <div class="btn-wrap ms-4">
-         <a href="#" class="btn btn-red">
+         <a href="{{ route('register-for-ncnc') }}" class="btn btn-red">
             @if(Session::get('locale') == 'hi') {{ config('staticTextLang.rfncnc_hi') }} @else {{ config('staticTextLang.rfncnc_en') }} @endif
          </a>
       </div>
