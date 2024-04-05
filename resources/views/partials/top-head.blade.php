@@ -8,7 +8,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xl-12 col-xxl-8">
+    <div class="col-lg-12 col-xl-8 d-none d-xl-block">
         <div class="header-top-right">
             <div class="content">
                 <ul>

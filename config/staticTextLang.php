@@ -32,5 +32,6 @@ return [
     'rfncnc_hi'=> 'एनसीएनसी के लिए पंजीकरण करें',
     'No_Data_Available_en'=> 'No Data Available',
     'No_Data_Available_hi'=> 'कोई डेटा मौजूद नहीं',
-    ''=> '',
+    '404_en'=> 'The page you are looking for is not found',
+    '404_hi'=> 'आप जिस पृष्ठ की तलाश कर रहे हैं वह नहीं मिला है',
 ];
