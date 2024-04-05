@@ -50,7 +50,7 @@
                      @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi !!} @else {!! $pageData->pageContents->page_content_en !!} @endif
                   @endif
                   </p>
-                  @if()
+                  
                   <div class="common-table table-responsive">
                      <table id="nsg_datatable" class="display" style="width:100%">
                         <thead>
@@ -91,7 +91,7 @@
                         </tbody>
                      </table>
                   </div>
-                  @endif
+                 
             </div>
          </div>
       </div>
