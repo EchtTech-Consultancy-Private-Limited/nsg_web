@@ -38,5 +38,10 @@ return [
     '404_hi'=> 'आप जिस पृष्ठ की तलाश कर रहे हैं वह नहीं मिला है',
     'comingsoon_en' => 'Coming Soon',
     'comingsoon_hi' => 'जल्द आ रहा है',
+    'VisitorCounte_en'=>'Visitor Counter ',
+    'VisitorCounte_hi'=>'कुल विज़िटर',
+    'LastUpdated_en'=>'Last Updated',
+    'LastUpdated_hi'=>'आखरी अपडेट',
+    ''=>'',
     
 ];

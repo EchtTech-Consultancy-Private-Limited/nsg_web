@@ -34,7 +34,7 @@
                     </a> 
                   </span> 
                   <br />
-                  <span class="lastupdated">Last Updated: <strong>{{ date('d-M-Y') }}</strong></span>
+                  <span class="lastupdated">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.LastUpdated_hi') }} @else {{ config('staticTextLang.LastUpdated_en') }} @endif: <strong>{{ date('d-M-Y') }}</strong></span>
                 </p>
               </div>
             </div>
@@ -53,7 +53,7 @@
           <div class="col-md-5 col-5">
             <div class="visitor-counter">
                 <h2 class="visitor-heading">
-                  Visitor Counter : <span>{{ $visitCounters ??'' }}</span>
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.VisitorCounte_hi') }} @else {{ config('staticTextLang.VisitorCounte_en') }} @endif : <span>{{ $visitCounters ??'' }}</span>
                 </h2>
             </div>
           </div>
