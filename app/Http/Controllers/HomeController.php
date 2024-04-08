@@ -170,8 +170,9 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function photoGallery(Request $request)
     {
-        //
+        $titleName = 'Photo Gallery';
+        return view('pages.photo-gallery',['title' => $titleName]);
     }
 }
