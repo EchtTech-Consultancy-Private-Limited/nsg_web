@@ -61,6 +61,7 @@
                                         <div class="row g-3 py-3 align-items-end">
                                             <div class="col-md-3 mb-3">
                                                 <div class="input-group captcha-input-wrap">
+                                                    <img src="{{ route('captcha') }}" alt="CAPTCHA Image">
                                                     <input class="form-control" value="634620" disabled>
                                                     <a class="input-group-text">
                                                         <img src="{{ asset('assets-nsg/images/refresh.svg') }}" alt="refresh-icon" class="img-fluid">
