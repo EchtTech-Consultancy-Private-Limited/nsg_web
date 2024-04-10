@@ -17,6 +17,17 @@ use App\Http\Controllers\SearchController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+use App\Services\CaptchaService;
+
+Route::get('/captcha', function () {
+    $code = CaptchaService::generateCode();
+    session(['captcha_code' => $code]);
+    //$image = \Image::make(sprintf('data:image/png;base64,%s', base64_encode(\QrCode::format('png')->size(100)->generate($code))));
+
+    return $code;
+})->name('captcha');
+
 function set_active($route) {
     if( is_array( $route ) ){
         return in_array(Request::path(), $route) ? 'hover show' : '';
