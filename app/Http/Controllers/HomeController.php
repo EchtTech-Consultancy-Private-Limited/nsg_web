@@ -71,14 +71,15 @@ class HomeController extends Controller
             return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
             'manMenu' =>$mainMenu,]);
         }else{
-            $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
-            $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
-            $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->get();
-            $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0],['status',3]])->first();
+            $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
+            $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
+                                ->where([['soft_delete', 0]])->orderBy(DB::raw("DATE_FORMAT(start_date,'%Y-%m-%d')"), 'desc')->get();
+            $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->get();
+            $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
         }
         /** get menu submenu */
         
-        //dd($mainMenu);
+       // dd($mainMenu);
         $data = new \stdClass;
         $data->metaDatas =$metaData;
         $data->pageContents =$pageContent;
@@ -87,7 +88,7 @@ class HomeController extends Controller
         $data->pageBanners =$pageBanner;
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'NSG'; } else {  $titleName =$metaData->page_title_en ?? 'NSG';  }
 
-        //dd($data);
+       // dd($data);
 
         return view('master-page', ['title' => $titleName,
                     'sideMenu'=>$menu->name, 

@@ -57,23 +57,27 @@
                         <table id="nsg_datatable" class="display common-table" style="width:100%">
                            <thead>
                                  <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
+                                    @foreach(json_decode($pageData->pagePdfs[0]->table_head) as $head)
+                                       <th>{{$head->tablehead}}</th>
+                                    @endforeach
                                  </tr>
                            </thead>
                            <tbody>
+                           @if(isset($pageData->pagePdfs) && count($pageData->pagePdfs)>0)
+                              @foreach($pageData->pagePdfs as $key=>$pdfdata)
                                  <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011-04-25</td>
-                                    <td>$320,800</td>
+                                    <td class="text-center">{{$key+1}}</td>
+                                    <td>{{$pdfdata->pdf_title}}</td>
+                                    <td class="views-field views-field-field-amount-rs- download" data-label="
+                                       Request Doc">
+                                       <a href="{{ asset('resources/uploads/PageContentPdf/'.$pdfdata->public_url) }}" download="" tabindex="0" target="_blank">
+                                          Download
+                                       </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$pdfdata->pdfimage_size}})</span>
+                                    </td>
+                                    <td class="text-center">{{$pdfdata->start_date}}</td>
                                  </tr>
+                              @endforeach
+                           @endif
                            </tbody>
                         </table>
                      </div>
