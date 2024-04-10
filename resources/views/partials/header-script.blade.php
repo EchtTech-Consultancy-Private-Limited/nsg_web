@@ -9,5 +9,6 @@
 <link rel="stylesheet" href="{{ asset('assets-nsg/css/owl.carousel.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets-nsg/css/aos.css')}}" />
 <link rel="stylesheet" href="{{ asset('assets-nsg/css/dataTables.dataTables.css')}}" />
+<link rel="stylesheet" href="{{ asset('assets-nsg/css/font-awesome.min.css')}}">
 <link rel="stylesheet" href="{{ asset('assets-nsg/css/style.css')}}">
 @stack('post-css')

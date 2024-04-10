@@ -77,7 +77,6 @@
             <div class="card-wrap card-white mb-3 mb-lg-0" data-aos="fade-up" data-aos-duration="1000">
                <div class="d-flex align-items-center justify-content-between pb-3">
                   <h2 class="heading-red">
-                     {{ __('messages.Latest_News') }}
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Achievements_hi') }} @else {{ config('staticTextLang.Achievements_en') }} @endif
                   </h2>
                   <a href="#" class="link-yellow">
@@ -381,7 +380,9 @@
                   Recogntion of Gallant, hard work & dedication towards the Nation.
                </p>
                <div class="btn-wrap">
+                  <a href="{{ url('gallantry-awards-(army)') }}">
                   <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
+                  </a>
                </div>
             </div>
          </div>
@@ -399,20 +400,22 @@
                   therefore, to be used only in exceptional circumstances to thwart serious acts of terrorism.
                </p>
                <div class="btn-wrap">
-                  <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
+                  <a href="{{ url('about-nsg') }}">
+                     <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
+                  </a>
                </div>
             </div>
          </div>
          <div class="col-md-12 col-lg-4">
             <div class="card-wrap card-red  mb-3 mb-md-0"  data-aos="fade-up" data-aos-duration="2000">
                <h2 class="card-heading">
-                  E-Shradhanjali
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Our_Martyrs_hi') }} @else {{ config('staticTextLang.Our_Martyrs_en') }} @endif
                </h2>
                <div class="card-image">
                   <img src="{{ asset('assets-nsg/images/e-sharadhanjali.png')}}" alt="e-sharadhanjali" class="img-fluid" />
                </div>
                <p class="card-title">
-                  Our Martyrs - "Pride of the Nation"
+                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_hi') }} @else {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_en') }} @endif
                </p>
                <div class="btn-wrap">
                   <button class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif</button>
