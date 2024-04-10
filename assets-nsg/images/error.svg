@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="412" height="412" viewBox="0 0 412 412">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="44" height="10" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="error_symbol" data-name="error symbol" transform="translate(-1209 -460)">
+    <circle id="Ellipse_5459" data-name="Ellipse 5459" cx="206" cy="206" r="206" transform="translate(1209 460)" fill="#e2e5eb" opacity="0.7"/>
+    <g id="Group_64946" data-name="Group 64946" transform="translate(372)">
+      <rect id="Rectangle_29654" data-name="Rectangle 29654" width="221" height="221" rx="20" transform="translate(938 549)" fill="#393939"/>
+      <rect id="Rectangle_29653" data-name="Rectangle 29653" width="223" height="223" rx="20" transform="translate(946 559)" fill="#c3c9d1"/>
+      <path id="Path_114266" data-name="Path 114266" d="M20,0H203a20,20,0,0,1,20,20V47H0V20A20,20,0,0,1,20,0Z" transform="translate(946 559)" fill="#9099a7"/>
+      <g id="Repeat_Grid_23" data-name="Repeat Grid 23" transform="translate(957 581)" clip-path="url(#clip-path)">
+        <g transform="translate(-967 -587)">
+          <circle id="Ellipse_5460" data-name="Ellipse 5460" cx="5" cy="5" r="5" transform="translate(967 587)" fill="#fff"/>
+        </g>
+        <g transform="translate(-951 -587)">
+          <circle id="Ellipse_5460-2" data-name="Ellipse 5460" cx="5" cy="5" r="5" transform="translate(967 587)" fill="#fff"/>
+        </g>
+        <g transform="translate(-935 -587)">
+          <circle id="Ellipse_5460-3" data-name="Ellipse 5460" cx="5" cy="5" r="5" transform="translate(967 587)" fill="#fff"/>
+        </g>
+      </g>
+      <rect id="Rectangle_29655" data-name="Rectangle 29655" width="60" height="3" rx="1.5" transform="translate(1098 586)" fill="#fff"/>
+      <g id="Group_64945" data-name="Group 64945">
+        <path id="Polygon_4" data-name="Polygon 4" d="M72.288,0A19,19,0,0,1,88.737,9.49l16.766,29a19,19,0,0,1,0,19.019l-16.766,29A19,19,0,0,1,72.288,96H38.712a19,19,0,0,1-16.449-9.49L5.5,57.51a19,19,0,0,1,0-19.019l16.766-29A19,19,0,0,1,38.712,0Z" transform="translate(1002 636)" fill="#fff"/>
+        <path id="Union_3" data-name="Union 3" d="M-15627.194,47.044l-10.708-11.893-10.708,11.893a6.26,6.26,0,0,1-8.843.464,6.26,6.26,0,0,1-.464-8.843l11.589-12.871-11.589-12.871a6.26,6.26,0,0,1,.464-8.843,6.262,6.262,0,0,1,8.839.464l10.71,11.895,10.71-11.895a6.267,6.267,0,0,1,8.843-.464,6.264,6.264,0,0,1,.464,8.843l-11.592,12.874,11.588,12.869a6.264,6.264,0,0,1-.46,8.843,6.239,6.239,0,0,1-4.187,1.609A6.245,6.245,0,0,1-15627.194,47.044Z" transform="translate(16695.527 658.526)" fill="#cc2832"/>
+      </g>
+    </g>
+  </g>
+</svg>
