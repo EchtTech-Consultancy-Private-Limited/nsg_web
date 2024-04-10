@@ -57,9 +57,11 @@
                         <table id="nsg_datatable" class="display common-table" style="width:100%">
                            <thead>
                                  <tr>
-                                    @foreach(json_decode($pageData->pagePdfs[0]->table_head) as $head)
-                                       <th>{{$head->tablehead}}</th>
-                                    @endforeach
+                                    @if(isset($pageData->pagePdfs[0]->table_head) && $pageData->pagePdfs[0]->table_head !=0)
+                                       @foreach(json_decode($pageData->pagePdfs[0]->table_head) as $head)
+                                          <th>{{$head->tablehead}}</th>
+                                       @endforeach
+                                    @endif
                                  </tr>
                            </thead>
                            <tbody>
