@@ -35,37 +35,74 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
+    public function getAllPageContent(Request $request, $slug1 = null, $slug2 = null, $slug3 = null)
     {   
        // dd($request->route('slug'));
-        $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
-       // dd($metaData);
-        if($slug){
-            $menu = new \stdClass;
-            $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
-            if($single_menu){
-                $menu->name =$single_menu;
-                $sing_menu = DB::table('website_menu_management')->where('uid',$single_menu->parent_id)->where('soft_delete', 0)->where('status', 3)->first();
-                if($sing_menu){
-                    $menu->name =$sing_menu;  
-                }
-            }
-            if(isset($sing_menu) && $sing_menu){
-                $side_menu = DB::table('website_menu_management')->where('parent_id',$sing_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
-                if($side_menu){
-                    $menu->name =$side_menu;  
-                }
-            }else{
-                return view('pages.error'); 
-            }
-            
-        }
-        if($sing_menu){
-            $mainMenu = $sing_menu;
+       if($slug1 != null && $slug2 != null && $slug3 != null){
+            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug3)->where([['soft_delete', 0],['status',3]])->first();
+       }elseif($slug1 != null && $slug2 != null && $slug3 == null){
+            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug2)->where([['soft_delete', 0],['status',3]])->first();
+       }elseif($slug1 != null && $slug2 == null && $slug3 == null){
+            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug1)->where([['soft_delete', 0],['status',3]])->first();
+       }else{
+            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug1)->where([['soft_delete', 0],['status',3]])->first();
+       }
+       //dd($metaData);
+       if($slug1 != null && $slug2 != null && $slug3 != null){
+            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
+        }elseif($slug1 != null && $slug2 != null && $slug3 == null){
+            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
+        }elseif($slug1 != null && $slug2 == null && $slug3 == null){
+            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
         }else{
-            $mainMenu ='';
+            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
         }
 
+    //     if(count($main_menu_slug)>0){
+    //         foreach($main_menu_slug as $main_men){
+    //                 $menu = new \stdClass;
+    //                 $menu->main_menu =$main_men;
+    //                 $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->get();
+    //             foreach($menu->main_menu->sub_menu as $submenu){
+    //                     $menu->sub_menu =$submenu;
+    //                     $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+    //                 }   
+    //                 //$menu->main_menu->sub_menu =$sub_menu;
+    //                // $menu->sub_menu->sub_sub_menu =$sub_sub_menu;
+    //             }
+                
+    //         }else{
+    //             $menu->name =$main_menu_slug;
+    //         }
+       
+    //    dd($menu);
+        // if($slug1){
+        //     $menu = new \stdClass;
+        //     $single_menu = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->first();
+        //     if($single_menu){
+        //         $menu->name =$single_menu;
+        //         $sub_menu = DB::table('website_menu_management')->where('uid',$single_menu->parent_id)->where('soft_delete', 0)->where('status', 3)->first();
+        //         if($sub_menu){
+        //             $menu->name =$sub_menu;  
+        //         }
+        //     }
+        //     if(isset($sub_menu) && $sub_menu !=''){
+        //         $subsub_menu = DB::table('website_menu_management')->where('parent_id',$sub_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+        //         if($subsub_menu){
+        //             $menu->name =$subsub_menu;  
+        //         }
+        //     }
+        //     // else{
+        //     //     return view('pages.error'); 
+        //     // }
+            
+        // }
+        // if(isset($sub_menu) && $sub_menu !='' || isset($subsub_menu) && $subsub_menu !=''){
+        //     $mainMenu = $sub_menu??$subsub_menu;
+        // }else{
+        //     $mainMenu ='';
+        // }
+        $mainMenu ='';
         if(isset($metaData) && $metaData != null){
             $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
             $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
@@ -109,7 +146,7 @@ class HomeController extends Controller
         //dd($data);
 
         return view('master-page', ['title' => $titleName,
-                    'sideMenu'=>$menu->name, 
+                    'sideMenu'=>$menu->name??'', 
                     'manMenu' =>$mainMenu,
                     'pageData'=>$data,
                     'slug' =>$request->route('slug')??''
