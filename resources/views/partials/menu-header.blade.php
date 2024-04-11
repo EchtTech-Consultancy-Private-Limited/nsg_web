@@ -15,13 +15,16 @@
       <ul class="navbar-nav ms-auto mb-lg-0">
          @if(isset($headerMenu) && count($headerMenu)>0)
             @foreach($headerMenu as $firstmenu)
+            @php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){$alrt ="return confirm('{{ $alertMessage }}')";}else{$alrt ='';}
+            @endphp
                <li class="nav-item @php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown'; }else{ echo ''; } @endphp">
                   <a class="nav-link 
                   @php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown-toggle'; }else{ echo ''; } @endphp" 
                   role="button" data-bs-toggle="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown'; }else{ echo ''; } @endphp"
                   aria-expanded="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'false'; }else{ echo ''; } @endphp"
                   href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo $firstmenu->url; } @endphp" 
-                  target="@php if($firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                  target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                  onclick="{{$alrt}}"
                   id="navbarDropdown">
                      @if(Session::get('locale') == 'hi')  {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }} @endif</a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

@@ -66,29 +66,47 @@ class HomeController extends Controller
             $mainMenu ='';
         }
 
-        if($metaData == null){
-            if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
-            return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
-            'manMenu' =>$mainMenu,]);
-        }else{
+        if(isset($metaData) && $metaData != null){
             $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
             $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
                                 ->where([['soft_delete', 0]])->orderBy(DB::raw("DATE_FORMAT(start_date,'%Y-%m-%d')"), 'desc')->get();
             $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->get();
             $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
         }
+        elseif($slug){
+            $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
+            $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
+            if($getForm !=''){
+                $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
+            }else{
+                if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
+                    return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
+                    'manMenu' =>$mainMenu,]);
+            }
+           // dd($getFormData);
+        }
+        else{
+            if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
+                return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
+                'manMenu' =>$mainMenu,]);
+           
+        }
         /** get menu submenu */
         
-       // dd($mainMenu);
+        //dd(json_decode($getForm->content));
+
         $data = new \stdClass;
-        $data->metaDatas =$metaData;
-        $data->pageContents =$pageContent;
-        $data->pagePdfs =$pagePdf;
-        $data->pageGallerys =$pageGallery;
-        $data->pageBanners =$pageBanner;
+        $data->metaDatas =$metaData??$single_menu;
+        $data->pageContents =$pageContent??[];
+        $data->pagePdfs =$pagePdf??[];
+        $data->pageGallerys =$pageGallery??[];
+        $data->pageBanners =$pageBanner??'';
+        $data->formbuilderdata =$getFormData??[];
+        $data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
+        $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'NSG'; } else {  $titleName =$metaData->page_title_en ?? 'NSG';  }
 
-       // dd($data);
+        //dd($data);
 
         return view('master-page', ['title' => $titleName,
                     'sideMenu'=>$menu->name, 

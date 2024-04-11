@@ -11,7 +11,7 @@
                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                      <li class="breadcrumb-item"><a href="{{ route('/') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.home_hi') }} @else {{ config('staticTextLang.home_en') }} @endif</a></li>
-                     <li class="breadcrumb-item">@if(Session::get('locale') == 'hi') {{ $manMenu->name_hi }} @else {{ $manMenu->name_en }} @endif</li>
+                     <li class="breadcrumb-item">@if(Session::get('locale') == 'hi') {{ $manMenu->name_hi??'' }} @else {{ $manMenu->name_en??'' }} @endif</li>
                      <li class="breadcrumb-item active" aria-current="page">{{$title??''}}</li>
                   </ol>
                </nav>
@@ -20,7 +20,7 @@
          <div class="col-md-4">
             <div class="link-wrap mb-3">
                <h3 class="heading-white">
-                  @if(Session::get('locale') == 'hi') {{ $manMenu->name_hi }} @else {{ $manMenu->name_en }} @endif
+                  @if(Session::get('locale') == 'hi') {{ $manMenu->name_hi??'' }} @else {{ $manMenu->name_en??'' }} @endif
                </h3>
               
                <ul>
@@ -31,7 +31,7 @@
                      href="@php if(isset($sideMenus->url) && $sideMenus->url == '#'){ echo 'javascript:void(0)'; }else{ echo $sideMenus->url; } @endphp"
                       target="@php if($sideMenus->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
                         <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                        @if(Session::get('locale') == 'hi') {{ $sideMenus->name_hi }} @else {{ $sideMenus->name_en }} @endif
+                        @if(Session::get('locale') == 'hi') {{ $sideMenus->name_hi??'' }} @else {{ $sideMenus->name_en??'' }} @endif
                      </a>
                   </li>
                   @endforeach
@@ -43,12 +43,12 @@
             <div class="common-card p-4 mb-3">
                <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
                   <h3 class="heading-red">
-                     @if(Session::get('locale') == 'hi') {{ $pageData->metaDatas->page_title_hi }} @else {{ $pageData->metaDatas->page_title_en }} @endif
+                     @if(Session::get('locale') == 'hi') {{ $pageData->metaDatas->page_title_hi??'' }} @else {{ $pageData->metaDatas->page_title_en??'' }} @endif
                   </h3>
                </div>
                   <p class="desc-black">
                   @if(isset($pageData->pageContents))
-                     @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi !!} @else {!! $pageData->pageContents->page_content_en !!} @endif
+                     @if(Session::get('locale') == 'hi') {!! $pageData->pageContents->page_content_hi??'' !!} @else {!! $pageData->pageContents->page_content_en??'' !!} @endif
                   @endif
                   </p>
                   <!-- PDF Begin -->
@@ -85,6 +85,41 @@
                      </div>
                   @endif
                   <!-- PDF End -->
+                  <!-- Form Builder Data Begin -->
+                  @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
+                     <div class="table-responsive">
+                        <table id="nsg_datatable" class="display common-table" style="width:100%">
+                           <thead>
+                                 <tr>
+                                    @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
+                                       @php $i = isset($pageData->formDataTableHeadCount)?$pageData->formDataTableHeadCount:'0'; @endphp
+                                       @foreach($pageData->formDataTableHead as $head)
+                                          @if($head->label !='Submit' && $head->label !='submit')
+                                          <th>
+                                             {{  $head->label??'' }}
+                                          </th>
+                                          @endif
+                                       @endforeach
+                                    @endif
+                                 </tr>
+                           </thead>
+                           <tbody>
+                           @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
+                              @foreach($pageData->formbuilderdata as $formbuilderdatas)
+                                       <tr>
+                                          @foreach(json_decode($formbuilderdatas->content) as $key=>$fdata)
+                                             @if($key !=null && $key !='')
+                                             <td>{{$fdata}}</td>
+                                             @endif
+                                          @endforeach
+                                       </tr>
+                              @endforeach
+                           @endif
+                           </tbody>
+                        </table>
+                     </div>
+                  @endif
+                  <!-- Form Builder Data End -->
             </div>
             <!-- Gallery Begin -->
                @if(isset($pageData->pageGallerys) && count($pageData->pageGallerys)>0)
