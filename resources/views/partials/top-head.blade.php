@@ -19,7 +19,7 @@
                     <li>
                     <div class="theme-wrap">
                         <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" role="switch">
+                            <input class="form-check-input" id="themeToggleCheckbox" onclick="toggleTheme()" type="checkbox" role="switch">
                         </div>
                     </div>
                     </li>

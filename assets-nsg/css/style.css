@@ -78,7 +78,8 @@ ul {
   border: 1px solid #cc2832;
 }
 .btn-red:hover {
-  border-color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
   color: #ffffff;
 }
 @media (max-width: 1440px) {
@@ -416,6 +417,7 @@ ul {
 .site-header .navbar {
   padding: 10px 0;
   background-color: #ffffff;
+  border-top: 1px solid transparent;
 }
 .site-header .navbar-brand {
   padding: 0;
@@ -582,7 +584,7 @@ ul {
   padding: 10px 15px;
 }
 .site-header .navbar .btn-red:hover {
-  border-color: #000000;
+  background-color: #ffffff;
   color: #000000;
 }
 @media (max-width: 1440px) {
@@ -675,11 +677,6 @@ ul {
   margin: 4rem 0;
   width: 100%;
 }
-.hero-wrap .director-wrap .btn-wrap .btn-red:hover {
-  background-color: #000000;
-  border-color: #000000;
-  color: #ffffff;
-}
 @media (max-width: 1440px) {
   .hero-wrap .director-wrap {
     margin: 2rem 0;
@@ -715,7 +712,6 @@ ul {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-height: 105px;
 }
 .hero-wrap .minister-content .img-wrap img {
   z-index: 9;
@@ -814,6 +810,10 @@ ul {
   background-color: #ffffff;
   padding: 5em 0;
 }
+.achievement-wrap .nsg-vision {
+  padding: 10px;
+  background-color: #151a1e;
+}
 @media (max-width: 991.98px) {
   .achievement-wrap .img-wrap img {
     width: 100%;
@@ -904,6 +904,10 @@ ul {
   height: 45px;
   width: -moz-max-content;
   width: max-content;
+}
+.gallery-wrap .card-wrap .btn-wrap .btn-red:hover {
+  background-color: transparent;
+  border-color: #ffffff;
 }
 .gallery-wrap .card-title {
   color: #dfdfdf;
@@ -1015,7 +1019,7 @@ ul {
   padding: 0 10px;
   justify-content: flex-start;
   overflow-y: scroll;
-  height: 375px;
+  height: 390px;
 }
 .gallery-slider .carousel-indicators button {
   position: relative;
@@ -1085,14 +1089,9 @@ ul {
 
 .award-wrap {
   border: 1px solid #616161;
-  padding: 20px;
+  padding: 20px 20px 0 20px;
   margin-bottom: 5rem;
   background: #292929;
-}
-@media (max-width: 1440px) {
-  .award-wrap {
-    padding: 15px;
-  }
 }
 @media (max-width: 991px) {
   .award-wrap {
@@ -1107,7 +1106,7 @@ ul {
   font-weight: 500;
   border-radius: 0;
   border: 1px solid #aaaaaa;
-  padding: 8px 15px;
+  padding: 8px 10px;
   color: #ffffff;
 }
 .award-wrap .nav-tabs .nav-link.active {
@@ -1123,6 +1122,9 @@ ul {
 .award-wrap .link-yellow {
   min-width: 100px;
   margin-left: 10px;
+  padding: 20px 0;
+  display: block;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .award-wrap .link-yellow {
@@ -1135,7 +1137,7 @@ ul {
 }
 .list-wrap ul {
   overflow-y: scroll;
-  height: 357px;
+  height: 325px;
   padding-right: 20px;
 }
 .list-wrap ul li {
@@ -1145,7 +1147,7 @@ ul {
 }
 @media (max-width: 1440px) {
   .list-wrap ul {
-    height: 330px;
+    height: 318px;
   }
 }
 .list-wrap .date {
@@ -1173,6 +1175,9 @@ ul {
 
 .eliminator-wrap {
   background-color: #f8f8f8;
+}
+.eliminator-wrap.common-bg-left {
+  overflow: hidden;
 }
 .eliminator-content .heading-wrap {
   display: flex;
@@ -1567,10 +1572,6 @@ ul {
 
 .form-wrap .btn-red {
   padding: 10px 20px;
-}
-.form-wrap .btn-red:hover {
-  border-color: #000000;
-  color: #000000;
 }
 .form-card-bdr {
   border: 1px solid #e1e1e1;
@@ -2089,10 +2090,6 @@ ul {
 .error-content .btn-red {
   padding: 10px 20px;
 }
-.error-content .btn-red:hover {
-  background-color: #000;
-  border-color: #000;
-}
 @media (max-width: 767px) {
   .error-content .btn-red {
     padding: 8px 12px;
@@ -2102,6 +2099,156 @@ ul {
   .error-img {
     margin-top: 30px;
   }
+}
+
+.veer-accordion .veer-info ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.veer-accordion .veer-info ul li .title {
+  font-size: 1em;
+  color: #000000;
+  margin: 0;
+}
+.veer-accordion .veer-info ul li .desc {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #000000;
+  margin: 0;
+}
+.veer-accordion .veer-img {
+  width: 245px;
+  height: 245px;
+  position: relative;
+  background-color: #f3f3f3;
+  border-radius: 50%;
+  position: relative;
+}
+.veer-accordion .veer-img.offer-shradhanjali::after {
+  content: "";
+  display: block;
+  background-image: url("../images/shradhanjali.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 310px;
+  height: 265px;
+  position: absolute;
+  left: -40px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.veer-accordion .veer-img img {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.veer-accordion .accordion-item {
+  border: none;
+  margin-bottom: 40px;
+}
+.veer-accordion .accordion-button {
+  background-color: transparent;
+  box-shadow: none;
+  color: #CC2832;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 10px 15px;
+}
+.veer-accordion .accordion-body {
+  border: none;
+  padding: 40px 0 0 0;
+}
+.veer-accordion .accordion-body .btn:hover {
+  background: transparent;
+  border-color: #cc2832;
+  color: #cc2832;
+}
+.veer-accordion .accordion-body .brief-btn.active {
+  background: transparent;
+  border-color: #cc2832;
+  color: #cc2832;
+}
+.veer-accordion .accordion-body .brief-btn.active:hover {
+  background: transparent;
+  border-color: #cc2832;
+  color: #cc2832;
+}
+.veer-accordion .accordion-body .brief-wrap {
+  padding-top: 40px;
+}
+.veer-accordion .accordion-body .brief-wrap .title {
+  color: #000000;
+  font-weight: 600;
+  font-size: 1.25em;
+  margin: 0px;
+}
+.veer-accordion .accordion-body .brief-wrap .title span {
+  font-weight: normal;
+}
+.veer-accordion .accordion-body .brief-wrap .desc {
+  font-size: 1em;
+  line-height: 2.5;
+  color: #000000;
+  margin: 0;
+}
+.veer-accordion .accordion-header {
+  border-bottom: 1px solid #D4D4D4;
+}
+
+.sitemap-header-list {
+  padding: 40px 0;
+}
+.sitemap-header-list ul li h3 {
+  font-size: 1.25em;
+  font-weight: 600;
+  line-height: 2.5;
+  color: #000000;
+  margin: 0;
+  position: relative;
+  padding-left: 15px;
+}
+.sitemap-header-list ul li h3:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  background: #CC2832;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  display: block;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+.sitemap-header-list ul li ul li {
+  list-style: disc;
+  margin: 0 0 0 30px;
+}
+.sitemap-header-list ul li ul li::marker {
+  color: #A8A8A8;
+  font-size: 18px;
+}
+.sitemap-header-list ul li ul li a {
+  font-size: 1em;
+  line-height: 2.5;
+  color: #000000;
+  text-decoration: none;
+}
+.sitemap-header-list ul li ul li ul li::marker {
+  color: #ECB77A;
+  font-size: 18px;
+}
+
+.seprator hr {
+  border-top: 1px dashed #707070;
 }
 
 .site-footer-top {

@@ -6,6 +6,12 @@ $(window).scroll(function(){
   }
 });
 
+$(document).ready(function(){
+  AOS.init({
+    disable: 'mobile'
+  });
+});
+
 $('#bannerSlider').owlCarousel({
     loop: true,
     margin: 30,
@@ -86,7 +92,6 @@ $(document).ready(function(){
   });
 });
 
-
 $(document).ready(function() {
   const decrementBtn = document.getElementById('decrementBtn');
   const incrementBtn = document.getElementById('incrementBtn');
@@ -128,6 +133,60 @@ $(document).ready(function() {
     button.classList.add('active');
   }
 });
+
+
+//Brief JS
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('click', function(event) {
+      if (event.target.classList.contains('brief-btn')) {
+          const briefButton = event.target;
+          const accordionItem = event.target.closest('.accordion-item');
+          const briefWrap = accordionItem.querySelector('.brief-wrap');
+          // Toggle the "show" class on the brief wrap
+          briefWrap.classList.toggle('show');
+          // Toggle the "active" class on the brief button
+          briefButton.classList.toggle('active');
+          // Toggle the display of the brief wrap
+          briefWrap.style.display = briefWrap.classList.contains('show') ? '' : 'none';
+      }
+  });
+
+  document.querySelectorAll('.brief-wrap').forEach(briefWrap => {
+      briefWrap.style.display = 'none';
+  });
+});
+
+
+// Dark Theme JS
+function toggleTheme() {
+  // Get the checkbox
+  var checkBox = document.getElementById("themeToggleCheckbox");
+  // If the checkbox is checked, display the CSS
+  if (checkBox.checked == true){
+    $("head").append(
+      '<link rel="stylesheet" href="assets-nsg/css/dark.css" type="text/css" id="darkThemeCss"/>'
+    );
+  } else {
+    $("#darkThemeCss").remove();
+  }
+}
+
+
+// Get the button and paragraph elements
+var addButtons = document.getElementsByClassName('shradhanjali');
+var paragraphs = document.getElementsByClassName('veer-img');
+
+// Loop through each button and add event listener
+for (var i = 0; i < addButtons.length; i++) {
+  addButtons[i].addEventListener('click', function() {
+    // Find the corresponding paragraph element
+    var index = Array.prototype.indexOf.call(addButtons, this);
+    var paragraph = paragraphs[index];
+
+    // Add the 'highlight' class to the paragraph element
+    paragraph.classList.add('offer-shradhanjali');
+  });
+}
 //language change
 function setlang(value) {
   //alert(value)
