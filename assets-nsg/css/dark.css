@@ -1,0 +1,53 @@
+.header-top {
+  background-color: #000;
+}
+.header-top-left .content .title {
+  color: yellow;
+}
+.header-top-right .content ul li a {
+  color: yellow;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+.header-top-right .content ul li .select-wrap img {
+  filter: invert(1);
+}
+.header-top-right .content ul li .select-wrap .form-select {
+  color: #000;
+  filter: invert(1);
+  font-weight: 600;
+}
+.header-top-right .content ul li .select-wrap .form-select option {
+  color: #000;
+}
+
+.site-header .navbar {
+  background-color: #000;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 0;
+  border-left: 0;
+}
+.site-header .navbar .nav-link {
+  color: yellow;
+}
+.site-header .navbar .nav-link:hover {
+  color: yellow;
+}
+.site-header .navbar .nav-item .dropdown-toggle::after {
+  filter: invert(1);
+}
+
+.achievement-wrap {
+  background-color: #000000;
+}
+.achievement-wrap .nsg-vision {
+  background-color: #3d3f3e;
+}
+
+.eliminator-wrap {
+  background-color: #000;
+}
+
+.client-slider-content {
+  padding: 40px 10px;
+  background: #fff;
+}/*# sourceMappingURL=dark.css.map */
