@@ -55,7 +55,8 @@ Route::middleware(['visitingcounter'])->group(function () {
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
     Route::get('sitemap', [HomeController::class, 'siteMapList'])->name('sitemap');
     Route::get('veer-gatha', [HomeController::class, 'veerGatha'])->name('veer-gatha');
-    Route::get('photo-gallery', [HomeController::class, 'photoGallery'])->name('photo-gallery');
+    Route::get('about-us/organization-structure', [HomeController::class, 'organizationChart'])->name('about-us/organization-structure');
+    Route::get('gallery/photo-gallery', [HomeController::class, 'photoGallery'])->name('gallery/photo-gallery');
     Route::get('register-for-ncnc', [HomeController::class, 'RegisterForNCNC'])->name('register-for-ncnc');
     Route::get('/{slug1}/{slug2?}/{slug3?}', [HomeController::class, 'getAllPageContent']);
 

@@ -54,7 +54,7 @@ class HomeController extends Controller
        if(Session::get('locale') == 'hi'){  $breadcums3 =$breadcum3->name_hi ?? ''; } else {  $breadcums3 =$breadcum3->name_en ?? '';  }
        
        $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
-        if(count($main_menu_slug)>0){
+       if(count($main_menu_slug)>0){
             foreach($main_menu_slug as $main_men){
                     $menu = new \stdClass;
                     $menu->main_menu =$main_men;
@@ -65,9 +65,8 @@ class HomeController extends Controller
                     }   
                 }
             }else{
-                $menu->name =$main_menu_slug;
+                return view('pages.error');
             }
-        
         if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         if(isset($metaData) && $metaData != null){
@@ -84,7 +83,6 @@ class HomeController extends Controller
                 $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
             }
         }
-        
         $data = new \stdClass;
         $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
@@ -96,7 +94,7 @@ class HomeController extends Controller
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
         //dd($slug);
-        //dd($data);
+        //dd($menu);
         return view('master-page', [
                     'title' => $titleName,
                     'sideMenu'=>$menu??'', 
@@ -183,12 +181,42 @@ class HomeController extends Controller
     public function photoGallery(Request $request)
     {
         $titleName = 'Photo Gallery';
-        return view('pages.photo-gallery',['title' => $titleName]);
+        $galleryData = [];
+            $gallery = DB::table('gallery_management')
+                ->where('type', 0)
+                ->where('status', 3)
+                ->where('soft_delete', 0)
+                ->latest('created_at')
+                ->get();
+
+            if (count($gallery) > 0) {
+                foreach ($gallery as $images) {
+                    $gallay_images = DB::table('gallery_details')
+                        ->where('soft_delete', 0)
+                        ->where('gallery_id', $images->uid)
+                        ->latest('created_at')
+                        ->get();
+
+                    if (count($gallay_images) > 0) {
+                        $galleryData[] = [
+                            'gallery' => $images,
+                            'gallery_details' => $gallay_images
+                        ];
+                    }
+                }
+            }
+        //dd($galleryData);
+        return view('pages.photo-gallery',['title' => $titleName,'photogallery'=>$galleryData]);
     }
 
     public function veerGatha(Request $request)
     {
         $titleName = 'Veer Gatha';
         return view('pages.veer-gatha',['title' => $titleName]);
+    }
+    public function organizationChart(Request $request)
+    {
+        $titleName = 'Organization Chart';
+        return view('pages.organization-chart',['title' => $titleName]);
     }
 }

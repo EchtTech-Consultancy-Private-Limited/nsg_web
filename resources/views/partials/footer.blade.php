@@ -8,7 +8,7 @@
                 @if(isset($footerMenu) && count($footerMenu)>0)
                   @foreach($footerMenu as $footerMenus)
                   <li>
-                    <a href="{{ $footerMenus->url }}" @if($footerMenus->tab_type ==1) target='_blank' @endif>@if(Session::get('locale') == 'hi')  {{ $footerMenus->name_hi }} @else {{ $footerMenus->name_en }} @endif</a>
+                    <a href="{{ url($footerMenus->url) }}" @if($footerMenus->tab_type ==1) target='_blank' @endif>@if(Session::get('locale') == 'hi')  {{ $footerMenus->name_hi }} @else {{ $footerMenus->name_en }} @endif</a>
                   </li>
                   @endforeach
                 @endif

@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-{{ __('National Security Guard | '.$title) }}
+{{ __('National Security Guard | '.$breadcum1??'NSG') }}
 @endsection
 @section('content')
 <section class="wrapper common-bg-right">
@@ -34,6 +34,22 @@
                   @if(Session::get('locale') == 'hi') {{ $sideMenu->main_menu->name_hi??'' }} @else {{ $sideMenu->main_menu->name_en??'' }} @endif
                </h3>
                <ul>
+                  @if(isset($sideMenu->main_menu->sub_menu) && count($sideMenu->main_menu->sub_menu)==0)
+                  <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_1">
+                        <div class="accordion-item">
+                           <div class="list-start @php if(isset($slug) && $sideMenu->main_menu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp" id="flush-headingOne_1">
+                                 <a href="{{ $sideMenu->main_menu->url }}"
+                                    target="@php if(isset($sideMenu->main_menu->tab_type) && $sideMenu->main_menu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                    class="nav-link" type="button" 
+                                    data-bs-toggle="" data-bs-target="#flush-collapseOne_1"
+                                    aria-expanded="false"aria-controls="flush-collapseOne"tabindex="0">
+                                    <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
+                                    @if(Session::get('locale') == 'hi') {{ $sideMenu->main_menu->name_hi??'' }} @else {{ $sideMenu->main_menu->name_en??'' }} @endif
+                                 </a>
+                           </div>
+                        </div>
+                     </li>
+                  @endif
                   @if(isset($sideMenu->main_menu->sub_menu) && count($sideMenu->main_menu->sub_menu)>0)
                      @foreach($sideMenu->main_menu->sub_menu as $key=>$subMenu)
                         <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_{{$key}}">

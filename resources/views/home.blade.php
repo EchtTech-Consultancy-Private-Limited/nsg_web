@@ -427,7 +427,7 @@
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Honours_Awards_description_hi') }} @else {{ config('staticTextLang.Honours_Awards_description_en') }} @endif
                </p>
                <div class="btn-wrap">
-                  <a href="{{ url('gallantry-awards-(army)') }}"
+                  <a href="{{ url('more-links/honours-&-awards/gallantry-awards-(army)') }}"
                      class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
                   </a>
                </div>
@@ -445,7 +445,7 @@
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.The_National_Security_Guard_description_hi') }} @else {{ config('staticTextLang.The_National_Security_Guard_description_en') }} @endif
                </p>
                <div class="btn-wrap">
-                  <a href="{{ url('about-nsg') }}"
+                  <a href="{{ url('about-us/about-nsg') }}"
                      class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
                   </a>
                </div>

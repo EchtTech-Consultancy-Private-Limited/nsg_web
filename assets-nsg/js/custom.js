@@ -158,19 +158,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Dark Theme JS
+// function toggleTheme() {
+//   var baseURL = $("meta[name='baseURL']").attr('content');
+//   // Get the checkbox
+//   var checkBox = document.getElementById("themeToggleCheckbox");
+//   // If the checkbox is checked, display the CSS
+//   if (checkBox.checked == true){
+//     $("head").append(
+//       '<link rel="stylesheet" href=`${baseURL}/assets-nsg/css/dark.css` type="text/css" id="darkThemeCss"/>'
+//     );
+//   } else {
+//     $("#darkThemeCss").remove();
+//   }
+// }
+var themeMode = getCookie('theme-mode');
+if (themeMode) {
+    // Apply the stored theme mode
+    const linkElement = document.getElementById('theme-style');
+    linkElement.href = themeMode;
+    
+}
+// Enable dark mode and light mode
 function toggleTheme() {
-  // Get the checkbox
-  var checkBox = document.getElementById("themeToggleCheckbox");
-  // If the checkbox is checked, display the CSS
-  if (checkBox.checked == true){
-    $("head").append(
-      '<link rel="stylesheet" href="assets/css/dark.css" type="text/css" id="darkThemeCss"/>'
-    );
+  var baseURL = $("meta[name='baseURL']").attr('content');
+
+  if (document.getElementById('themeToggleCheckbox').checked) {
+      // Set dark mode
+      const darkModeURL = baseURL + 'assets-nsg/css/dark.css';
+      setCookie('theme-mode', darkModeURL, 7);
+      const linkElement = document.getElementById('theme-style');
+      linkElement.href = darkModeURL;
   } else {
-    $("#darkThemeCss").remove();
+      // Set light mode
+      const lightModeURL = 'assets-nsg/css/style.css';
+      setCookie('theme-mode', lightModeURL, 7);
+      const linkElement = document.getElementById('theme-style');
+      linkElement.href = lightModeURL;
   }
 }
-
 
 // Get the button and paragraph elements
 var addButtons = document.getElementsByClassName('shradhanjali');
@@ -188,7 +213,30 @@ for (var i = 0; i < addButtons.length; i++) {
   });
 }
 
+// Dark mode button
 
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  // Set max-age attribute to maintain cookie after page reload
+  var maxAge = days ? "; max-age=" + (days * 24 * 60 * 60) : "";
+  document.cookie = name + "=" + (value || "") + expires + maxAge + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
 
 // sidebar js
 
@@ -274,12 +322,13 @@ $(document).ready(() => {
 //Our Code language change
 function setlang(value) {
   //alert(value)
+  var baseURL = $("meta[name='baseURL']").attr('content');
   $.ajax({
-    url: "/set-language",
-    data: { data: value },
-    success: function (result) {
-      location.reload();
-    }
+      url: baseURL + 'set-language',
+      data: { data: value },
+      success: function (result) {
+        location.reload();
+      }
   });
 }
 
