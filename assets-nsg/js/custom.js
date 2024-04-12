@@ -193,7 +193,7 @@ for (var i = 0; i < addButtons.length; i++) {
 function setlang(value) {
   //alert(value)
   $.ajax({
-    url: "set-language",
+    url: "/set-language",
     data: { data: value },
     success: function (result) {
       location.reload();

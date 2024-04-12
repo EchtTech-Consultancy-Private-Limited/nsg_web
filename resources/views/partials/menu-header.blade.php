@@ -22,7 +22,7 @@
                   @php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown-toggle'; }else{ echo ''; } @endphp" 
                   role="button" data-bs-toggle="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown'; }else{ echo ''; } @endphp"
                   aria-expanded="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'false'; }else{ echo ''; } @endphp"
-                  href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo $firstmenu->url; } @endphp" 
+                  href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp" 
                   target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                   onclick="{{$alrt}}"
                   id="navbarDropdown">
@@ -33,7 +33,7 @@
                               <li class="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'dropdown-submenu'; }else{ echo ''; } @endphp">
                                  <a class="dropdown-item"
                                  href="
-                                 @php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo $firstmenu->url.'/'.$secondmenu->url; } @endphp"
+                                 @php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  echo url($firstmenu->url.'/'.$secondmenu->url);  } @endphp"
                                  target="@php if($secondmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                  >
                                     @if(Session::get('locale') == 'hi')  {{ $secondmenu->name_hi }} @else {{ $secondmenu->name_en }} @endif
@@ -43,7 +43,7 @@
                                           @foreach($secondmenu->children as $thirdmenu)
                                              <li><a class="dropdown-item"
                                              href="
-                                             @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo $firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url; } @endphp"
+                                             @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url); } @endphp"
                                              target="@php if($thirdmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                              >
                                                 @if(Session::get('locale') == 'hi')  {{ $thirdmenu->name_hi }} @else {{ $thirdmenu->name_en }} @endif
