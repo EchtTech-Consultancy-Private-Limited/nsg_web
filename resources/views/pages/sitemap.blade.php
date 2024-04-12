@@ -10,106 +10,81 @@
               <div class="breadcrumb-wrap mb-4">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                    <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Sitemap</li>
                   </ol>
                 </nav>
               </div>
               <h2 class="heading-black">
-                Contact Us
+                Sitemap
               </h2>
             </div>
             <div class="col-md-12">
                 <div class="common-card p-5 mt-4">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <div class="img-wrap">
-                                    <img src="{{ asset('assets-nsg/images/user.svg') }}" alt="user" class="img-fluid" />
-                                </div>
-                                <p class="title">
-                                    <strong>N.Hari, DIG(Comn&IT)</strong><br />
-                                    Web Information Manager
-                                </p>
-                            </div>
+                        <div class="col-md-12">
+                            <h3 class="heading-red">
+                                Top Menus
+                            </h3>
                         </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <div class="img-wrap">
-                                    <img src="{{ asset('assets-nsg/images/location.svg') }}" alt="location" class="img-fluid" />
+                        @if(isset($headerMenu) && count($headerMenu)>0)
+                          @foreach($headerMenu as $firstmenu)
+                            <div class="col-md-3">
+                                <div class="sitemap-header-list">
+                                    <ul>
+                                        <li>
+                                            <h3>@if(Session::get('locale') == 'hi')  {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }} @endif</h3>
+                                            <ul>
+                                            @if(isset($firstmenu->children) && count($firstmenu->children)>0)
+                                              @foreach($firstmenu->children as $secondmenu)
+                                                <li>
+                                                    <a href="#">@if(Session::get('locale') == 'hi')  {{ $secondmenu->name_hi }} @else {{ $secondmenu->name_en }} @endif</a>
+                                                    <ul>
+                                                      @if(isset($secondmenu->children) && count($secondmenu->children)>0)
+                                                        @foreach($secondmenu->children as $thirdmenu)
+                                                          <li>
+                                                              <a href="#">@if(Session::get('locale') == 'hi')  {{ $thirdmenu->name_hi }} @else {{ $thirdmenu->name_en }} @endif</a>
+                                                          </li>
+                                                        @endforeach
+                                                      @endif
+                                                    </ul>
+                                                </li>
+                                              @endforeach
+                                            @endif
+                                            </ul>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <p class="title">
-                                    HQ NSG, Mehramnagar, Palam,<br />
-                                    New Delhi-110037
-                                </p>
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="contact-info">
-                                <div class="img-wrap">
-                                    <img src="{{ asset('assets-nsg/images/call.svg') }}" alt="call" class="img-fluid" />
-                                </div>
-                                <p class="title">
-                                    011-2089-2045
-                                </p>
+                          @endforeach
+                        @endif
+                        <div class="col-md-12">
+                            <div class="seprator">
+                                <hr />
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table id="nsg_datatable" class="display common-table" style="width:100%">
-                                <thead>
-                                      <tr>
-                                        <th scope="col" class="text-center">S.No</th>
-                                        <th scope="col">Appointment</th>
-                                        <th scope="col">Telephone No.</th>
-                                        <th scope="col">Email Id</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <td class="text-center">1</td>
-                                        <td>DIG (Adm), Appellete Authority</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="text-center">2</td>
-                                        <td>DIG (Comn & IT), Web Information Manager</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="text-center">3</td>
-                                        <td>Group Commander (Adm), CPIO</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="text-center">4</td>
-                                        <td>DIG (Adm), Appellete Authority</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="text-center">5</td>
-                                        <td>DIG (Comn & IT), Web Information Manager</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                      <tr>
-                                        <td class="text-center">6</td>
-                                        <td>Group Commander (Adm), CPIO</td>
-                                        <td>011-2567-1635</td>
-                                        <td>digadm[at]nsg[dot]gov[dot]in</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            <h3 class="heading-red mt-5">
+                                Footer
+                            </h3>
                         </div>
+                        @if(isset($footerMenu) && count($footerMenu)>0)
+                          @foreach($footerMenu as $footerMenus)
+                            <div class="col-md-3">
+                                <div class="sitemap-header-list">
+                                    <ul>
+                                        <li>
+                                            <h3>@if(Session::get('locale') == 'hi')  {{ $footerMenus->name_hi }} @else {{ $footerMenus->name_en }} @endif</h3>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                          @endforeach
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+  </section>
 @endsection

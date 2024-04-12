@@ -35,37 +35,40 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getAllPageContent(Request $request, $slug, $middelSlug = null, $lastSlugs = null, $finalSlug = null, $finallastSlug = null)
+    public function getAllPageContent(Request $request, $slug1 = null, $slug2 = null, $slug3 = null)
     {   
-       // dd($request->route('slug'));
-        $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
-       // dd($metaData);
-        if($slug){
-            $menu = new \stdClass;
-            $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
-            if($single_menu){
-                $menu->name =$single_menu;
-                $sing_menu = DB::table('website_menu_management')->where('uid',$single_menu->parent_id)->where('soft_delete', 0)->where('status', 3)->first();
-                if($sing_menu){
-                    $menu->name =$sing_menu;  
-                }
-            }
-            if(isset($sing_menu) && $sing_menu){
-                $side_menu = DB::table('website_menu_management')->where('parent_id',$sing_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
-                if($side_menu){
-                    $menu->name =$side_menu;  
+       if($slug1 != null && $slug2 != null && $slug3 != null){
+            $slug = $slug3;
+       }elseif($slug1 != null && $slug2 != null && $slug3 == null){
+            $slug = $slug2;
+       }elseif($slug1 != null && $slug2 == null && $slug3 == null){
+            $slug = $slug1;
+       }else{
+            $slug = $slug1;
+       }
+       $breadcum3 = DB::table('website_menu_management')->where('url',$slug3)->where('soft_delete', 0)->where('status', 3)->first();
+       $breadcum2 = DB::table('website_menu_management')->where('url',$slug2)->where('soft_delete', 0)->where('status', 3)->first();
+       $breadcum1 = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->first();
+       if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
+       if(Session::get('locale') == 'hi'){  $breadcums2 =$breadcum2->name_hi ?? ''; } else {  $breadcums2 =$breadcum2->name_en ?? '';  }
+       if(Session::get('locale') == 'hi'){  $breadcums3 =$breadcum3->name_hi ?? ''; } else {  $breadcums3 =$breadcum3->name_en ?? '';  }
+       
+       $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
+       if(count($main_menu_slug)>0){
+            foreach($main_menu_slug as $main_men){
+                    $menu = new \stdClass;
+                    $menu->main_menu =$main_men;
+                    $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                foreach($menu->main_menu->sub_menu as $submenu){
+                        $menu->sub_menu =$submenu;
+                        $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                    }   
                 }
             }else{
-                return view('pages.error'); 
+                return view('pages.error');
             }
-            
-        }
-        if($sing_menu){
-            $mainMenu = $sing_menu;
-        }else{
-            $mainMenu ='';
-        }
-
+        if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
+        $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         if(isset($metaData) && $metaData != null){
             $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
             $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
@@ -76,27 +79,12 @@ class HomeController extends Controller
         elseif($slug){
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
             $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
-            if($getForm !=''){
+            if(!empty($getForm)){
                 $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
-            }else{
-                if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
-                    return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
-                    'manMenu' =>$mainMenu,]);
             }
-           // dd($getFormData);
         }
-        else{
-            if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
-                return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
-                'manMenu' =>$mainMenu,]);
-           
-        }
-        /** get menu submenu */
-        
-        //dd(json_decode($getForm->content));
-
         $data = new \stdClass;
-        $data->metaDatas =$metaData??$single_menu;
+        $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
         $data->pagePdfs =$pagePdf??[];
         $data->pageGallerys =$pageGallery??[];
@@ -104,18 +92,19 @@ class HomeController extends Controller
         $data->formbuilderdata =$getFormData??[];
         $data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
-        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'NSG'; } else {  $titleName =$metaData->page_title_en ?? 'NSG';  }
-
-        //dd($data);
-
-        return view('master-page', ['title' => $titleName,
-                    'sideMenu'=>$menu->name, 
-                    'manMenu' =>$mainMenu,
+        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
+        //dd($slug);
+        //dd($menu);
+        return view('master-page', [
+                    'title' => $titleName,
+                    'sideMenu'=>$menu??'', 
                     'pageData'=>$data,
-                    'slug' =>$request->route('slug')??''
+                    'slug' =>$slug??'',
+                    'breadcum1' => $breadcums1,
+                    'breadcum2' => $breadcums2,
+                    'breadcum3' => $breadcums3,
                 ]);
     }
-
 
     function getMenuTree($menus, $parentId)
     {
@@ -192,6 +181,52 @@ class HomeController extends Controller
     public function photoGallery(Request $request)
     {
         $titleName = 'Photo Gallery';
-        return view('pages.photo-gallery',['title' => $titleName]);
+        $galleryData = [];
+            $gallery = DB::table('gallery_management')
+                ->where('type', 0)
+                ->where('status', 3)
+                ->where('soft_delete', 0)
+                ->latest('created_at')
+                ->get();
+
+            if (count($gallery) > 0) {
+                foreach ($gallery as $images) {
+                    $gallay_images = DB::table('gallery_details')
+                        ->where('soft_delete', 0)
+                        ->where('gallery_id', $images->uid)
+                        ->latest('created_at')
+                        ->get();
+
+                    if (count($gallay_images) > 0) {
+                        $galleryData[] = [
+                            'gallery' => $images,
+                            'gallery_details' => $gallay_images
+                        ];
+                    }
+                }
+            }
+        //dd($galleryData);
+        return view('pages.photo-gallery',['title' => $titleName,'photogallery'=>$galleryData]);
+    }
+
+    public function veerGatha(Request $request)
+    {
+        $titleName = 'Veer Gatha';
+        $veergathalist = DB::table('employee_directories as emp')
+                ->select('emp.*','deprt.name_en as desi_name_en','deprt.name_hi as desi_name_hi',
+                    DB::raw("CONCAT(emp.fname_en, ' ', emp.mname_en, ' ', emp.lname_en) as name_en"),
+                    DB::raw("CONCAT(emp.fname_hi, ' ', emp.mname_hi, ' ', emp.lname_hi) as name_hi"))
+                ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
+                ->where('emp.status', 3)
+                ->where('emp.soft_delete', 0)
+                ->orderBy('emp.short_order','desc')
+                ->get();
+        //dd($veergathalist);
+        return view('pages.veer-gatha',['title' => $titleName,'veerlist'=>$veergathalist]);
+    }
+    public function organizationChart(Request $request)
+    {
+        $titleName = 'Organization Chart';
+        return view('pages.organization-chart',['title' => $titleName]);
     }
 }

@@ -158,19 +158,44 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 // Dark Theme JS
+// function toggleTheme() {
+//   var baseURL = $("meta[name='baseURL']").attr('content');
+//   // Get the checkbox
+//   var checkBox = document.getElementById("themeToggleCheckbox");
+//   // If the checkbox is checked, display the CSS
+//   if (checkBox.checked == true){
+//     $("head").append(
+//       '<link rel="stylesheet" href=`${baseURL}/assets-nsg/css/dark.css` type="text/css" id="darkThemeCss"/>'
+//     );
+//   } else {
+//     $("#darkThemeCss").remove();
+//   }
+// }
+var themeMode = getCookie('theme-mode');
+if (themeMode) {
+    // Apply the stored theme mode
+    const linkElement = document.getElementById('theme-style');
+    linkElement.href = themeMode;
+    
+}
+// Enable dark mode and light mode
 function toggleTheme() {
-  // Get the checkbox
-  var checkBox = document.getElementById("themeToggleCheckbox");
-  // If the checkbox is checked, display the CSS
-  if (checkBox.checked == true){
-    $("head").append(
-      '<link rel="stylesheet" href="assets-nsg/css/dark.css" type="text/css" id="darkThemeCss"/>'
-    );
+  var baseURL = $("meta[name='baseURL']").attr('content');
+
+  if (document.getElementById('themeToggleCheckbox').checked) {
+      // Set dark mode
+      const darkModeURL = baseURL + 'assets-nsg/css/dark.css';
+      setCookie('theme-mode', darkModeURL, 7);
+      const linkElement = document.getElementById('theme-style');
+      linkElement.href = darkModeURL;
   } else {
-    $("#darkThemeCss").remove();
+      // Set light mode
+      const lightModeURL = 'assets-nsg/css/style.css';
+      setCookie('theme-mode', lightModeURL, 7);
+      const linkElement = document.getElementById('theme-style');
+      linkElement.href = lightModeURL;
   }
 }
-
 
 // Get the button and paragraph elements
 var addButtons = document.getElementsByClassName('shradhanjali');
@@ -187,15 +212,123 @@ for (var i = 0; i < addButtons.length; i++) {
     paragraph.classList.add('offer-shradhanjali');
   });
 }
-//language change
+
+// Dark mode button
+
+function setCookie(name, value, days) {
+  var expires = "";
+  if (days) {
+      var date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      expires = "; expires=" + date.toUTCString();
+  }
+  // Set max-age attribute to maintain cookie after page reload
+  var maxAge = days ? "; max-age=" + (days * 24 * 60 * 60) : "";
+  document.cookie = name + "=" + (value || "") + expires + maxAge + "; path=/";
+}
+
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+// sidebar js
+
+$(document).ready(() => {
+  $('.sl-accordion').click(() => {
+  })
+  $('#sidebarDropdown2').click(() => {
+      console.log('hellow world')
+      $('#sidebarDropdown2').css({
+          'background-color': '#000'
+      })
+  })
+
+
+
+
+  $(document).ready(function () {
+    // let sl_accordion = $('.sl-accordion');
+    // sl_accordion.click(function() {
+    //    sl_accordion.removeClass('menu-accordion-click');
+    //     $(this).addClass('menu-accordion-click');
+    //     // alert('click');
+    // });
+    let fl_accordion = $('.fl-accordion');
+    fl_accordion.click(function () {
+        $(this).addClass('fl-accordion-active');
+        // alert('click');
+    });
+    let fl_n_accordion = $('.fl-n-accordion');
+    fl_n_accordion.click
+  });
+  
+  let test2 = document.querySelectorAll('.accordion-collapse .accordion-body ul li ul li');
+  test2.forEach((e) => {
+      if (e.classList.contains('qm-active')) {
+          let currentElementId = e.closest('.accordion').id;
+          console.log('sal;dkfj', e.closest('.accordion'))
+          let mainParent = e.closest('.accordion').parentElement.parentElement.parentElement.classList.add('show')
+          console.log('mainparent', mainParent)
+          let menu_active = document.getElementById(currentElementId).classList.add('menu-active')
+          console.log('menu-active', menu_active)
+          console.log(currentElementId);
+          let accordion = e.closest('.accordion');
+          let currentElement = document.getElementById(currentElementId);
+          console.log(currentElement.firstElementChild.childNodes[3])
+          let addClass = currentElement.firstElementChild.childNodes[3];
+          console.log('fl', addClass);
+          if (addClass) {
+              addClass.classList.add('show');
+          }
+          let mainParentElement = currentElement.firstElementChild.childNodes[1].childNodes[1];
+          console.log(mainParentElement)
+          if (mainParentElement) {
+              mainParentElement.classList.add('collapsed');
+          }
+      }
+  });
+  let test = document.querySelectorAll('.accordion-collapse .accordion-body ul li');
+  test.forEach((e) => {
+      if (e.classList.contains('qm-active')) {
+          let currentElementId = e.closest('.accordion').id;
+          let menu_active = document.getElementById(currentElementId).classList.add('menu-active')
+          console.log(currentElementId);
+          let accordion = e.closest('.accordion');
+          let currentElement = document.getElementById(currentElementId);
+          console.log(currentElement.firstElementChild.childNodes[3])
+          let addClass = currentElement.firstElementChild.childNodes[3];
+          if (addClass) {
+              addClass.classList.add('show');
+          }
+          let mainParentElement = currentElement.firstElementChild.childNodes[1].childNodes[1];
+          console.log(mainParentElement)
+          if (mainParentElement) {
+              mainParentElement.classList.add('collapsed');
+          }
+      }
+  });
+
+
+
+})
+
+//Our Code language change
 function setlang(value) {
   //alert(value)
+  var baseURL = $("meta[name='baseURL']").attr('content');
   $.ajax({
-    url: "set-language",
-    data: { data: value },
-    success: function (result) {
-      location.reload();
-    }
+      url: baseURL + 'set-language',
+      data: { data: value },
+      success: function (result) {
+        location.reload();
+      }
   });
 }
 
@@ -215,3 +348,69 @@ new DataTable('#nsg_datatable', {
       }
   ]
 });
+// sidebar js
+$(document).ready(() => {
+  $('.sl-accordion').click(() => {
+  })
+  $('#sidebarDropdown2').click(() => {
+      console.log('hellow world')
+      $('#sidebarDropdown2').css({
+          'background-color': '#000'
+      })
+  })
+  $(document).ready(function () {
+    let fl_accordion = $('.fl-accordion');
+    fl_accordion.click(function () {
+        $(this).addClass('fl-accordion-active');
+        // alert('click');
+    });
+    let fl_n_accordion = $('.fl-n-accordion');
+    fl_n_accordion.click
+  });
+  
+  let test2 = document.querySelectorAll('.accordion-collapse .accordion-body ul li ul li');
+  test2.forEach((e) => {
+      if (e.classList.contains('qm-active')) {
+          let currentElementId = e.closest('.accordion').id;
+          console.log('sal;dkfj', e.closest('.accordion'))
+          let mainParent = e.closest('.accordion').parentElement.parentElement.parentElement.classList.add('show')
+          console.log('mainparent', mainParent)
+          let menu_active = document.getElementById(currentElementId).classList.add('menu-active')
+          console.log('menu-active', menu_active)
+          console.log(currentElementId);
+          let accordion = e.closest('.accordion');
+          let currentElement = document.getElementById(currentElementId);
+          console.log(currentElement.firstElementChild.childNodes[3])
+          let addClass = currentElement.firstElementChild.childNodes[3];
+          console.log('fl', addClass);
+          if (addClass) {
+              addClass.classList.add('show');
+          }
+          let mainParentElement = currentElement.firstElementChild.childNodes[1].childNodes[1];
+          console.log(mainParentElement)
+          if (mainParentElement) {
+              mainParentElement.classList.add('collapsed');
+          }
+      }
+  });
+  let test = document.querySelectorAll('.accordion-collapse .accordion-body ul li');
+  test.forEach((e) => {
+      if (e.classList.contains('qm-active')) {
+          let currentElementId = e.closest('.accordion').id;
+          let menu_active = document.getElementById(currentElementId).classList.add('menu-active')
+          console.log(currentElementId);
+          let accordion = e.closest('.accordion');
+          let currentElement = document.getElementById(currentElementId);
+          console.log(currentElement.firstElementChild.childNodes[3])
+          let addClass = currentElement.firstElementChild.childNodes[3];
+          if (addClass) {
+              addClass.classList.add('show');
+          }
+          let mainParentElement = currentElement.firstElementChild.childNodes[1].childNodes[1];
+          console.log(mainParentElement)
+          if (mainParentElement) {
+              mainParentElement.classList.add('collapsed');
+          }
+      }
+  });
+})
