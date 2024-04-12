@@ -18,24 +18,45 @@
             </div>
          </div>
          <div class="col-md-4">
-            <div class="link-wrap mb-3">
+            <div class="link-wrap mb-3 sidebar-menu">
                <h3 class="heading-white">
-                  @if(Session::get('locale') == 'hi') {{ $manMenu->name_hi??'' }} @else {{ $manMenu->name_en??'' }} @endif
+                  About
                </h3>
-              
                <ul>
-                  @if(isset($sideMenu))
-                  @foreach($sideMenu as $sideMenus)
-                  <li class="@php if(isset($slug) && $sideMenus->url == $slug){ echo 'active-show'; }else{ echo ''; } @endphp">
-                     <a 
-                     href="@php if(isset($sideMenus->url) && $sideMenus->url == '#'){ echo 'javascript:void(0)'; }else{ echo $sideMenus->url; } @endphp"
-                      target="@php if($sideMenus->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
-                        <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                        @if(Session::get('locale') == 'hi') {{ $sideMenus->name_hi??'' }} @else {{ $sideMenus->name_en??'' }} @endif
-                     </a>
+                  <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_1">
+                     <div class="accordion-item">
+                        <div class="list-start" id="flush-headingOne_1">
+                           <a
+                              class="nav-link collapsed"
+                              type="button"
+                              data-bs-toggle="collapse"
+                              data-bs-target="#flush-collapseOne_1"
+                              aria-expanded="false"
+                              aria-controls="flush-collapseOne"
+                              tabindex="0"
+                              >
+                           <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />   Paper Testing
+                           </a>
+                        </div>
+                        <div
+                           id="flush-collapseOne_1"
+                           class="accordion-collapse collapse"
+                           aria-labelledby="flush-headingOne_1"
+                           data-bs-parent="#sidebarDropdown_1"
+                           >
+                           <!-- qm-active -->
+                           <div class="accordion-body p-0">
+                              <ul class="p-0 m-0 mt-2 dropdown-card">
+                                 <li class="">
+                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/introduction-of-paper-testing" class="" tabindex="0">
+                                    Introduction of Paper Testing
+                                    </a>
+                                 </li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
                   </li>
-                  @endforeach
-                 @endif
                </ul>
             </div>
          </div>
