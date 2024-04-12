@@ -212,7 +212,17 @@ class HomeController extends Controller
     public function veerGatha(Request $request)
     {
         $titleName = 'Veer Gatha';
-        return view('pages.veer-gatha',['title' => $titleName]);
+        $veergathalist = DB::table('employee_directories as emp')
+                ->select('emp.*','deprt.name_en as desi_name_en','deprt.name_hi as desi_name_hi',
+                    DB::raw("CONCAT(emp.fname_en, ' ', emp.mname_en, ' ', emp.lname_en) as name_en"),
+                    DB::raw("CONCAT(emp.fname_hi, ' ', emp.mname_hi, ' ', emp.lname_hi) as name_hi"))
+                ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
+                ->where('emp.status', 3)
+                ->where('emp.soft_delete', 0)
+                ->orderBy('emp.short_order','desc')
+                ->get();
+        //dd($veergathalist);
+        return view('pages.veer-gatha',['title' => $titleName,'veerlist'=>$veergathalist]);
     }
     public function organizationChart(Request $request)
     {

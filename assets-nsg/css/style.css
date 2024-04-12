@@ -2132,14 +2132,15 @@ ul {
   background-image: url("../images/shradhanjali.gif");
   background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
-    width: 245px;
+    background-size: cover;
+    width: 270px;
     height: auto;
     position: absolute;
-    left: 0px;
+    left: -12px;
     right: 0;
-    top: 60px;
+    top: 50px;
     bottom: 0px;
+  
 }
 .veer-accordion .veer-img img {
   position: absolute;
@@ -2376,4 +2377,4 @@ li.active-show a {
     background-position: top;
 }
 
-.veer-img.offer-shradhanjali img{padding: 10px;}
+.veer-img.offer-shradhanjali img{padding: 15px;top: -3px;}
