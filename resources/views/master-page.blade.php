@@ -11,8 +11,19 @@
                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                   <ol class="breadcrumb">
                      <li class="breadcrumb-item"><a href="{{ route('/') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.home_hi') }} @else {{ config('staticTextLang.home_en') }} @endif</a></li>
-                     <li class="breadcrumb-item">@if(Session::get('locale') == 'hi') {{ $manMenu->name_hi??'' }} @else {{ $manMenu->name_en??'' }} @endif</li>
-                     <li class="breadcrumb-item active" aria-current="page">{{$title??''}}</li>
+                     <li class="breadcrumb-item">
+                        {{$breadcum1 ??''}}
+                     </li>
+                     @if(isset($breadcum2) && $breadcum2 !='')
+                     <li class="breadcrumb-item active" aria-current="page">
+                        {{$breadcum2??''}}
+                     </li>
+                     @endif
+                     @if(isset($breadcum3) && $breadcum3 !='')
+                     <li class="breadcrumb-item active" aria-current="page">
+                        {{$breadcum3??''}}
+                     </li>
+                     @endif
                   </ol>
                </nav>
             </div>
@@ -20,46 +31,51 @@
          <div class="col-md-4">
             <div class="link-wrap mb-3 sidebar-menu">
                <h3 class="heading-white">
-                  About
+                  @if(Session::get('locale') == 'hi') {{ $sideMenu->main_menu->name_hi??'' }} @else {{ $sideMenu->main_menu->name_en??'' }} @endif
                </h3>
                <ul>
-                  <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_1">
-                     <div class="accordion-item">
-                        <div class="list-start" id="flush-headingOne_1">
-                           <a
-                              class="nav-link collapsed"
-                              type="button"
-                              data-bs-toggle="collapse"
-                              data-bs-target="#flush-collapseOne_1"
-                              aria-expanded="false"
-                              aria-controls="flush-collapseOne"
-                              tabindex="0"
-                              >
-                           <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />   Paper Testing
-                           </a>
-                        </div>
-                        <div
-                           id="flush-collapseOne_1"
-                           class="accordion-collapse collapse"
-                           aria-labelledby="flush-headingOne_1"
-                           data-bs-parent="#sidebarDropdown_1"
-                           >
-                           <!-- qm-active -->
-                           <div class="accordion-body p-0">
-                              <ul class="p-0 m-0 mt-2 dropdown-card">
-                                 <li class="">
-                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/introduction-of-paper-testing" class="" tabindex="0">
-                                    Introduction of Paper Testing
-                                    </a>
-                                 </li>
-                              </ul>
+                  @if(isset($sideMenu->main_menu->sub_menu) && count($sideMenu->main_menu->sub_menu)>0)
+                     @foreach($sideMenu->main_menu->sub_menu as $key=>$subMenu)
+                        <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_{{$key}}">
+                           <div class="accordion-item">
+                              <div class="list-start @php if(isset($slug) && $subMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp" id="flush-headingOne_{{$key}}">
+                                 <a href="{{ $subMenu->url }}"
+                                    target="@php if(isset($subMenu->tab_type) && $subMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                    class="nav-link @php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo'collapsed'; }else{ echo ''; } @endphp" type="button" 
+                                    data-bs-toggle="@php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo'collapse'; }else{ echo 'collapsed'; } @endphp" data-bs-target="#flush-collapseOne_{{$key}}"
+                                    aria-expanded="false"aria-controls="flush-collapseOne"tabindex="0">
+                                    <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
+                                    @if(Session::get('locale') == 'hi') {{ $subMenu->name_hi??'' }} @else {{ $subMenu->name_en??'' }} @endif
+                                 </a>
+                              </div>
+                              <div id="flush-collapseOne_{{$key}}" class="accordion-collapse collapse" 
+                                 aria-labelledby="flush-headingOne_1"
+                                 data-bs-parent="#sidebarDropdown_{{$key}}">
+                                 <!-- qm-active -->
+                                 <div class="accordion-body p-0">
+                                    <ul class="p-0 m-0 mt-2 dropdown-card">
+                                       @if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0)
+                                          @foreach($subMenu->sub_sub_menu as $key=>$subsubMenu)
+                                          <li class="@php if(isset($slug) && $subsubMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp">
+                                             <a href="{{$subsubMenu->url}}" class="" tabindex="0"
+                                             target="@php if(isset($subsubMenu->tab_type) && $subsubMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                             >
+                                                @if(Session::get('locale') == 'hi') {{ $subsubMenu->name_hi??'' }} @else {{ $subsubMenu->name_en??'' }} @endif
+                                             </a>
+                                          </li>
+                                       @endforeach
+                                    @endif
+                                    </ul>
+                                 </div>
+                              </div>
                            </div>
-                        </div>
-                     </div>
-                  </li>
+                        </li>
+                     @endforeach
+                  @endif
                </ul>
             </div>
          </div>
+         @if(isset($pageData->metaDatas) && $pageData->metaDatas !='' || $pageData->metaDatas != null || isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
          <div class="col-md-8">
             <div class="common-card p-4 mb-3">
                <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
@@ -228,6 +244,20 @@
                 @endif
             <!-- Gallery End -->
          </div>
+         @else
+         <div class="col-md-8">
+            <div class="common-card p-4 mb-3">
+               <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
+                  <h3 class="heading-red">
+                        @if(Session::get('locale') == 'hi') {{ config('staticTextLang.comingsoon_hi') }} @else {{ config('staticTextLang.comingsoon_en') }} @endif
+                  </h3>
+               </div>
+                  <p class="desc-black">
+                        @if(Session::get('locale') == 'hi') {{ config('staticTextLang.comingsoon_hi') }} @else {{ config('staticTextLang.comingsoon_en') }} @endif
+                  </p>
+            </div>
+         </div>
+         @endif
       </div>
    </div>
 </section>

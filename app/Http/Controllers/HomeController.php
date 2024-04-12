@@ -38,68 +38,38 @@ class HomeController extends Controller
     public function getAllPageContent(Request $request, $slug1 = null, $slug2 = null, $slug3 = null)
     {   
        if($slug1 != null && $slug2 != null && $slug3 != null){
-            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug3)->where([['soft_delete', 0],['status',3]])->first();
+            $slug = $slug3;
        }elseif($slug1 != null && $slug2 != null && $slug3 == null){
-            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug2)->where([['soft_delete', 0],['status',3]])->first();
+            $slug = $slug2;
        }elseif($slug1 != null && $slug2 == null && $slug3 == null){
-            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug1)->where([['soft_delete', 0],['status',3]])->first();
+            $slug = $slug1;
        }else{
-            $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug1)->where([['soft_delete', 0],['status',3]])->first();
+            $slug = $slug1;
        }
-            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
-        }elseif($slug1 != null && $slug2 != null && $slug3 == null){
-            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
-        }elseif($slug1 != null && $slug2 == null && $slug3 == null){
-            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
-        }else{
-            $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
-        }
-
-    //     if(count($main_menu_slug)>0){
-    //         foreach($main_menu_slug as $main_men){
-    //                 $menu = new \stdClass;
-    //                 $menu->main_menu =$main_men;
-    //                 $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->get();
-    //             foreach($menu->main_menu->sub_menu as $submenu){
-    //                     $menu->sub_menu =$submenu;
-    //                     $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->get();
-    //                 }   
-    //                 //$menu->main_menu->sub_menu =$sub_menu;
-    //                // $menu->sub_menu->sub_sub_menu =$sub_sub_menu;
-    //             }
-                
-    //         }else{
-    //             $menu->name =$main_menu_slug;
-    //         }
+       $breadcum3 = DB::table('website_menu_management')->where('url',$slug3)->where('soft_delete', 0)->where('status', 3)->first();
+       $breadcum2 = DB::table('website_menu_management')->where('url',$slug2)->where('soft_delete', 0)->where('status', 3)->first();
+       $breadcum1 = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->first();
+       if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
+       if(Session::get('locale') == 'hi'){  $breadcums2 =$breadcum2->name_hi ?? ''; } else {  $breadcums2 =$breadcum2->name_en ?? '';  }
+       if(Session::get('locale') == 'hi'){  $breadcums3 =$breadcum3->name_hi ?? ''; } else {  $breadcums3 =$breadcum3->name_en ?? '';  }
        
-    //    dd($menu);
-        // if($slug1){
-        //     $menu = new \stdClass;
-        //     $single_menu = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->first();
-        //     if($single_menu){
-        //         $menu->name =$single_menu;
-        //         $sub_menu = DB::table('website_menu_management')->where('uid',$single_menu->parent_id)->where('soft_delete', 0)->where('status', 3)->first();
-        //         if($sub_menu){
-        //             $menu->name =$sub_menu;  
-        //         }
-        //     }
-        //     if(isset($sub_menu) && $sub_menu !=''){
-        //         $subsub_menu = DB::table('website_menu_management')->where('parent_id',$sub_menu->uid)->where('soft_delete', 0)->where('status', 3)->get();
-        //         if($subsub_menu){
-        //             $menu->name =$subsub_menu;  
-        //         }
-        //     }
-        //     // else{
-        //     //     return view('pages.error'); 
-        //     // }
-            
-        // }
-        // if(isset($sub_menu) && $sub_menu !='' || isset($subsub_menu) && $subsub_menu !=''){
-        //     $mainMenu = $sub_menu??$subsub_menu;
-        // }else{
-        //     $mainMenu ='';
-        // }
-        $mainMenu ='';
+       $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
+        if(count($main_menu_slug)>0){
+            foreach($main_menu_slug as $main_men){
+                    $menu = new \stdClass;
+                    $menu->main_menu =$main_men;
+                    $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                foreach($menu->main_menu->sub_menu as $submenu){
+                        $menu->sub_menu =$submenu;
+                        $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                    }   
+                }
+            }else{
+                $menu->name =$main_menu_slug;
+            }
+        
+        if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
+        $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         if(isset($metaData) && $metaData != null){
             $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
             $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
@@ -110,19 +80,13 @@ class HomeController extends Controller
         elseif($slug){
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
             $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
-            if($getForm !=''){
+            if(!empty($getForm)){
                 $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
             }
         }
-        else{
-            if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
-                return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
-                'manMenu' =>$mainMenu,]);
-           
-        }
-        /** get menu submenu */
+        
         $data = new \stdClass;
-        $data->metaDatas =$metaData??$single_menu;
+        $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
         $data->pagePdfs =$pagePdf??[];
         $data->pageGallerys =$pageGallery??[];
@@ -130,15 +94,17 @@ class HomeController extends Controller
         $data->formbuilderdata =$getFormData??[];
         $data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
-        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'NSG'; } else {  $titleName =$metaData->page_title_en ?? 'NSG';  }
-
+        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
+        //dd($slug);
         //dd($data);
-
-        return view('master-page', ['title' => $titleName,
-                    'sideMenu'=>$menu->name??'', 
-                    'manMenu' =>$mainMenu,
+        return view('master-page', [
+                    'title' => $titleName,
+                    'sideMenu'=>$menu??'', 
                     'pageData'=>$data,
-                    'slug' =>$request->route('slug')??''
+                    'slug' =>$slug??'',
+                    'breadcum1' => $breadcums1,
+                    'breadcum2' => $breadcums2,
+                    'breadcum3' => $breadcums3,
                 ]);
     }
 
@@ -218,5 +184,11 @@ class HomeController extends Controller
     {
         $titleName = 'Photo Gallery';
         return view('pages.photo-gallery',['title' => $titleName]);
+    }
+
+    public function veerGatha(Request $request)
+    {
+        $titleName = 'Veer Gatha';
+        return view('pages.veer-gatha',['title' => $titleName]);
     }
 }

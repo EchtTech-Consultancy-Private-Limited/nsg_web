@@ -463,7 +463,7 @@
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_hi') }} @else {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_en') }} @endif
                </p>
                <div class="btn-wrap">
-                  <a href="#" 
+                  <a href="{{ url('veer-gatha') }}" 
                      class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
                   </a>
                </div>
