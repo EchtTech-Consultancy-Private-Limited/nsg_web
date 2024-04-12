@@ -2342,6 +2342,12 @@ ul {
   margin-right: 10px;
 }/*# sourceMappingURL=style.css.map */
 
+/* Sidebar */
+
+.wrapper .link-wrap.Sidebar ul li{
+	display:block !important;
+	
+}
 
 li.active-show a {
   background: #CC2832;
