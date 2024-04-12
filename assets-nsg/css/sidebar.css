@@ -367,8 +367,8 @@ display: flex;}
 	color: #000;}
 .main-sidebar .accordion .accordion li{
 	background-color: #fff;}
-.accordion:hover a{
-   color: #000;}
+/* .accordion:hover a{
+   color: #000;} */
 .main-sidebar .accordion:hover a[data-bs-target="#flush-collapseOne"] {
     color: #fff;}
 .main-sidebar #sidebarDropdown2 .accordion-item a::after {

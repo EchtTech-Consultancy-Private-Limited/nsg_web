@@ -2123,23 +2123,23 @@ ul {
   height: 245px;
   position: relative;
   background-color: #f3f3f3;
-  border-radius: 50%;
+  border-radius: 0;
   position: relative;
 }
 .veer-accordion .veer-img.offer-shradhanjali::after {
   content: "";
   display: block;
-  background-image: url("../images/shradhanjali.png");
+  background-image: url("../images/shradhanjali.gif");
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  width: 310px;
-  height: 265px;
-  position: absolute;
-  left: -40px;
-  right: 0;
-  top: 0;
-  bottom: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 245px;
+    height: auto;
+    position: absolute;
+    left: 0px;
+    right: 0;
+    top: 60px;
+    bottom: 0px;
 }
 .veer-accordion .veer-img img {
   position: absolute;
@@ -2149,23 +2149,24 @@ ul {
   bottom: 0;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 0%;
 }
 .veer-accordion .accordion-item {
-  border: none;
-  margin-bottom: 40px;
+  border: 1px solid #cc2832;
+  margin-bottom: 20px;
+  border-radius: 5px;
 }
 .veer-accordion .accordion-button {
   background-color: transparent;
   box-shadow: none;
-  color: #CC2832;
-  font-size: 1.25rem;
+  color: #fff;
+  font-size: 1.2rem;
   font-weight: 600;
   padding: 10px 15px;
 }
 .veer-accordion .accordion-body {
   border: none;
-  padding: 40px 0 0 0;
+  padding: 40px 15px 20px;
 }
 .veer-accordion .accordion-body .btn:hover {
   background: transparent;
@@ -2201,7 +2202,8 @@ ul {
   margin: 0;
 }
 .veer-accordion .accordion-header {
-  border-bottom: 1px solid #D4D4D4;
+  border-bottom: 0;
+  background: #cc2832;
 }
 
 .sitemap-header-list {
@@ -2359,3 +2361,19 @@ li.active-show a {
 .gallery-wrap .card-wrap .btn-wrap a{
   text-decoration: none;
 }
+
+.veer-accordion.common-accordion .accordion-button::after{
+  filter: invert(1) !important;
+}
+
+.veer-img.offer-shradhanjali{
+  background-image: url(../images/frame.png);
+    border-radius: 0;
+    position: relative;
+    padding: 0px;
+    object-fit: cover;
+    background-size: contain;
+    background-position: top;
+}
+
+.veer-img.offer-shradhanjali img{padding: 10px;}
