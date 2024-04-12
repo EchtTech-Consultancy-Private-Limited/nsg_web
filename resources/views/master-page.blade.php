@@ -52,85 +52,14 @@
                                     Introduction of Paper Testing
                                     </a>
                                  </li>
-                                 <li class="">
-                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/objectives-of-paper-testing" class="" tabindex="0">
-                                    Objectives of Paper Testing
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/services-offered-in-paper-testing" class="" tabindex="0">
-                                    Services Offered in Paper Testing
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/facilities-available-in-paper-testing" class="" tabindex="0">
-                                    Facilities Available in Paper Testing
-                                    </a>
-                                 </li>
-                                 <li class="">
-                                    <a href="https://dev.cppri.staggings.in/division/paper-testing/achievements-of-paper-testing" class="" tabindex="0">
-                                    Achievements of Paper Testing
-                                    </a>
-                                 </li>
                               </ul>
                            </div>
                         </div>
                      </div>
                   </li>
-                  <li>
-                     <a href="#">
-                     <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                     About NSG
-                     </a>
-                  </li>
-                  <li>
-                     <a href="#">
-                     <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                     Programme Strategies
-                     </a> 
-                  </li>
-                  <li>
-                     <a href="#">
-                     <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                     Directories
-                     </a>
-                  </li>
                </ul>
             </div>
          </div>
-         <!-- <div class="col-md-4">
-            <div class="link-wrap mb-3">
-               <h3 class="heading-white">
-                  @if(Session::get('locale') == 'hi') {{ $manMenu->name_hi??'' }} @else {{ $manMenu->name_en??'' }} @endif
-               </h3>
-              
-               <ul>
-                  @if(isset($sideMenu))
-                     @if(count($sideMenu)>0)
-                        @foreach($sideMenu as $sideMenus)
-                        <li class="@php if(isset($slug) && $sideMenus->url == $slug){ echo 'active-show'; }else{ echo ''; } @endphp">
-                           <a 
-                           href="@php if(isset($sideMenus->url) && $sideMenus->url == '#'){ echo 'javascript:void(0)'; }else{ echo $sideMenus->url; } @endphp"
-                           target="@php if($sideMenus->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
-                              <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                              @if(Session::get('locale') == 'hi') {{ $sideMenus->name_hi??'' }} @else {{ $sideMenus->name_en??'' }} @endif
-                           </a>
-                        </li>
-                        @endforeach
-                     @else
-                     <li class="@php if(isset($sideMenu->url) && $sideMenu->url == $slug){ echo 'active-show'; }else{ echo ''; } @endphp">
-                        <a 
-                        href="@php if(isset($sideMenu->url) && $sideMenu->url == '#'){ echo 'javascript:void(0)'; }else{ echo isset($sideMenu->url)?$sideMenu->url:'javascript:void(0)'; } @endphp"
-                        target="@php if(isset($sideMenu->tab_type) && $sideMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
-                           <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
-                           @if(Session::get('locale') == 'hi') {{ isset($sideMenu->name_hi)?$sideMenu->name_hi:'' }} @else {{ isset($sideMenu->name_en)?$sideMenu->name_en:'' }} @endif
-                        </a>
-                     </li>
-                     @endif   
-                 @endif
-               </ul>
-            </div>
-         </div> -->
          <div class="col-md-8">
             <div class="common-card p-4 mb-3">
                <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">

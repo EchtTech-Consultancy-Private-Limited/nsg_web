@@ -37,7 +37,6 @@ class HomeController extends Controller
      */
     public function getAllPageContent(Request $request, $slug1 = null, $slug2 = null, $slug3 = null)
     {   
-       // dd($request->route('slug'));
        if($slug1 != null && $slug2 != null && $slug3 != null){
             $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug3)->where([['soft_delete', 0],['status',3]])->first();
        }elseif($slug1 != null && $slug2 != null && $slug3 == null){
@@ -47,8 +46,6 @@ class HomeController extends Controller
        }else{
             $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug1)->where([['soft_delete', 0],['status',3]])->first();
        }
-       //dd($metaData);
-       if($slug1 != null && $slug2 != null && $slug3 != null){
             $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
         }elseif($slug1 != null && $slug2 != null && $slug3 == null){
             $main_menu_slug = DB::table('website_menu_management')->where('url',$slug1)->where([['soft_delete', 0],['status',3]])->get();
@@ -115,12 +112,7 @@ class HomeController extends Controller
             $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
             if($getForm !=''){
                 $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
-            }else{
-                if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
-                    return view('pages.error-master', ['title' => $titleName,'sideMenu'=>$menu->name, 
-                    'manMenu' =>$mainMenu,]);
             }
-           // dd($getFormData);
         }
         else{
             if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'NSG'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'NSG';  }
@@ -129,9 +121,6 @@ class HomeController extends Controller
            
         }
         /** get menu submenu */
-        
-        //dd(json_decode($getForm->content));
-
         $data = new \stdClass;
         $data->metaDatas =$metaData??$single_menu;
         $data->pageContents =$pageContent??[];
@@ -152,7 +141,6 @@ class HomeController extends Controller
                     'slug' =>$request->route('slug')??''
                 ]);
     }
-
 
     function getMenuTree($menus, $parentId)
     {
