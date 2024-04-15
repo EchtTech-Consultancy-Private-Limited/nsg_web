@@ -40,14 +40,10 @@
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="veer-img">
-                                  @if(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url) !=false) 
-                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
-                                  @else
-                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
-                                  @endif
+                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid BB" />
                                 </div>
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-8 col-lg-6">
                                 <div class="veer-info">
                                   <ul>
                                     <li>
@@ -107,7 +103,7 @@
                                     <img src="{{ asset('assets-nsg/images/dotted-vector-red.png') }}" alt="vector" class="img-fluid" />
                                   </div>
                                   <p class="desc">
-                                    @if(Session::get('locale') == 'hi') {{ $veerLists->description_hi??'' }} @else {{ $veerLists->description_en??'' }} @endif
+                                    @if(Session::get('locale') == 'hi') {!! $veerLists->description_hi??'' !!} @else {!! $veerLists->description_en??'' !!} @endif
                                   </p>
                                 </div>
                               </div>
