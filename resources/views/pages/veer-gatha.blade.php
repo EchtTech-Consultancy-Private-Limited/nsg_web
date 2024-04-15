@@ -29,26 +29,23 @@
                       @foreach($veerlist as $key=>$veerLists)
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne_{{$key}}">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne_{{$key}}" aria-expanded="true" aria-controls="collapseOne_{{$key}}">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne_{{$key}}" aria-expanded="false" aria-controls="collapseOne_{{$key}}">
                             @if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif
                           </button>
                         </h2>
-                        <div id="collapseOne_{{$key}}" class="accordion-collapse collapse show" aria-labelledby="headingOne_{{$key}}"
+                        <div id="collapseOne_{{$key}}" class="accordion-collapse collapse" aria-labelledby="headingOne_{{$key}}"
                           data-bs-parent="#commonAccordion">
                           <div class="accordion-body">
                             <div class="row">
-                              <div class="col-md-4">                             
+                              <div class="col-md-4">
                                 <div class="veer-img frame_1">
-                                    <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid image_1" />
-                                    <!-- <img class="shradhanjali-img" src="assets-nsg/images/shradhanjali.gif" alt=""> -->
+                                  @if(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url) !=false) 
+                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                                  @else
+                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                                  @endif
                                 </div>
-
-                               
-                                <!--
-                                  <div class="veer-img">
-                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />                                 
-                                </div> -->
                               </div>
                               <div class="col-md-8 col-lg-6">
                                 <div class="veer-info">
@@ -82,7 +79,7 @@
                                         Date of sacrificing the life
                                       </h3>
                                       <p class="desc col-md-6">
-                                          @if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif
+                                        {{  $veerLists->date_of_death }}
                                       </p>
                                     </li>
                                     <li>
@@ -96,8 +93,7 @@
                                   </ul>
                                   <div class="btn-wrap d-flex flex-wrap mt-5">
                                     <a class="btn btn-red px-3 py-2 me-3 shradhanjali">Offer e-Shradhanjali</a>
-                                    <a href="https://bharatkeveer.gov.in/" target="_blank"
-                                      class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a>
+                                    <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a>
                                     <a class="btn btn-red px-3 py-2 brief-btn">Brief</a>
                                   </div>
                                 </div>
