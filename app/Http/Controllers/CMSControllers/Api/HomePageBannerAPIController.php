@@ -59,11 +59,14 @@ class HomePageBannerAPIController extends Controller
         }else{
         //dd($request->file('image'));
         try{
+            $imgsizeW = 'max_width='.env('BANNER_WIDTH')??'1900';
+            $imgsizeH = 'max_height='.env('BANNER_HEIGHT')??'500';
+
             $validator=Validator::make($request->all(),
                 [
                 'tabtype'=>'required',
                 'title_name_en'=>'required',
-                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:max_width=1900,max_height=500"
+                'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:2048|dimensions:".$imgsizeW.','.$imgsizeH
             ]);
             if($validator->fails())
             {
@@ -154,11 +157,14 @@ class HomePageBannerAPIController extends Controller
     public function update(Request $request)
     {
         try{
+            // if($request->hasFile('image')){  
+            //     $request['image'] =$request->hasFile('image');
+            // }
             $validator=Validator::make($request->all(),
                 [
                 'tabtype'=>'required',
                 'title_name_en'=>'required',
-                //'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
+               // 'image' => "required|mimes:jpeg,bmp,png,gif,svg|max:10000"
             ]);
             if($validator->fails())
             {

@@ -29,18 +29,22 @@
                       @foreach($veerlist as $key=>$veerLists)
                       <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne_{{$key}}">
-                          <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne_{{$key}}" aria-expanded="true" aria-controls="collapseOne_{{$key}}">
+                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne_{{$key}}" aria-expanded="false" aria-controls="collapseOne_{{$key}}">
                             @if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif
                           </button>
                         </h2>
-                        <div id="collapseOne_{{$key}}" class="accordion-collapse collapse show" aria-labelledby="headingOne_{{$key}}"
+                        <div id="collapseOne_{{$key}}" class="accordion-collapse collapse" aria-labelledby="headingOne_{{$key}}"
                           data-bs-parent="#commonAccordion">
                           <div class="accordion-body">
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="veer-img">
-                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                                  @if(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url) !=false) 
+                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                                  @else
+                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                                  @endif
                                 </div>
                               </div>
                               <div class="col-md-6">
