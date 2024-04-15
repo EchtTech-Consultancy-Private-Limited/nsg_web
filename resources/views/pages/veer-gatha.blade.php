@@ -39,7 +39,7 @@
                           <div class="accordion-body">
                             <div class="row">
                               <div class="col-md-4">
-                                <div class="veer-img">
+                                <div class="veer-img frame_1">
                                   <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid BB" />
                                 </div>
                               </div>
