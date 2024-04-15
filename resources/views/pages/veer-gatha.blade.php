@@ -75,7 +75,7 @@
                                         Date of sacrificing the life
                                       </h3>
                                       <p class="desc col-md-6">
-                                          @if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif
+                                        {{  $veerLists->date_of_death }}
                                       </p>
                                     </li>
                                     <li>
@@ -89,8 +89,7 @@
                                   </ul>
                                   <div class="btn-wrap d-flex flex-wrap mt-5">
                                     <a class="btn btn-red px-3 py-2 me-3 shradhanjali">Offer e-Shradhanjali</a>
-                                    <a href="https://bharatkeveer.gov.in/" target="_blank"
-                                      class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a>
+                                    <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a>
                                     <a class="btn btn-red px-3 py-2 brief-btn">Brief</a>
                                   </div>
                                 </div>
