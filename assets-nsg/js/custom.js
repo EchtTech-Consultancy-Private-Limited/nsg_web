@@ -335,6 +335,10 @@ function setlang(value) {
 $('#photoCarousel .carousel-item:first').addClass('active');
 $('#photoCarousel .carousel-indicators.common-scrollbar button:first').addClass('active');
 
+
+$('.veer-accordion .accordion .accordion-item:first .accordion-button').removeClass('collapsed');
+$('.veer-accordion .accordion .accordion-item:first .accordion-collapse.collapse').addClass('show');
+
 new DataTable('#nsg_datatable', {
   columnDefs: [
       {
