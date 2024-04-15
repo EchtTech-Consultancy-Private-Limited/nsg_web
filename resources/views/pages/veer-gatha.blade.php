@@ -40,11 +40,7 @@
                             <div class="row">
                               <div class="col-md-4">
                                 <div class="veer-img">
-                                  @if(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url) !=false) 
-                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
-                                  @else
-                                    <img src="{{ asset(file_exists('resources/uploads/empDirectory/'.$veerLists->public_url)) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
-                                  @endif
+                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid BB" />
                                 </div>
                               </div>
                               <div class="col-md-6">
