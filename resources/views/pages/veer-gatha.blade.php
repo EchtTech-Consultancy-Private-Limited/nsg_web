@@ -38,12 +38,19 @@
                           data-bs-parent="#commonAccordion">
                           <div class="accordion-body">
                             <div class="row">
-                              <div class="col-md-4">
-                                <div class="veer-img">
-                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />
+                              <div class="col-md-4">                             
+                                <div class="veer-img frame_1">
+                                    <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid image_1" />
+                                    <!-- <img class="shradhanjali-img" src="assets-nsg/images/shradhanjali.gif" alt=""> -->
                                 </div>
+
+                               
+                                <!--
+                                  <div class="veer-img">
+                                  <img src="{{ asset('resources/uploads/empDirectory/'.$veerLists->public_url) }}" alt="@if(Session::get('locale') == 'hi') {{ $veerLists->name_hi??'' }} @else {{ $veerLists->name_en??'' }} @endif" class="img-fluid" />                                 
+                                </div> -->
                               </div>
-                              <div class="col-md-6">
+                              <div class="col-md-8 col-lg-6">
                                 <div class="veer-info">
                                   <ul>
                                     <li>
@@ -104,7 +111,7 @@
                                     <img src="{{ asset('assets-nsg/images/dotted-vector-red.png') }}" alt="vector" class="img-fluid" />
                                   </div>
                                   <p class="desc">
-                                    @if(Session::get('locale') == 'hi') {{ $veerLists->description_hi??'' }} @else {{ $veerLists->description_en??'' }} @endif
+                                    @if(Session::get('locale') == 'hi') {!! $veerLists->description_hi??'' !!} @else {!! $veerLists->description_en??'' !!} @endif
                                   </p>
                                 </div>
                               </div>

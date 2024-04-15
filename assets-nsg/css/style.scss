@@ -2038,9 +2038,10 @@ ul {
       }
     }
   }
+  
   .veer-img{
-    width: 245px;
-    height: 245px;
+    width: 260px;
+    height: 300px;
     position: relative;
     background-color: #f3f3f3;
     border-radius: 0;
@@ -2053,13 +2054,14 @@ ul {
           background-position: center;
           background-repeat: no-repeat;
           background-size: contain;
-          width: 245px;
-          height: auto;
+          width: 280px;
+          height: 206px;
           position: absolute;
-          left: 0px;
+          left: -37px;
           right: 0;
-          top: 60px;
+          top: 66px;
           bottom: 0px;
+          box-shadow: none;
         }
       
     }
@@ -2074,6 +2076,8 @@ ul {
       border-radius: 0%;
     }
   }
+
+  
   .accordion{
     &-item {
       border: 1px solid #cc2832;
@@ -2309,4 +2313,52 @@ ul {
 
 .veer-accordion.common-accordion .accordion-button::after{
   filter: invert(1) !important;
+}
+
+img.shradhanjali-img {
+  position: absolute;
+  bottom: 0;
+  left: -9px;
+  display: none;
+}
+.veer-img1.offer-shradhanjali img.shradhanjali-img {
+  display: block;
+}
+
+.frame_1 {
+  background-color: #ddc;
+  border: solid 28px #eee;
+  border-bottom-color: #fff;
+  border-left-color: #eee;
+  border-radius: 2px;
+  border-right-color: #eee;
+  border-top-color: #ddd;
+  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25) inset, 0 5px 10px 5px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+  text-align: center;
+}
+
+.frame_1:before {
+  border-radius: 2px;
+  bottom: -12px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25) inset;
+  content: "";
+  left: -12px;
+  position: absolute;
+  right: -12px;
+  top: -12px;
+  background: #ddddcc;
+}
+
+.frame_1:after {
+  border-radius: 2px;
+  bottom: -14px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.25);
+  content: "";
+  left: -14px;
+  position: absolute;
+  right: -14px;
+  top: -14px;
 }
