@@ -219,7 +219,7 @@ class HomeController extends Controller
                 ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
                 ->where('emp.status', 3)
                 ->where('emp.soft_delete', 0)
-                ->orderBy('emp.short_order','desc')
+                ->orderBy('emp.short_order','asc')
                 ->get();
         //dd($veergathalist);
         return view('pages.veer-gatha',['title' => $titleName,'veerlist'=>$veergathalist]);
