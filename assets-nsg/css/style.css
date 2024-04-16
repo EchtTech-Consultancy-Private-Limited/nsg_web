@@ -257,7 +257,7 @@ ul {
   background-color: #262626;
 }
 
-.common-table thead th {
+.common-table th {
   font-size: 1em;
   font-weight: 600 !important;
   color: #ffffff;
@@ -2541,7 +2541,7 @@ ul {
   box-shadow: none;
   color: #000;;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   padding: 10px 15px;
 }
 
