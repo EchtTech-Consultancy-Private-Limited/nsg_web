@@ -2531,7 +2531,7 @@ ul {
 }
 
 .veer-accordion .accordion-item {
-  border: 1px solid #cc2832;
+  border: 1px solid #ECB77A;
   margin-bottom: 20px;
   border-radius: 5px;
 }
@@ -2539,7 +2539,7 @@ ul {
 .veer-accordion .accordion-button {
   background-color: transparent;
   box-shadow: none;
-  color: #fff;
+  color: #000;;
   font-size: 1.2rem;
   font-weight: 600;
   padding: 10px 15px;
@@ -2592,7 +2592,7 @@ ul {
 
 .veer-accordion .accordion-header {
   border-bottom: 0;
-  background: #cc2832;
+  background: #ECB77A;
 }
 
 .sitemap-header-list {
@@ -2776,9 +2776,9 @@ li.active-show a {
   text-decoration: none;
 }
 
-.veer-accordion.common-accordion .accordion-button::after {
+/* .veer-accordion.common-accordion .accordion-button::after {
   filter: invert(1) !important;
-}
+} */
 
 .veer-img.offer-shradhanjali {
   background-image: url(../images/frame.png);

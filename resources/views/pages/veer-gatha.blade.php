@@ -15,9 +15,14 @@
               </ol>
             </nav>
           </div>
-          <h2 class="heading-black">
+         <div class="d-flex justify-content-between">
+         <h2 class="heading-black">
             Veer Gatha
           </h2>
+          <div class="btn-wrap">
+            <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2">Bharat ke Veer</a>
+          </div>
+         </div>
         </div>
         <div class="col-md-12">
           <div class="common-card p-5 mt-4">
@@ -89,7 +94,7 @@
                                   </ul>
                                   <div class="btn-wrap d-flex flex-wrap mt-5">
                                     <a class="btn btn-red px-3 py-2 me-3 shradhanjali">Offer e-Shradhanjali</a>
-                                    <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a>
+                                    <!-- <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2 me-3">Bharat ke Veer</a> -->
                                     <a class="btn btn-red px-3 py-2 brief-btn">Brief</a>
                                   </div>
                                 </div>

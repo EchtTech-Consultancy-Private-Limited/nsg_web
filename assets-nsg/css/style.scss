@@ -2311,9 +2311,11 @@ ul {
   text-decoration: none;
 }
 
-.veer-accordion.common-accordion .accordion-button::after{
-  filter: invert(1) !important;
-}
+// .veer-accordion.common-accordion .accordion-button::after{
+//   filter: invert(1) !important;
+// }
+
+.veer-accordion .accordion-button{color: #000;}
 
 img.shradhanjali-img {
   position: absolute;
@@ -2324,7 +2326,15 @@ img.shradhanjali-img {
 .veer-img1.offer-shradhanjali img.shradhanjali-img {
   display: block;
 }
-
+.veer-accordion .accordion-header {
+  border-bottom: 0;
+  background: #ECB77A;
+}
+.veer-accordion .accordion-item {
+  border: 1px solid #ECB77A;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
 .frame_1 {
   background-color: #ddc;
   border: solid 28px #eee;
