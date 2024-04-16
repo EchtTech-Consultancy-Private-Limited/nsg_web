@@ -2,6 +2,9 @@
 @section('title')
 {{ __('National Security Guard | '.$title) }}
 @endsection
+@push('post-scripts')
+<script src="{{ asset('public/form-data/register-for-ncnc.js') }}"></script>
+@endpush
 @section('content')
 <section class="common-form-wrap pt-3 pb-5 bg-grey common-bg-right">
     <div class="container">
@@ -24,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-wrap">
-                                <form>
+                                <form id="registerforncnc_add_form" enctype="multipart/form-data">
                                     <div class="form-card-bdr">
                                         <h2 class="title-black">
                                             Basic Information
@@ -32,19 +35,19 @@
                                         <div class="row g-3 py-3">
                                             <div class="col-md-3 mb-lg-0 mb-3">
                                                 <label class="form-label">Name <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Name">
+                                                <input type="text" class="form-control" name="name" placeholder="Enter Name">
                                             </div>
                                             <div class="col-md-3 mb-lg-0 mb-3">
                                                 <label class="form-label">Designation <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Designation">
+                                                <input type="text" class="form-control" name="designation" placeholder="Enter Designation">
                                             </div>
                                             <div class="col-md-3 mb-lg-0 mb-3">
-                                                <label class="form-label">Name of the Firm <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Firm Name">
+                                                <label class="form-label">Name of the Firm</label>
+                                                <input type="text" class="form-control" name="name_of_the_firm" placeholder="Enter Firm Name">
                                             </div>
                                             <div class="col-md-3 mb-lg-0 mb-3">
                                                 <label class="form-label">Registration No of the firm <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Registration No.">
+                                                <input type="text" class="form-control" name="registration_No_of_the_firm" placeholder="Enter Registration No.">
                                             </div>
                                         </div>
                                     </div>
@@ -54,12 +57,12 @@
                                         </h2>
                                         <div class="row g-3 py-3">
                                             <div class="col-md-6 mb-lg-0 mb-3">
-                                                <label class="form-label">Foreign Address <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Foreign Address">
+                                                <label class="form-label">Foreign Address</label>
+                                                <input type="text" class="form-control" name="foreign_address" placeholder="Enter Foreign Address">
                                             </div>
                                             <div class="col-md-6 mb-lg-0 mb-3">
-                                                <label class="form-label">Indian Address <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Indian Address">
+                                                <label class="form-label">Indian Address</label>
+                                                <input type="text" class="form-control" name="indian_address" placeholder="Enter Indian Address">
                                             </div>
                                         </div>
                                     </div>
@@ -69,16 +72,16 @@
                                         </h2>
                                         <div class="row g-3 py-3">
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Nomenclature of Wpn/Eqpt <span class="char-red">*</span></label>
-                                                <textarea class="form-control-textarea" rows="5" placeholder="Enter Nomenclature of Wpn/Eqpt"></textarea>
+                                                <label class="form-label">Nomenclature of Wpn/Eqpt</label>
+                                                <textarea class="form-control-textarea" name="nomenclature_of_wpneqpt" rows="5" placeholder="Enter Nomenclature of Wpn/Eqpt"></textarea>
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Brief Description of Wpn/Eqpt <span class="char-red">*</span></label>
-                                                <textarea class="form-control-textarea" rows="5" placeholder="Enter Description"></textarea>
+                                                <label class="form-label">Brief Description of Wpn/Eqpt</label>
+                                                <textarea class="form-control-textarea" name="brief_description_of_wpneqpt" rows="5" placeholder="Enter Description"></textarea>
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Details of EOM <span class="char-red">*</span></label>
-                                                <textarea class="form-control-textarea" rows="5" placeholder="Enter Details of EOM"></textarea>
+                                                <label class="form-label">Details of EOM</label>
+                                                <textarea class="form-control-textarea" name="details_of_eom" rows="5" placeholder="Enter Details of EOM"></textarea>
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Term of Service <span class="char-red">*</span></label>
@@ -89,7 +92,7 @@
                                                             <label for="file">Choose File</label>
                                                         </div>
                                                     </div>
-                                                    <input type="file" hidden="" id="file" class="form-control">
+                                                    <input type="file" hidden="" name="fileUpload" id="file" class="form-control">
                                                     <p class="upload-text">Maximum upload file size 25 MB, allowed files PDF,JPG,PNG *</p>
                                                 </div>
                                             </div>
@@ -102,20 +105,20 @@
                                         <div class="row g-3 py-3">
                                             <div class="col-md-2 mb-3">
                                                 <label class="form-label">S.No <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter S.No">
+                                                <input class="form-control" name="s_no" placeholder="Enter S.No">
                                             </div>
                                             <div class="col-md-4 mb-3"> 
                                                 <label class="form-label">Name <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter Name">
+                                                <input class="form-control" name="name_dt" placeholder="Enter Name">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Designation <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter Designation">
+                                                <input class="form-control" name="designation_dt" placeholder="Enter Designation">
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">Nationality <span class="char-red">*</span></label>
-                                                <select class="form-select">
-                                                    <option selected>Select</option>
+                                                <select class="form-select" name="nationality">
+                                                    <option value="">Select</option>
                                                     <option value="1">One</option>
                                                     <option value="2">Two</option>
                                                     <option value="3">Three</option>
@@ -123,19 +126,19 @@
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">Passport No. <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter S.No">
+                                                <input class="form-control" name="passport_no" placeholder="Enter S.No">
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">ID No. <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter ID No.">
+                                                <input class="form-control" name="id_no" placeholder="Enter ID No.">
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label class="form-label">Email Address <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter Email Address">
+                                                <input class="form-control" name="email" placeholder="Enter Email Address">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Remarks <span class="char-red">*</span></label>
-                                                <textarea class="form-control-textarea" rows="5" placeholder="Enter Remarks"></textarea>
+                                                <textarea class="form-control-textarea" name="remark" rows="5" placeholder="Enter Remarks"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -155,12 +158,12 @@
                                             </div>
                                             <div class="col-md-3 mb-3"> 
                                                 <label class="form-label">Captcha is in the image <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter Captcha is in the image">
+                                                <input class="form-control" name="captcha" placeholder="Enter Captcha is in the image">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="btn-wrap d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-red">Submit</button>
+                                        <button type="submit" id="nsg_add_registerforncnc_submit" class="btn btn-red submit-registerforncnc-btn">Submit</button>
                                     </div>
                                 </form>
                             </div>
