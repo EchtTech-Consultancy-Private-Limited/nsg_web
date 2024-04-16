@@ -15,8 +15,7 @@
       <ul class="navbar-nav ms-auto mb-lg-0">
          @if(isset($headerMenu) && count($headerMenu)>0)
             @foreach($headerMenu as $firstmenu)
-            @php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){$alrt ="return confirm('{{ $alertMessage }}')";}else{$alrt ='';}
-            @endphp
+               @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
                <li class="nav-item @php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown'; }else{ echo ''; } @endphp">
                   <a class="nav-link 
                   @php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'dropdown-toggle'; }else{ echo ''; } @endphp" 
@@ -24,7 +23,7 @@
                   aria-expanded="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'false'; }else{ echo ''; } @endphp"
                   href="@php if(isset($firstmenu->children) && count($firstmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url); } @endphp" 
                   target="@php if(isset($firstmenu->tab_type) && $firstmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
-                  onclick="{{$alrt}}"
+                  onclick="@php if($firstmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                   id="navbarDropdown">
                      @if(Session::get('locale') == 'hi')  {{ $firstmenu->name_hi }} @else {{ $firstmenu->name_en }} @endif</a>
                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -33,8 +32,9 @@
                               <li class="@php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'dropdown-submenu'; }else{ echo ''; } @endphp">
                                  <a class="dropdown-item"
                                  href="
-                                 @php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  echo url($firstmenu->url.'/'.$secondmenu->url);  } @endphp"
+                                 @php if(isset($secondmenu->children) && count($secondmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($secondmenu->tab_type) && $secondmenu->tab_type ==1){echo $secondmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url); }	} @endphp"
                                  target="@php if($secondmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                 onclick="@php if($secondmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                  >
                                     @if(Session::get('locale') == 'hi')  {{ $secondmenu->name_hi }} @else {{ $secondmenu->name_en }} @endif
                                  </a>
@@ -43,8 +43,9 @@
                                           @foreach($secondmenu->children as $thirdmenu)
                                              <li><a class="dropdown-item"
                                              href="
-                                             @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{ echo url($firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url); } @endphp"
+                                             @php if(isset($thirdmenu->children) && count($thirdmenu->children)>0){ echo 'javascript:void(0)'; }else{  if(isset($thirdmenu->tab_type) && $thirdmenu->tab_type ==1){echo $thirdmenu->url; }else{ echo url($firstmenu->url.'/'.$secondmenu->url.'/'.$thirdmenu->url); }	} @endphp"
                                              target="@php if($thirdmenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                                             onclick="@php if($thirdmenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                              >
                                                 @if(Session::get('locale') == 'hi')  {{ $thirdmenu->name_hi }} @else {{ $thirdmenu->name_en }} @endif
                                              </a></li>
