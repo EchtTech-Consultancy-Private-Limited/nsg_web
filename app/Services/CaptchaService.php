@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Services;
+use Session;
 
 class CaptchaService
 {
@@ -11,7 +12,7 @@ class CaptchaService
             $a .= mt_rand(0,9);
         }
         //rand(pow(10, $length-1), pow(10, $length)-1);
-        return $a;
+        //return $a;
 
     }
 

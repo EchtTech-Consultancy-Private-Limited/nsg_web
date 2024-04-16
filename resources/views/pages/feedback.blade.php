@@ -2,6 +2,9 @@
 @section('title')
 {{ __('National Security Guard | '.$title) }}
 @endsection
+@push('post-scripts')
+<script src="{{ asset('public/form-data/feedback.js') }}"></script>
+@endpush
 @section('content')
 <section class="common-form-wrap pt-3 pb-5 bg-grey common-bg-right">
     <div class="container">
@@ -24,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-wrap">
-                                <form>
+                                <form id="feedback_add_form" enctype="multipart/form-data">
                                     <div class="form-card-bdr">
                                         <h2 class="title-black">
                                             Basic Information
@@ -32,24 +35,24 @@
                                         <div class="row g-3 py-3">
                                             <div class="col-md-3 mb-lg-0 mb-3">
                                                 <label class="form-label">Name <span class="char-red">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Enter Name">
+                                                <input type="text" name="fullname" value="{{ old('fullname') }}" class="form-control" placeholder="Enter Name">
                                             </div>
                                             <div class="col-md-3 mb-lg-0 mb-3">
                                                 <label class="form-label">Feedback Related To <span class="char-red">*</span></label>
-                                                <select class="form-select">
-                                                    <option selected>Select</option>
-                                                    <option value="1">One</option>
-                                                    <option value="2">Two</option>
-                                                    <option value="3">Three</option>
+                                                <select class="form-select" name="feedbackRelatedTo">
+                                                    <option value="">Select</option>
+                                                    <option value="Suggestion">Suggestion</option>
+                                                    <option value="Complain">Complain</option>
+                                                    <option value="Other">Other</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-6 mb-lg-0 mb-3">
                                                 <label class="form-label">Email Address <span class="char-red">*</span></label>
-                                                <input type="email" class="form-control" placeholder="Enter Email Address">
+                                                <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email Address">
                                             </div>
                                             <div class="col-md-6 mb-3">
                                                 <label class="form-label">Remarks <span class="char-red">*</span></label>
-                                                <textarea class="form-control-textarea" rows="5" placeholder="Enter Remarks"></textarea>
+                                                <textarea class="form-control-textarea" name="remark" rows="5" placeholder="Enter Remarks">{{ old('remark') }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -59,23 +62,28 @@
                                         </h2>
                                         <p class="form-desc">This question is for testing whether or not you are a human visitor and to prevent automated spam submissions.</p>
                                         <div class="row g-3 py-3 align-items-end">
-                                            <div class="col-md-3 mb-3">
+                                            <div class="col-md-2 mb-2">
                                                 <div class="input-group captcha-input-wrap">
-                                                    <img src="{{ route('captcha') }}" alt="CAPTCHA Image">
+                                                    {{ $captchaCode }}
+                                                    <!-- <img src="{{ route('captcha') }}" alt="CAPTCHA Image"> -->
                                                     <!-- <input class="form-control" value="634620" disabled> -->
-                                                    <a class="input-group-text">
+                                                    <a class="input-group-text" onclick="chnageCaptcha(this.value)">
                                                         <img src="{{ asset('assets-nsg/images/refresh.svg') }}" alt="refresh-icon" class="img-fluid">
                                                     </a>
                                                 </div>
                                             </div>
                                             <div class="col-md-3 mb-3"> 
                                                 <label class="form-label">Captcha is in the image <span class="char-red">*</span></label>
-                                                <input class="form-control" placeholder="Enter Captcha is in the image">
+                                                <input class="form-control" name="captchacode" placeholder="Enter Captcha is in the image">
                                             </div>
                                         </div>
                                     </div>
                                     <div class="btn-wrap d-flex justify-content-center">
-                                        <button type="submit" class="btn btn-red">Submit</button>
+                                        <button type="submit" id="nsg_add_feedback_submit" class="btn btn-red submit-feedback-btn">Submit
+                                        <!-- <span class="indicator-progress">
+                                            Please wait... <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        </span> -->
+                                        </button>
                                     </div>
                                 </form>
                             </div>
