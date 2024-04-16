@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Helpers\CaptchaCode;
 use Session, App, DB;
 
 class HomeController extends Controller
 {
     protected $app;
+    
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +22,7 @@ class HomeController extends Controller
 
     public function index()
     {
+        
         $titleName = 'Home';
         return view('home', ['title' => $titleName]);
     }
@@ -46,9 +49,9 @@ class HomeController extends Controller
        }else{
             $slug = $slug1;
        }
-       $breadcum3 = DB::table('website_menu_management')->where('url',$slug3)->where('soft_delete', 0)->where('status', 3)->first();
-       $breadcum2 = DB::table('website_menu_management')->where('url',$slug2)->where('soft_delete', 0)->where('status', 3)->first();
-       $breadcum1 = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->first();
+       $breadcum3 = DB::table('website_menu_management')->where('url',$slug3)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
+       $breadcum2 = DB::table('website_menu_management')->where('url',$slug2)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
+       $breadcum1 = DB::table('website_menu_management')->where('url',$slug1)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
        if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
        if(Session::get('locale') == 'hi'){  $breadcums2 =$breadcum2->name_hi ?? ''; } else {  $breadcums2 =$breadcum2->name_en ?? '';  }
        if(Session::get('locale') == 'hi'){  $breadcums3 =$breadcum3->name_hi ?? ''; } else {  $breadcums3 =$breadcum3->name_en ?? '';  }
@@ -58,10 +61,10 @@ class HomeController extends Controller
             foreach($main_menu_slug as $main_men){
                     $menu = new \stdClass;
                     $menu->main_menu =$main_men;
-                    $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                    $menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
                 foreach($menu->main_menu->sub_menu as $submenu){
                         $menu->sub_menu =$submenu;
-                        $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                        $menu->sub_menu->sub_sub_menu = DB::table('website_menu_management')->where('parent_id',$submenu->uid)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
                     }   
                 }
             }else{
@@ -155,8 +158,12 @@ class HomeController extends Controller
      */
     public function feedbackDataSave(Request $request)
     {
+       
+        $CustomCaptchas = new CaptchaCode;
+        $CustomCaptch = $CustomCaptchas->generateCaptcha();
+        //dd($CustomCaptch);
         $titleName = 'Feed Back';
-        return view('pages.feedback',['title' => $titleName]);
+        return view('pages.feedback',['title' => $titleName,'captchaCode'=>$CustomCaptch ]);
     }
 
     /**
@@ -168,6 +175,7 @@ class HomeController extends Controller
      */
     public function siteMapList(Request $request)
     {
+        
         $titleName = 'Site Map';
         return view('pages.sitemap',['title' => $titleName]);
     }
@@ -229,4 +237,108 @@ class HomeController extends Controller
         $titleName = 'Organization Chart';
         return view('pages.organization-chart',['title' => $titleName]);
     }
+
+    public function feedbackDataStore(Request $request){
+        // Validate the incoming request data
+        //dd(Session::get('capcode'));
+        try{
+        $request->validate([
+            'fullname' => 'required|string|max:40',
+            'feedbackRelatedTo' => 'required',
+            'email' => 'required|email',
+            'remark' => 'required|string',
+            //'captchacode' => 'required|in:'.Session::get('captcha_code'),
+            // Add more validation rules as needed
+        ],[
+            'fullname.required' => 'The name field is required.',
+            'fullname.string' => 'The name must be a string.',
+            'fullname.max' => 'The name may not be greater than 40 characters.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'remark.required' => 'The remark field is required.',
+            'feedbackRelatedTo.required' => 'The feedback Related To field is required.',
+            //'captchacode.required' => 'The Captcha field is required.',
+            'captchacode.captchacode' => 'Please enter a valid Captcha',
+        ]);
+        // Create or save the data
+        DB::table('feedback')->insert([
+                'name'=>$request->fullname,
+                'email'=>$request->email,
+                'designation'=>$request->feedbackRelatedTo,
+                'message'=>$request->remark,
+        ]);
+        }catch(Throwable $e){report($e);
+            return false;
+        }
+        return response()->json(['success' => true, 'message' => 'Data saved successfully']);
+    }
+    public function RegisterForNCNCStore(Request $request){
+        // Validate the incoming request data
+        try{
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'designation' => 'required',
+            'registration_No_of_the_firm' => 'required',
+            //'fileUpload' => 'required|mimes:jpeg,bmp,png,gif,svg|max:25000',
+            's_no' => 'required',
+            'name_dt' => 'required',
+            'designation_dt' => 'required',
+            'nationality' => 'required',
+            'passport_no' => 'required',
+            'id_no' => 'required',
+            'email' => 'required',
+            'remark' => 'required',
+            //'captchacode' => 'required',
+        ],[
+            'name.required' => 'The name field is required.',
+            'name.string' => 'The name must be a string.',
+            'name.max' => 'The name may not be greater than 40 characters.',
+            'email.required' => 'The email field is required.',
+            'email.email' => 'Please enter a valid email address.',
+            'remark.required' => 'The remark field is required.',
+            'designation.required' => 'The designation field is required.',
+            'designation_dt.required' => 'The designation details field is required.',
+            'registration_No_of_the_firm.required' => 'The registration No of the firm field is required.',
+           // 'fileUpload.required' => 'The file upload field is required.',
+            's_no.required' => 'The s no field is required.',
+            'name_dt.required' => 'The name field is required.',
+            'nationality.required' => 'The nationality field is required.',
+            'passport_no.required' => 'The passport no field is required.',
+            'id_no.required' => 'The id no field is required.',
+            'passport_no.required' => 'The passport no field is required.',
+            //'captchacode.required' => 'The Captcha field is required.',
+            //'captchacode.captchacode' => 'Please enter a valid Captcha',
+        ]);
+        if($request->hasFile('fileUpload')){    
+            $file=$request->file('fileUpload');
+            $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
+            $path=resource_path(env('IMAGE_FILE_FOLDER_WEB').'/registerforncncfiles');
+            $file->move($path,$newname);
+        }
+        DB::table('register-for-ncnc')->insert([
+            'name'=>$request->name,
+            'designation'=>$request->designation,
+            'name_of_the_firm'=>$request->name_of_the_firm,
+            'registration_No_of_the_firm'=>$request->registration_No_of_the_firm,
+            'foreign_address'=>$request->foreign_address,
+            'indian_address'=>$request->indian_address,
+            'nomenclature_of_wpneqpt'=>$request->nomenclature_of_wpneqpt,
+            'brief_description_of_wpneqpt'=>$request->brief_description_of_wpneqpt,
+            'details_of_eom'=>$request->details_of_eom,
+            'term_of_service'=>$newname??'',
+            's_no'=>$request->s_no,
+            'name_dt'=>$request->name_dt,
+            'designation_dt'=>$request->designation_dt,
+            'nationality'=>$request->nationality,
+            'passport_no'=>$request->passport_no,
+            'id_no'=>$request->id_no,
+            'email_address'=>$request->email,
+            'remarks'=>$request->remark,
+        ]);
+        }catch(Throwable $e){report($e);
+            return false;
+       }
+        return response()->json(['success' => true, 'message' => 'Data saved successfully']);
+    }
+    
 }

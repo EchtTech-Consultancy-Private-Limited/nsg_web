@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SearchController;
 
@@ -17,16 +18,6 @@ use App\Http\Controllers\SearchController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-use App\Services\CaptchaService;
-
-Route::get('/captcha', function () {
-    $code = CaptchaService::generateCode();
-    session(['captcha_code' => $code]);
-    //$image = \Image::make(sprintf('data:image/png;base64,%s', base64_encode(\QrCode::format('png')->size(100)->generate($code))));
-
-    return $code;
-})->name('captcha');
 
 function set_active($route) {
     if( is_array( $route ) ){
@@ -53,11 +44,13 @@ Route::middleware(['visitingcounter'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
+    Route::post('feedback-save', [HomeController::class, 'feedbackDataStore'])->name('feedback-save');
     Route::get('sitemap', [HomeController::class, 'siteMapList'])->name('sitemap');
     Route::get('veer-gatha', [HomeController::class, 'veerGatha'])->name('veer-gatha');
     Route::get('about-us/organization-structure', [HomeController::class, 'organizationChart'])->name('about-us/organization-structure');
     Route::get('gallery/photo-gallery', [HomeController::class, 'photoGallery'])->name('gallery/photo-gallery');
     Route::get('register-for-ncnc', [HomeController::class, 'RegisterForNCNC'])->name('register-for-ncnc');
+    Route::post('register-for-ncnc-save', [HomeController::class, 'RegisterForNCNCStore'])->name('register-for-ncnc-save');
     Route::get('/{slug1}/{slug2?}/{slug3?}', [HomeController::class, 'getAllPageContent']);
 
 });

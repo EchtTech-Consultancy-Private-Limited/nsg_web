@@ -28,7 +28,7 @@ class CustomCaptcha {
         // Generate CAPTCHA image using QrCode
         $captchaImage = QrCode::size(200)->generate($captchaString);
 
-        return response($captchaImage)->header('Content-type', 'image/png');
+       // return response($captchaImage)->header('Content-type', 'image/png');
     }
     public function generateCaptcha()
     {
@@ -49,7 +49,7 @@ class CustomCaptcha {
         });
 
         // Return the image as a response
-        return $img->response('png');
+        //return $img->response('png');
     }
 
 }

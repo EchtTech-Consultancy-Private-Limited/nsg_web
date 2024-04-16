@@ -320,6 +320,17 @@ $(document).ready(() => {
 })
 
 //Our Code language change
+function chnageCaptcha(){
+    var baseURL = $("meta[name='baseURL']").attr('content');
+    $.ajax({
+        url: baseURL + 'captcha',
+        //data: { data: value },
+        success: function (result) {
+            location.reload();
+        }
+    });
+    }
+
 function setlang(value) {
   //alert(value)
   var baseURL = $("meta[name='baseURL']").attr('content');
