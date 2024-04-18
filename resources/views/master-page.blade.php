@@ -196,7 +196,7 @@
                             @foreach($pageData->pageGallerys as $key=>$pageGallery)
                               <div class="item">
                                 <div class="img-wrap">
-                                  <img src="{{ asset('resources/uploads/PageContentPdf/'.$pageGallery->public_url) }}" alt="taj" class="img-fluid" />
+                                  <img src="{{ asset('resources/uploads/PageContentGallery/'.$pageGallery->public_url) }}" alt="taj" class="img-fluid" />
                                   <div class="d-flex align-items-center justify-content-between p-3">
                                     <p class="title">
                                         {{ $pageGallery->image_title }}
