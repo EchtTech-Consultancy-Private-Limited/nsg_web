@@ -129,7 +129,7 @@
                                           Download
                                        </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$pdfdata->pdfimage_size}})</span>
                                     </td>
-                                    <td class="text-center">{{$pdfdata->start_date}}</td>
+                                    <td class="text-center">{{\Carbon\Carbon::parse($pdfdata->start_date)->format('d-m-Y')}}</td>
                                  </tr>
                               @endforeach
                            @endif

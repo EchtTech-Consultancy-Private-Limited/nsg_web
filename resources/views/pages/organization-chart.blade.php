@@ -10,8 +10,9 @@
           <div class="breadcrumb-wrap mb-4">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Organization Chart</li>
+                <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                <li class="breadcrumb-item active" aria-current="page"> Organization Chart</li>
               </ol>
             </nav>
           </div>
