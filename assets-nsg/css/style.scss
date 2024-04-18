@@ -2399,3 +2399,8 @@ marquee.marquee {
   color: #fff;
 }
 .btn:first-child:active{box-shadow: none !important;border-color: transparent;}
+
+.photogallery-wrap .photogallery-slider .photogallery-card .img-wrap img {
+  height: 260px;
+  object-fit: cover;
+}

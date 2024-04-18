@@ -2923,3 +2923,8 @@ marquee.marquee {
   max-height: 381px;
   overflow: auto;
 }
+
+.photogallery-wrap .photogallery-slider .photogallery-card .img-wrap img {
+  height: 260px;
+  object-fit: cover;
+}
