@@ -71,7 +71,7 @@
                   <h2 class="heading-red">
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Achievements_hi') }} @else {{ config('staticTextLang.Achievements_en') }} @endif
                   </h2>
-                  <a href="#" class="link-yellow">
+                  <a href="{{ url('more-links/achievements/international-competitions-seminar') }}" class="link-yellow">
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
@@ -82,7 +82,7 @@
                   <p class="title">
                      Successful NSG Operation at Taj, Mumbai
                   </p>
-                  <a href="#" class="view-more">
+                  <a href="{{ url('more-links/achievements/international-competitions-seminar') }}" class="view-more">
                   <img src="{{ asset('assets-nsg/images/view.svg')}}" alt="view" class="img-fluid" />
                   </a>
                </div>
