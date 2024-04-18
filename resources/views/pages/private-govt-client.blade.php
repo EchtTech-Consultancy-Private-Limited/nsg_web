@@ -7,6 +7,7 @@
                     <div class="item">
                         <a href="{{ $privateGovCLient->url }}"
                         onclick="return confirm('{{ $alertMessage }}')"
+                        target="_blank"
                         class="client-slider-content">
                         <img src="{{ asset('resources/uploads/clientlogo/'.$privateGovCLient->public_url) }}" alt="{{ $privateGovCLient->title_en }}" class="img-fluid" />
                         </a>
