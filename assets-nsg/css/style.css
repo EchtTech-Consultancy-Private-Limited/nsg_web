@@ -249,13 +249,21 @@ ul {
   background-size: contain;
 }
 
-.common-table {
+.common-table, .table {
   border: 1px solid #cccccc;
 }
 
-.common-table thead {
+.common-table thead th {
   background-color: #262626;
 }
+
+table thead th {
+  background-color: #262626 !important;
+  color: #fff !important;
+  white-space: nowrap;
+}
+
+
 
 .common-table th {
   font-size: 1em;
@@ -385,7 +393,7 @@ ul {
   }
 }
 
-.header-top-right .content ul li:nth-child(4) a {
+.header-top-right .content ul li:nth-child(5) a {
   border-right: 0;
 }
 
@@ -480,7 +488,7 @@ ul {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   top: 55px;
   transition: all 0.2s ease;
-  z-index: 10000;
+  z-index: 1000;
   position: sticky;
 }
 
@@ -2061,7 +2069,7 @@ ul {
 
 .organization-chart .tree-node-wrap {
   position: relative;
-  z-index: 1000;
+  z-index: 100;
 }
 
 .organization-chart .tree-node-text {
@@ -2845,3 +2853,55 @@ img.shradhanjali-img {
 div.dt-container .dt-length label {
   margin-left: 10px;
 }
+
+.common-card ul.list-text li {
+  list-style: disc;
+  margin: 0 0 10px 25px;
+}
+
+.common-card ul li::marker {
+  color: #A8A8A8;
+  font-size: 18px;
+}
+
+.common-card .organization-chart ul li, .common-card .photogallery-tabs ul li {
+  list-style:none;
+}
+
+.common-card .photogallery-tabs ul li {
+  list-style:none;
+}
+
+.search-btn-d .btn {
+  padding: 0 18px 0 0px;
+  font-size: 18px;
+}
+
+.btn:first-child:active{box-shadow: none !important;border-color: transparent;}
+
+/* searchbox css */
+.serch-box-show {
+  position: absolute;
+  top: 30px;
+  width: 250px;
+  right: 5px;
+  z-index: 10000 !important;
+}
+
+.serch-box-show .submit-btn-apply {
+  margin-left: -5px;
+  border-radius: 0px 6px 6px 0px;
+  padding: 8px 18px !important;
+  font-size: 18px;
+}
+.submit-btn-apply {
+  background: #cc2832 !important;
+  border: 0;
+  color: #fff !important;
+  padding: 8px 30px !important;
+  margin: 0;
+  font-size: 1rem;
+  margin-left: 10px;
+}
+
+.p-relative{position: relative;}

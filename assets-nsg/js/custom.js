@@ -373,6 +373,7 @@ $(document).ready(() => {
           'background-color': '#000'
       })
   })
+ 
   $(document).ready(function () {
     let fl_accordion = $('.fl-accordion');
     fl_accordion.click(function () {
@@ -428,4 +429,8 @@ $(document).ready(() => {
           }
       }
   });
+})
+
+$('.search-show-popup').click(() => {      
+    $('.serch-box-show').toggleClass('d-none')
 })
