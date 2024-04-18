@@ -3,6 +3,7 @@
 {{ __('National Security Guard | '.$title) }}
 @endsection
 @section('content')
+@php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
 <section class="veer-gatha-wrap pt-3 pb-5 bg-grey common-bg-right">
     <div class="container">
       <div class="row">
@@ -20,7 +21,8 @@
             Veer Gatha
           </h2>
           <div class="btn-wrap">
-            <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2">Bharat ke Veer</a>
+            <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2"
+            onclick="@php echo $alrt @endphp">Bharat ke Veer</a>
           </div>
          </div>
         </div>

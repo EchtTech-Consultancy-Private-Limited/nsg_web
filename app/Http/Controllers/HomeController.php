@@ -243,7 +243,7 @@ class HomeController extends Controller
         //dd(Session::get('capcode'));
         try{
         $request->validate([
-            'fullname' => 'required|string|max:40',
+            'fullname' => 'required|regex:/^[a-zA-Z\s]+$/|max:40',
             'feedbackRelatedTo' => 'required',
             'email' => 'required|email',
             'remark' => 'required|string',
@@ -251,7 +251,7 @@ class HomeController extends Controller
             // Add more validation rules as needed
         ],[
             'fullname.required' => 'The name field is required.',
-            'fullname.string' => 'The name must be a string.',
+            'fullname.regex' => 'The name must be a string.',
             'fullname.max' => 'The name may not be greater than 40 characters.',
             'email.required' => 'The email field is required.',
             'email.email' => 'Please enter a valid email address.',
