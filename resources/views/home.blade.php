@@ -416,60 +416,13 @@
             </a>
           </div>
         </div>
-         <div class="col-md-12 col-lg-4">
-            <div class="card-wrap card-red mb-3 mb-lg-0"  data-aos="fade-up" data-aos-duration="1000">
-               <h2 class="card-heading">
-               @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Honours_Awards_hi') }} @else {{ config('staticTextLang.Honours_Awards_en') }} @endif
-               </h2>
-               <div class="card-image">
-                  <img src="{{ asset('assets-nsg/images/awards.png')}}" alt="awards" class="img-fluid" />
+        @if(isset($sectionData) && count($sectionData)>0)
+            @foreach($sectionData as $sectionDatas)
+               <div class="col-md-12 col-lg-4">
+                  @if(Session::get('locale') == 'hi') {!! $sectionDatas->content_hi !!} @else {!! $sectionDatas->content_en !!} @endif
                </div>
-               <p class="card-title">
-                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Honours_Awards_description_hi') }} @else {{ config('staticTextLang.Honours_Awards_description_en') }} @endif
-               </p>
-               <div class="btn-wrap">
-                  <a href="{{ url('more-links/honours-&-awards/gallantry-awards-(army)') }}"
-                     class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-12 col-lg-4">
-            <div class="card-wrap card-black  mb-3 mb-lg-0"  data-aos="fade-up" data-aos-duration="1500">
-               <h2 class="card-heading">
-                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.The_National_Security_Guard_hi') }} @else {{ config('staticTextLang.The_National_Security_Guard_en') }} @endif
-               </h2>
-               <div class="card-image">
-                  <img src="{{ asset('assets-nsg/images/nsg.png')}}" alt="nsg" class="img-fluid" />
-               </div>
-               <p class="card-title">
-                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.The_National_Security_Guard_description_hi') }} @else {{ config('staticTextLang.The_National_Security_Guard_description_en') }} @endif
-               </p>
-               <div class="btn-wrap">
-                  <a href="{{ url('about-us/about-nsg') }}"
-                     class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
-                  </a>
-               </div>
-            </div>
-         </div>
-         <div class="col-md-12 col-lg-4">
-            <div class="card-wrap card-red  mb-3 mb-md-0"  data-aos="fade-up" data-aos-duration="2000">
-               <h2 class="card-heading">
-                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Our_Martyrs_hi') }} @else {{ config('staticTextLang.Our_Martyrs_en') }} @endif
-               </h2>
-               <div class="card-image">
-                  <img src="{{ asset('assets-nsg/images/e-sharadhanjali.png')}}" alt="e-sharadhanjali" class="img-fluid" />
-               </div>
-               <p class="card-title">
-                  @if(Session::get('locale') == 'hi') {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_hi') }} @else {{ config('staticTextLang.Our_Martyrs_Pride_of_the_Nation_en') }} @endif
-               </p>
-               <div class="btn-wrap">
-                  <a href="{{ url('veer-gatha') }}" 
-                     class="btn btn-red">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.Continue_hi') }} @else {{ config('staticTextLang.Continue_en') }} @endif
-                  </a>
-               </div>
-            </div>
-         </div>
+            @endforeach
+         @endif
       </div>
    </div>
 </section>

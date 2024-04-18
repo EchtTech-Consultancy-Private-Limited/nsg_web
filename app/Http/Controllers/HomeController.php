@@ -24,7 +24,15 @@ class HomeController extends Controller
     {
         
         $titleName = 'Home';
-        return view('home', ['title' => $titleName]);
+        $sectionTwo = DB::table('home_page_sections_list as sl')
+                            ->select('sd.*')
+                            ->join('home_page_sections_designs_details as sd','sd.hpsi_id','=','sl.uid')
+                            ->where('sl.sort_order',2)
+                            ->where('sl.soft_delete', 0)
+                            ->where('sl.status', 3)
+                            ->get();
+       
+        return view('home', ['title' => $titleName,'sectionData'=>$sectionTwo??[] ]);
     }
     public function SetLang(Request $request)
     {
@@ -97,7 +105,7 @@ class HomeController extends Controller
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
         //dd($slug);
-        //dd($menu);
+       // dd($data);
         return view('master-page', [
                     'title' => $titleName,
                     'sideMenu'=>$menu??'', 
@@ -221,8 +229,14 @@ class HomeController extends Controller
                     }
                 }
             }
+        $now = date('Y');
+        $then = $now - 8;
+        $years = range( $now, $then );
         //dd($galleryData);
-        return view('pages.photo-gallery',['title' => $titleName,'photogallery'=>$galleryData]);
+            return view('pages.photo-gallery',['title' => $titleName,
+            'photogallery'=>$galleryData,
+            'years'=>$years,
+        ]);
     }
 
     public function veerGatha(Request $request)
