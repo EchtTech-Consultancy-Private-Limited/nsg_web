@@ -1686,6 +1686,8 @@ table thead th {
 
 .wrapper #masterGallerySlider .img-wrap img {
   border-radius: 0;
+  height: 180px;
+  object-fit: cover;
 }
 
 .wrapper #masterGallerySlider .title {
