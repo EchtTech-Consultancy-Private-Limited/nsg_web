@@ -6,7 +6,7 @@
 <script src="{{ asset('public/form-data/feedback.js') }}"></script>
 @endpush
 @section('content')
-<section class="common-form-wrap pt-3 pb-5 bg-grey common-bg-right">
+<section class="common-form-wrap pt-3 pb-5 bg-grey common-bg-right" id="main_content">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

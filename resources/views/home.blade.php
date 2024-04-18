@@ -70,7 +70,8 @@
       </div>
    </div>
 </section>
-<section class="achievement-wrap">
+
+<section class="achievement-wrap" id="main_content">
    <div class="container">
       <div class="row">
          <div class="col-md-12 col-lg-4">

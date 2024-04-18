@@ -19,16 +19,16 @@
                     <li><a href="{{ route('feedback') }}">@if(Session::get('locale') == 'hi')
                             {{ config('staticTextLang.Feedback_hi') }} @else {{ config('staticTextLang.Feedback_en') }}
                             @endif</a></li>
-                    <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.sra_hi') }} @else
+                    <li><a href="{{ route('screen-reader-access') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.sra_hi') }} @else
                             {{ config('staticTextLang.sra_en') }} @endif</a></li>
-                    <li><a href="#">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.stmc_hi') }} @else
+                    <li><a href="#main_content">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.stmc_hi') }} @else
                             {{ config('staticTextLang.stmc_en') }} @endif</a></li>
                     <li>
                         <div class="search-btn-d p-relative">
                             <button class="btn search-show-popup">
                                 <i class="fa fa-search"></i>
                             </button>
-    
+
                             <div class="serch-box-show d-none">
                                 <form action="" method="post">
                                     <input type="hidden" name="_token" value="">
@@ -71,14 +71,14 @@
                             </select>
                         </div>
                     </li>
-                    <li>
+                    <!-- <li>
                         <div class="screen-reader">
                             <button class="btn btn-white btn-outline-black mx-2 ms-md-4">
                                 <img src="{{ asset('assets-nsg/images/screen-reader.svg')}}" alt="screen-reader"
                                     class="img-fluid" />
                             </button>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

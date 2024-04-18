@@ -249,7 +249,8 @@ ul {
   background-size: contain;
 }
 
-.common-table, .table {
+.common-table,
+.table {
   border: 1px solid #cccccc;
 }
 
@@ -2547,7 +2548,8 @@ table thead th {
 .veer-accordion .accordion-button {
   background-color: transparent;
   box-shadow: none;
-  color: #000;;
+  color: #000;
+  ;
   font-size: 1.2rem;
   font-weight: 400;
   padding: 10px 15px;
@@ -2864,12 +2866,13 @@ div.dt-container .dt-length label {
   font-size: 18px;
 }
 
-.common-card .organization-chart ul li, .common-card .photogallery-tabs ul li {
-  list-style:none;
+.common-card .organization-chart ul li,
+.common-card .photogallery-tabs ul li {
+  list-style: none;
 }
 
 .common-card .photogallery-tabs ul li {
-  list-style:none;
+  list-style: none;
 }
 
 .search-btn-d .btn {
@@ -2877,7 +2880,10 @@ div.dt-container .dt-length label {
   font-size: 18px;
 }
 
-.btn:first-child:active{box-shadow: none !important;border-color: transparent;}
+.btn:first-child:active {
+  box-shadow: none !important;
+  border-color: transparent;
+}
 
 /* searchbox css */
 .serch-box-show {
@@ -2894,6 +2900,7 @@ div.dt-container .dt-length label {
   padding: 8px 18px !important;
   font-size: 18px;
 }
+
 .submit-btn-apply {
   background: #cc2832 !important;
   border: 0;
@@ -2904,4 +2911,20 @@ div.dt-container .dt-length label {
   margin-left: 10px;
 }
 
-.p-relative{position: relative;}
+.p-relative {
+  position: relative;
+}
+
+marquee.marquee {
+  color: #fff;
+}
+
+.site-header .navbar .nav-item .dropdown-submenu:hover>.dropdown-menu {
+  max-height: 381px;
+  overflow: auto;
+}
+
+.photogallery-wrap .photogallery-slider .photogallery-card .img-wrap img {
+  height: 260px;
+  object-fit: cover;
+}
