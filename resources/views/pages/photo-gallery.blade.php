@@ -37,7 +37,6 @@
                                 <div class="tab-content" id="myTabContent">
                                 @if(isset($photogallery) && count($photogallery)>0)
                                     @foreach($photogallery as $key=>$photogallerys)
-                                    
                                 <div class="tab-pane fade @if(date('Y') == \Carbon\Carbon::parse($photogallery[$key]['gallery_details'][$key]->start_date)->format('Y')) show active @endif" 
                                 id="year{{\Carbon\Carbon::parse($photogallery[$key]['gallery_details'][$key]->start_date)->format('Y')}}-tab-pane" role="tabpanel"
                                         aria-labelledby="year{{\Carbon\Carbon::parse($photogallery[$key]['gallery_details'][$key]->start_date)->format('Y')}}-tab" tabindex="0">
@@ -54,7 +53,7 @@
                                                         <div class="item">
                                                             <div class="photogallery-card">
                                                                 <div class="img-wrap">
-                                                                    <img src="{{ asset('assets-nsg/images/photogallery1.png') }}" alt="photo-gallery"
+                                                                    <img src="{{ asset('resources/uploads/GalleryManagement/'.$imeages->public_url) }}" alt="photo-gallery"
                                                                         class="img-fluid" />
                                                                     <!-- <span class="total-img">
                                                                         22 Pics
@@ -63,7 +62,8 @@
                                                                 <div class="img-title">
                                                                     <img src="{{ asset('assets-nsg/images/dotted-vector.png') }}" alt="vector" class="img-fluid" />
                                                                     <p class="text-center">
-                                                                        TDemo
+                                                                        
+                                                                        @if(Session::get('locale') == 'hi') {{ $photogallerys['gallery']->title_name_hi??'' }} @else {{ $photogallerys['gallery']->title_name_en??''}} @endif
                                                                     </p>
                                                                 </div>
                                                             </div>

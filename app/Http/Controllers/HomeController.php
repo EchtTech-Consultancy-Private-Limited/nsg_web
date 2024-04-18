@@ -105,7 +105,7 @@ class HomeController extends Controller
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
         //dd($slug);
-        //dd($menu);
+       // dd($data);
         return view('master-page', [
                     'title' => $titleName,
                     'sideMenu'=>$menu??'', 
