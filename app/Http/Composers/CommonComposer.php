@@ -44,6 +44,7 @@ class CommonComposer
             $logo = DB::table('website_core_settings')->where('status', 3)->where('soft_delete', 0)->first();
             $notification= DB::table('recent_activities')->where('end_date', '>=', now()->toDateString())->where('notification_others',1)->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();
             $press_release= DB::table('recent_activities')->where('end_date', '>=', now()->toDateString())->where('notification_others',2)->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();
+            $privateGovCLient= DB::table('private_government_clients')->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
             // $tender_management = DB::table('tender_management')->where('soft_delete', 0)->take(5)->latest('created_at')->get();
             $tender_management = DB::table('tender_management')
                                 ->where('tender_management.soft_delete', 0)
@@ -118,6 +119,7 @@ class CommonComposer
             'visitCounters' => $visitCounter, 'quickLink' => $quickLink, 'alertMessage' => $this->checkLanguage(),
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 'banner' => $banner,
              'news_management' => $news_management,
+             'privateGovCLients'=> $privateGovCLient,
              'tender_management' => $tender_management,'galleryData'=>$galleryData,'homegallery' =>$galleryHome,
              'galleryVideo' => $galleryVideo]);
       
