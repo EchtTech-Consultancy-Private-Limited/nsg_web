@@ -178,40 +178,29 @@
                      </div>
                   @endif
                   <!-- Form Builder Data End -->
-            </div>
-            <!-- Gallery Begin -->
-               @if(isset($pageData->pageGallerys) && count($pageData->pageGallerys)>0)
-                  <div class="common-card p-4 mb-3">
-                    <div class="d-flex align-items-center justify-content-between pb-2 border-bottom">
-                        <h3 class="heading-red">
-                            Images with Title
-                        </h3>
-                        <a href="#" class="link-yellow">
-                            View All
-                        </a>
-                    </div>
+                   <!-- Gallery Begin -->
+                   @if(isset($pageData->pageGallerys) && count($pageData->pageGallerys)>0)
                     <div class="master-gallery-wrap mt-3">
                         <div class="master-gallery-slider" id="common-slider">
-                            <div class="owl-carousel owl-theme" id="masterGallerySlider">
-                            @foreach($pageData->pageGallerys as $key=>$pageGallery)
+                           <div class="owl-carousel owl-theme" id="masterGallerySlider">
+                           @foreach($pageData->pageGallerys as $key=>$pageGallery)
                               <div class="item">
-                                <div class="img-wrap">
-                                  <img src="{{ asset('resources/uploads/PageContentGallery/'.$pageGallery->public_url) }}" alt="taj" class="img-fluid" />
-                                  <div class="d-flex align-items-center justify-content-between p-3">
+                              <div class="img-wrap">
+                                 <img src="{{ asset('resources/uploads/PageContentGallery/'.$pageGallery->public_url) }}" alt="taj" class="img-fluid" />
+                                 <div class="d-flex align-items-center justify-content-between p-3">
                                     <p class="title">
-                                        {{ $pageGallery->image_title }}
+                                       {{ $pageGallery->image_title }}
                                     </p>
                                     <!-- <a href="#" class="view-more">
-                                        <img src="assets/images/view.svg" alt="view" class="img-fluid" />
+                                       <img src="assets/images/view.svg" alt="view" class="img-fluid" />
                                     </a> -->
-                                  </div>
-                                </div>
+                                 </div>
+                              </div>
                               </div>
                               @endforeach
-                            </div>
-                          </div>
-                    </div>
-                </div>
+                           </div>
+                        </div>
+                     </div>
                 @endif
             <!-- Gallery End -->
          </div>
