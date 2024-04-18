@@ -193,71 +193,21 @@
                     <div class="master-gallery-wrap mt-3">
                         <div class="master-gallery-slider" id="common-slider">
                             <div class="owl-carousel owl-theme" id="masterGallerySlider">
+                            @foreach($pageData->pageGallerys as $key=>$pageGallery)
                               <div class="item">
                                 <div class="img-wrap">
-                                  <img src="assets/images/gallery-img1.png" alt="taj" class="img-fluid" />
+                                  <img src="{{ asset('resources/uploads/PageContentPdf/'.$pageGallery->public_url) }}" alt="taj" class="img-fluid" />
                                   <div class="d-flex align-items-center justify-content-between p-3">
                                     <p class="title">
-                                        Sed ut perspiciatis unde omnis
+                                        {{ $pageGallery->image_title }}
                                     </p>
-                                    <a href="#" class="view-more">
+                                    <!-- <a href="#" class="view-more">
                                         <img src="assets/images/view.svg" alt="view" class="img-fluid" />
-                                    </a>
+                                    </a> -->
                                   </div>
                                 </div>
                               </div>
-                              <div class="item">
-                                <div class="img-wrap">
-                                  <img src="assets/images/gallery-img2.png" alt="taj" class="img-fluid" />
-                                  <div class="d-flex align-items-center justify-content-between p-3">
-                                    <p class="title">
-                                        Sed ut perspiciatis unde omnis
-                                    </p>
-                                    <a href="#" class="view-more">
-                                        <img src="assets/images/view.svg" alt="view" class="img-fluid" />
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <div class="img-wrap">
-                                  <img src="assets/images/gallery-img3.png" alt="taj" class="img-fluid" />
-                                  <div class="d-flex align-items-center justify-content-between p-3">
-                                    <p class="title">
-                                        Sed ut perspiciatis unde omnis
-                                    </p>
-                                    <a href="#" class="view-more">
-                                        <img src="assets/images/view.svg" alt="view" class="img-fluid" />
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <div class="img-wrap">
-                                  <img src="assets/images/gallery-img4.png" alt="taj" class="img-fluid" />
-                                  <div class="d-flex align-items-center justify-content-between p-3">
-                                    <p class="title">
-                                        Sed ut perspiciatis unde omnis
-                                    </p>
-                                    <a href="#" class="view-more">
-                                        <img src="assets/images/view.svg" alt="view" class="img-fluid" />
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="item">
-                                <div class="img-wrap">
-                                  <img src="assets/images/gallery-img5.png" alt="taj" class="img-fluid" />
-                                  <div class="d-flex align-items-center justify-content-between p-3">
-                                    <p class="title">
-                                        Sed ut perspiciatis unde omnis
-                                    </p>
-                                    <a href="#" class="view-more">
-                                        <img src="assets/images/view.svg" alt="view" class="img-fluid" />
-                                    </a>
-                                  </div>
-                                </div>
-                              </div>
+                            
                             </div>
                           </div>
                     </div>

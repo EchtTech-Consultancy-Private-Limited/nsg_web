@@ -221,8 +221,14 @@ class HomeController extends Controller
                     }
                 }
             }
+        $now = date('Y');
+        $then = $now - 8;
+        $years = range( $now, $then );
         //dd($galleryData);
-        return view('pages.photo-gallery',['title' => $titleName,'photogallery'=>$galleryData]);
+            return view('pages.photo-gallery',['title' => $titleName,
+            'photogallery'=>$galleryData,
+            'years'=>$years,
+        ]);
     }
 
     public function veerGatha(Request $request)
