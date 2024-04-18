@@ -46,6 +46,7 @@ Route::middleware(['visitingcounter'])->group(function () {
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
     Route::post('feedback-save', [HomeController::class, 'feedbackDataStore'])->name('feedback-save');
     Route::get('sitemap', [HomeController::class, 'siteMapList'])->name('sitemap');
+    Route::get('screen-reader-access', [HomeController::class, 'screenreaderaccess'])->name('screen-reader-access');
     Route::get('veer-gatha', [HomeController::class, 'veerGatha'])->name('veer-gatha');
     Route::get('about-us/organization-structure', [HomeController::class, 'organizationChart'])->name('about-us/organization-structure');
     Route::get('gallery/photo-gallery', [HomeController::class, 'photoGallery'])->name('gallery/photo-gallery');

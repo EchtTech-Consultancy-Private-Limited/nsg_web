@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
-<section class="veer-gatha-wrap pt-3 pb-5 bg-grey common-bg-right">
+<section class="veer-gatha-wrap pt-3 pb-5 bg-grey common-bg-right" id="main_content">
     <div class="container">
       <div class="row">
         <div class="col-md-12">

@@ -3,7 +3,7 @@
 {{ __('National Security Guard | '.$breadcum1??'NSG') }}
 @endsection
 @section('content')
-<section class="wrapper common-bg-right">
+<section class="wrapper common-bg-right" id="main_content">
    <div class="container">
       <div class="row">
          <div class="col-md-12">

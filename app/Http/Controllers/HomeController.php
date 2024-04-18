@@ -180,6 +180,14 @@ class HomeController extends Controller
         return view('pages.sitemap',['title' => $titleName]);
     }
 
+
+    public function screenreaderaccess(Request $request)
+    {
+        
+        $titleName = 'Screen Reader Access';
+        return view('pages.screen-reader-access',['title' => $titleName]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
