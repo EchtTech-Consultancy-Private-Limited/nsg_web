@@ -8,7 +8,7 @@
                         <a href="{{ $privateGovCLient->url }}"
                         onclick="return confirm('{{ $alertMessage }}')"
                         class="client-slider-content">
-                        <img src="{{ asset('resources/uploads/clientlogo/'.$privateGovCLient->public_url)) }}" alt="{{ $privateGovCLient->title_en }}" class="img-fluid" />
+                        <img src="{{ asset('resources/uploads/clientlogo/'.$privateGovCLient->public_url) }}" alt="{{ $privateGovCLient->title_en }}" class="img-fluid" />
                         </a>
                     </div>
                     @endforeach
