@@ -30,21 +30,20 @@
                             </button>
 
                             <div class="serch-box-show d-none">
-                                <form action="" method="post">
+                                <form name="searchForm" action="{{ url('search') }}" method="get">
                                     <input type="hidden" name="_token" value="">
                                     <div class="d-flex">
                                         <form action="#" method="get">
                                             <div class="d-flex">
-                                                <input type="search" class="form-control" id="myInput"
-                                                    placeholder="Search here..." value="" name="search"
-                                                    autocomplete="off">
-                                                <button type="submit" class="btn-info submit-btn-apply"> <i
-                                                        class="fa fa-search"> </i> </button>
-
+                                                <input type="search" class="form-control"
+                                                    placeholder="Search here..." value="{{ request('search_key') ?? '' }}" name="search_key"
+                                                    id="search_key" onKeyUp="autoComplete()" autocomplete="off" required>
+                                                <button type="submit" class="btn-info submit-btn-apply"> 
+                                                    <i class="fa fa-search"> </i> 
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
-
                             </div>
                     </li>
                     <li>
