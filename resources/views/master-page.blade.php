@@ -34,13 +34,15 @@
                   @if(Session::get('locale') == 'hi') {{ $sideMenu->main_menu->name_hi??'' }} @else {{ $sideMenu->main_menu->name_en??'' }} @endif
                </h3>
                <ul>
+                  @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
                   @if(isset($sideMenu->main_menu->sub_menu) && count($sideMenu->main_menu->sub_menu)==0)
                   <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_1">
                         <div class="accordion-item">
                            <div class="list-start @php if(isset($slug) && $sideMenu->main_menu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp" id="flush-headingOne_1">
-                                 <a href="{{ $sideMenu->main_menu->url }}"
+                                 <a href="{{ url($sideMenu->main_menu->url) }}"
                                     target="@php if(isset($sideMenu->main_menu->tab_type) && $sideMenu->main_menu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                     class="nav-link" type="button" 
+                                    onclick="@php if($sideMenu->main_menu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                     data-bs-toggle="" data-bs-target="#flush-collapseOne_1"
                                     aria-expanded="false"aria-controls="flush-collapseOne"tabindex="0">
                                     <img src="{{ asset('assets-nsg/images/arrow-right.svg') }}" alt="arrow-right" class="img-fluid" />
@@ -56,6 +58,7 @@
                            <div class="accordion-item">
                               <div class="list-start @php if(isset($slug) && $subMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp" id="flush-headingOne_{{$key}}">
                                  <a href="{{ $subMenu->url }}"
+                                    onclick="@php if($subMenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                     target="@php if(isset($subMenu->tab_type) && $subMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                     class="nav-link @php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo'collapsed'; }else{ echo ''; } @endphp" type="button" 
                                     data-bs-toggle="@php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo'collapse'; }else{ echo 'collapsed'; } @endphp" data-bs-target="#flush-collapseOne_{{$key}}"
@@ -73,7 +76,9 @@
                                        @if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0)
                                           @foreach($subMenu->sub_sub_menu as $key=>$subsubMenu)
                                           <li class="@php if(isset($slug) && $subsubMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp">
-                                             <a href="{{$subsubMenu->url}}" class="" tabindex="0"
+                                             <a href="{{ $subsubMenu->url }}" 
+                                             class="" tabindex="0"
+                                             onclick="@php if($subsubMenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                              target="@php if(isset($subsubMenu->tab_type) && $subsubMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                              >
                                                 @if(Session::get('locale') == 'hi') {{ $subsubMenu->name_hi??'' }} @else {{ $subsubMenu->name_en??'' }} @endif
