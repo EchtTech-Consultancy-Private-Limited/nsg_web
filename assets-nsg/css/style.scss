@@ -61,6 +61,12 @@ ul {
   }
 }
 
+
+.common-card ul.list-text li {
+  list-style: disc;
+  margin: 0 0 10px 25px;
+}
+
 .heading-red {
   font-size: 1.75em;
   font-weight: 600;
@@ -167,12 +173,12 @@ ul {
   &-table {
     border: 1px solid #cccccc;
     thead {
-      background-color: #262626;
+     
       th {
         font-size: 1em;
         font-weight: 600 !important;
         color: #ffffff;
-        background: #262626;
+        background-color: #262626 !important;
         padding: 15px;
         @media (max-width: 991.98px) {
           font-size: 0.875em;
@@ -273,7 +279,7 @@ ul {
               line-height: 3;
             }
           }
-          &:nth-child(4) a {
+          &:nth-child(5) a {
             border-right: 0;
           }
           .text-increment-btn {
@@ -361,7 +367,7 @@ ul {
   box-shadow: 0 4px 10px rgb(0, 0, 0, 0.1);
   top: 55px;
   transition: all 0.2s ease;
-  z-index: 10000;
+  z-index: 1000;
   position: sticky;
   .navbar {
     padding: 10px 0;
@@ -2376,3 +2382,18 @@ img.shradhanjali-img {
 div.dt-container .dt-length label {
   margin-left: 10px;
 }
+
+.common-card .organization-chart ul li {
+  list-style:none !important;
+}
+.common-card .organization-chart ul li, .common-card .photogallery-tabs ul li {
+  list-style:none !important;
+}
+
+.search-btn-d .btn {
+  padding: 0 18px 0 0px;
+  font-size: 18px;
+  box-shadow: none !important;
+}
+
+.btn:first-child:active{box-shadow: none !important;border-color: transparent;}

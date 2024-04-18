@@ -16,7 +16,7 @@
             </nav>
           </div>
          <div class="d-flex justify-content-between">
-         <h2 class="heading-black">
+          <h2 class="heading-black">
             Veer Gatha
           </h2>
           <div class="btn-wrap">
