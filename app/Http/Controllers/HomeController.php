@@ -24,7 +24,15 @@ class HomeController extends Controller
     {
         
         $titleName = 'Home';
-        return view('home', ['title' => $titleName]);
+        $sectionTwo = DB::table('home_page_sections_list as sl')
+                            ->select('sd.*')
+                            ->join('home_page_sections_designs_details as sd','sd.hpsi_id','=','sl.uid')
+                            ->where('sl.sort_order',2)
+                            ->where('sl.soft_delete', 0)
+                            ->where('sl.status', 3)
+                            ->get();
+       
+        return view('home', ['title' => $titleName,'sectionData'=>$sectionTwo??[] ]);
     }
     public function SetLang(Request $request)
     {
