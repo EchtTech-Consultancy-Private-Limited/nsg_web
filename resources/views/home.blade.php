@@ -7,20 +7,11 @@
    <div class="container-fluid px-lg-5">
       <div class="row">
          <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center">
-            <div class="director-wrap" data-aos="fade-right" data-aos-duration="3000">
-               <div class="director-img">
-                  <img src="{{ asset('assets-nsg/images/ips-dg.png')}}" alt="Shri MA Ganapathy" class="img-fluid" />
-               </div>
-               <h3 class="name">
-                  Daljit Singh Chawdhary
-               </h3>
-               <p class="title">
-                  IPS Director General
-               </p>
-               <div class="btn-wrap d-flex align-items-center justify-content-center mt-3">
-                  <button class="btn btn-red">DG's Message</button>
-               </div>
-            </div>
+         @if(isset($sectionZero) && count($sectionZero)>0)
+            @foreach($sectionZero as $sectionZeros)
+               @if(Session::get('locale') == 'hi') {!! $sectionZeros->content_hi !!} @else {!! $sectionZeros->content_en !!} @endif
+            @endforeach
+         @endif
          </div>
          <div class="col-md-12 col-lg-6">
             <div class="banner-slider" id="common-slider">
