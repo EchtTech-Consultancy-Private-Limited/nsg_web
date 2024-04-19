@@ -434,6 +434,30 @@ class CommonApprovalAPIController extends Controller
             ],201);
         }
     }
+    public function tenderTypeApprovePublish($id)
+    {
+        $data=DB::table('tender_type')->where('uid',$id)->first()->status;
+        if($data ==0 || $data ==1)
+        {
+            DB::table('tender_type')->where('uid',$id)->update(['status'=>'2']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }else if($data ==2){
+            DB::table('tender_type')->where('uid',$id)->update(['status'=>'3']);
+            return response()->json([
+                'status'=>200,
+                'message'=>'Approve successfully.'
+            ],200);
+        }
+        else{
+            return response()->json([
+                'status'=>201,
+                'message'=>'some error accoured.'
+            ],201);
+        }
+    }
     public function websiteCoreSettingsSocialLinkApprovePublish($id)
     {
         $data=DB::table('social_links')->where('uid',$id)->first()->status;

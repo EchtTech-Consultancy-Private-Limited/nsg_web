@@ -260,9 +260,21 @@
                </div>
             </div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion 
+               {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list','tendertype/tendertype-list']) }} 
+               {{ (request()->is('tender/tender-create/*')) ? 'hover show' : '' }}
+               {{ (request()->is('tender/tender-list/*')) ? 'hover show' : '' }}
+               {{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'hover show' : '' }}
+               {{ (request()->is('tendertype/tendertype-list/*')) ? 'hover show' : '' }}
+               " >
             <span class="menu-link" ><span class="menu-icon" ><i class="ki-outline ki-element-12 fs-2"></i></span><span  class="menu-title" >{{ config('menu.tendersmanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list']) }} {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}{{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion 
+               {{ set_active(['tender/tender-create','tender/tender-list','purchaseworkscommittee/purchaseworkscommittee-list','tendertype/tendertype-list']) }} 
+               {{ (request()->is('tender/tender-create/*')) ? 'show' : '' }}
+               {{ (request()->is('tender/tender-list/*')) ? 'show' : '' }}
+               {{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'show' : '' }}
+               {{ (request()->is('tendertype/tendertype-list/*')) ? 'show' : '' }}
+               " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['tender/tender-create']) }} {{ (request()->is('tender/tender-create/*')) ? 'active' : '' }}" href="{{ route('tender.create') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Create</span></a><!--end:Menu link-->
                </div>
@@ -272,6 +284,11 @@
                @if(config('particularAssets.purchaseworkscommittee') == 'true')
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['purchaseworkscommittee/purchaseworkscommittee-list']) }}{{ (request()->is('purchaseworkscommittee/purchaseworkscommittee-list/*')) ? 'active' : '' }}" href="{{ route('purchaseworkscommittee.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Purchase / Works / Committee</span></a><!--end:Menu link-->
+               </div>
+               @endif
+               @if(config('particularAssets.tender_type') == 'true')
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['tendertype/tendertype-list']) }}{{ (request()->is('tendertype/tendertype-list/*')) ? 'active' : '' }}" href="{{ route('tendertype.list') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Tender Type List</span></a><!--end:Menu link-->
                </div>
                @endif
             </div>
