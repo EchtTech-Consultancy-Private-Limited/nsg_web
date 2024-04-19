@@ -44,7 +44,7 @@
                               <span class="tree-node-bg bg-yellow"></span>
                               <div class="tree-node tree-node-yellow">
                                 <p class="tree-node-text">
-                                  IG (OPS)
+                                IG (HQ) 
                                 </p>
                               </div>
                             </div>
@@ -54,7 +54,7 @@
                               <span class="tree-node-bg bg-blue"></span>
                               <div class="tree-node tree-node-blue">
                                 <p class="tree-node-text">
-                                  IG (HQ)
+                                IG (OPS)
                                 </p>
                               </div>
                             </div>
@@ -115,7 +115,7 @@
                           </li>
                         </ul>
                         <ul class="d-flex">
-                          <li>
+                          <li>  
                             <div class="tree-node-wrap">
                               <span class="tree-node-bg bg-yellow"></span>
                               <div class="tree-node tree-node-yellow">
