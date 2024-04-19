@@ -9,7 +9,7 @@
                         onclick="return confirm('{{ $alertMessage }}')"
                         target="_blank"
                         class="client-slider-content">
-                        <img src="{{ asset('resources/uploads/clientlogo/'.$privateGovCLient->public_url) }}" alt="{{ $privateGovCLient->title_en }}" class="img-fluid" />
+                        <img src="{{ asset('resources/uploads/clientlogo/'.$privateGovCLient->public_url) }}" alt="{{ $privateGovCLient->title_en }}" title="{{ $privateGovCLient->title_en }}" class="img-fluid" />
                         </a>
                     </div>
                     @endforeach
