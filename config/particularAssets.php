@@ -2,6 +2,6 @@
 
 
 return [
-        'rtiapplicationresponses' => 'true',  //false
-        'purchaseworkscommittee' => 'true'  //false
+        'rtiapplicationresponses' => 'false',  //true
+        'purchaseworkscommittee' => 'false'  //true
 ];
