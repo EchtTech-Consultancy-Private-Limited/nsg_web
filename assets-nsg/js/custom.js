@@ -434,3 +434,22 @@ $(document).ready(() => {
 $('.search-show-popup').click(() => {      
     $('.serch-box-show').toggleClass('d-none')
 })
+
+function ctime() {
+    if (document.getElementById) {
+        timeElement = document.getElementById("timeid");
+        var e = new Date(),
+            t = e.getHours(),
+            a = e.getMinutes(),
+            o = e.getSeconds(),
+            n = "PM";
+        t < 12 && (n = "AM"),
+            t > 12 && (t -= 12),
+            0 == t && (t = 12),
+            a <= 9 && (a = "0" + a),
+            o <= 9 && (o = "0" + o);
+        var i = t + ":" + a + ":" + o + " " + n;
+        (timeElement.innerHTML = "<p class='time'>" + i + "</p>")
+    }
+}
+setInterval(ctime, 1000);

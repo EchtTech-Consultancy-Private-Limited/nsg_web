@@ -2082,6 +2082,7 @@ table thead th {
   display: block;
   width: 100%;
   margin: 0;
+  text-align: center;
 }
 
 .organization-chart .tree-node hr {
@@ -2929,4 +2930,31 @@ marquee.marquee {
 .photogallery-wrap .photogallery-slider .photogallery-card .img-wrap img {
   height: 260px;
   object-fit: cover;
+}
+
+#themeToggleCheckbox{
+  cursor: pointer;
+}
+
+.border-left-1 {
+  border-left: 1px solid rgba(33, 37, 41, 0.5);
+  padding-left: 10px;
+  margin-left: 10px !important;
+}
+
+.timer-date-c span.li_eng.responsive_go_eng {
+  display: flex;
+  align-items: center;
+}
+.timer-date-c span.li_eng.responsive_go_eng p.time {
+ margin-bottom: 0px !important;
+ margin-left: 10px;
+}
+
+.dropdown-item:focus, .dropdown-item:hover {
+  background-color: #e7e7e7;
+}
+
+.common-card p{
+  text-align: justify;
 }
