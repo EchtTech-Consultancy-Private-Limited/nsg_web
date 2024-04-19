@@ -58,7 +58,7 @@ class CaptchaCode {
         });
 
         // Return the image as a response
-        return $img->response('png');
+        //return $img->response('png');
     }
 
 }

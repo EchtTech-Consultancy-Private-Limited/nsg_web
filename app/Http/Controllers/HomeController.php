@@ -236,10 +236,10 @@ class HomeController extends Controller
         
         $CustomCaptchas = new CaptchaCode();
         
-        $CustomCaptch = $CustomCaptchas->generateCaptchaCode();
+        //$CustomCaptch = $CustomCaptchas->generateCaptchaCode();
         //dd($CustomCaptch);
         $titleName = 'Feed Back';
-        return view('pages.feedback',['title' => $titleName,'captchaCode'=>$CustomCaptch ]);
+        return view('pages.feedback',['title' => $titleName]);
     }
 
     /**
