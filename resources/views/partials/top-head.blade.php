@@ -73,7 +73,7 @@
                     </li>
                     <li>
                         <div class="d-flex mx-2 mx-md-4">
-                            <button class="text-increment-btn" id="decrementBtn" title="Decrement Font Size">A-</button>
+                            <button class="text-increment-btn" id="decrementBtn" title="Decrese Font Size">A-</button>
                             <button class="text-increment-btn active" id="normalBtn" title="Normal Font Size">A</button>
                             <button class="text-increment-btn" id="incrementBtn" title="Increse Font Size">A+</button>
                         </div>
