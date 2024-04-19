@@ -50,7 +50,7 @@
                             <td>1</td>
                             <td class="sorting_1">Non Visual Desktop Access (NVDA)</td>
                             <td><a class="ext" href="http://www.nvda-project.org/" target="_BLANK"
-                                    onclick="return confirm('This link is external')"
+                                    onclick="return confirm('This link will take you to an external web site.')"
                                     title="External site that opens in a new window"
                                     tabindex="0">http://www.nvda-project.org/ (link is external)</a><br>(External
                                 website
@@ -62,7 +62,7 @@
                             <td>System Access To Go</td>
                             <td>
                                 <a class="ext" href="http://www.satogo.com/" target="_BLANK"
-                                    onclick="return confirm('This link is external')"
+                                    onclick="return confirm('This link will take you to an external web site.')"
                                     title="External site that opens in a new window" tabindex="0">http://www.satogo.com/
                                     (link is external)</a><br>(External website that opens in a new window)
                             </td>
@@ -73,7 +73,7 @@
                             <td>Web Anywhere</td>
                             <td>
                                 <a class="ext" href="http://webanywhere.cs.washington.edu/wa.php" target="_BLANK"
-                                    onclick="return confirm('This link is external')"
+                                    onclick="return confirm('This link will take you to an external web site.')"
                                     title="External site that opens in a new window"
                                     tabindex="0">http://webanywhere.cs.washington.edu/wa.php (link is
                                     external)</a><br>(External website that opens in a new window)
@@ -85,7 +85,7 @@
                             <td>Hal</td>
                             <td>
                                 <a class="ext" href="http://www.yourdolphin.co.uk/productdetail.asp?id=5"
-                                    target="_BLANK" onclick="return confirm('This link is external')"
+                                    target="_BLANK" onclick="return confirm('This link will take you to an external web site.')"
                                     title="External site that opens in a new window"
                                     tabindex="0">http://www.yourdolphin.co.uk/productdetail.asp?id=5 (link is
                                     external)</a><br>(External website that opens in a new window)
