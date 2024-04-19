@@ -161,7 +161,7 @@
                   <h2 class="heading-red">
                      @if(Session::get('locale') == 'hi') {{ config('staticTextLang.pg_hi') }} @else {{ config('staticTextLang.pg_en') }} @endif
                   </h2>
-                  <a href="#" class="link-yellow">
+                  <a href="{{ url('gallery/photo-gallery') }}" class="link-yellow">
                      @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
@@ -177,12 +177,12 @@
                   </div>
                   <div class="carousel-indicators common-scrollbar">
                      @if(isset($homegallery) && count($homegallery)>0)
-                     @foreach($homegallery as $key=>$homegallerys)
-                     <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class=""
-                        aria-current="true" aria-label="Slide {{$key+1}}">
-                        <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="thumbnail" />
-                     </button>
-                     @endforeach
+                        @foreach($homegallery as $key=>$homegallerys)
+                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class=""
+                           aria-current="true" aria-label="Slide {{$key+1}}">
+                           <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="thumbnail" />
+                        </button>
+                        @endforeach
                      @endif
                   </div>
                   <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">

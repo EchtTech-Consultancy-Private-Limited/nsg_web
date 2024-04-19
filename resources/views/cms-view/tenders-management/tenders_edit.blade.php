@@ -220,7 +220,7 @@
                                           <!--begin::Input-->
                                           <div>
                                              <input type="hidden" class="form-control mw-100 w-175px" name="uid" value="{{$pdfDatas->uid }}" />
-                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')??''}} Title</label>
                                              <input type="text" class="form-control mw-100 w-175px" name="pdftitle" value="{{$pdfDatas->pdf_title }}" />
                                           </div>
                                           <!-- <div>
@@ -232,8 +232,8 @@
                                              <input type="date" class="form-control mw-100 w-175px" name="enddate" value="{{$pdfDatas->end_date }}" />
                                           </div> -->
                                           <div>
-                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
-                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')??''}} Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px @if(env('PDF_MIME') == 'pdf') {{'checkmimepdf'}} @else {{'checkmime'}} @endif" name="pdfname" accept=".pdf" />
                                           </div>
                                           
                                           <!-- <div>
@@ -261,7 +261,7 @@
                                        <div data-repeater-item class="form-group d-flex flex-wrap align-items-center gap-5">
                                           <!--begin::Input-->
                                           <div>
-                                             <label class="required form-label mw-100 w-200px">Pdf Title</label>
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')}} Title</label>
                                              <input type="text" class="form-control mw-100 w-200px" name="pdftitle" placeholder="pdf title Name" />
                                           </div>
                                           <div>
@@ -273,8 +273,8 @@
                                              <input type="date" class="form-control mw-100 w-200px" name="enddate" placeholder="Tender Description" />
                                           </div>
                                           <div>
-                                             <label class="required form-label mw-100 w-200px">PDF Format</label>
-                                             <input type="file" class="form-control mw-100 w-200px checkmimepdf" name="pdfname" accept=".pdf" />
+                                             <label class="required form-label mw-100 w-200px">{{env('PDF_TITLE')}} Format</label>
+                                             <input type="file" class="form-control mw-100 w-200px @if(env('PDF_MIME') == 'pdf') {{'checkmimepdf'}} @else {{'checkmime'}} @endif" name="pdfname" accept=".pdf" />
                                           </div>
                                           <div>
                                              <label class="required form-label mw-100 w-200px">Opening Date</label>
