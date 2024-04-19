@@ -13,7 +13,7 @@
                 <div class="breadcrumb-wrap mb-4">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Feedback</li>
                         </ol>
                     </nav>
@@ -64,8 +64,6 @@
                                         <div class="row g-3 py-3 align-items-end">
                                             <div class="col-md-2 mb-2">
                                                 <div class="input-group captcha-input-wrap">
-                                                    {{ $captchaCode }}
-                                                    <!-- <img src="{{ route('captcha') }}" alt="CAPTCHA Image"> -->
                                                     <!-- <input class="form-control" value="634620" disabled> -->
                                                     <a class="input-group-text" onclick="chnageCaptcha(this.value)">
                                                         <img src="{{ asset('assets-nsg/images/refresh.svg') }}" alt="refresh-icon" class="img-fluid">

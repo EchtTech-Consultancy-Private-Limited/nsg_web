@@ -43,6 +43,7 @@ Route::middleware(['visitingcounter'])->group(function () {
     /** Below the URL set login on home */
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
+    Route::get('news-list', [HomeController::class, 'newsList'])->name('news-list');
     Route::get('contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');
     Route::post('feedback-save', [HomeController::class, 'feedbackDataStore'])->name('feedback-save');
