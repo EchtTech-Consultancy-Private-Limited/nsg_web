@@ -29,7 +29,9 @@
                   <br />
                   <span>
                     Designed, Developed and Hosted by 
-                    <a href="http://www.nic.in/" title="NIC, External Link that opens in a new window" target="_blank">
+                    <a href="http://www.nic.in/" 
+                    onclick="return confirm('{{ $alertMessage }}')"
+                    title="NIC, External Link that opens in a new window" target="_blank">
                       <strong>National Informatics Centre( NIC )</strong>
                     </a> 
                   </span> 
