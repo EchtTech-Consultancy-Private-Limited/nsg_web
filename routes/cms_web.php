@@ -19,6 +19,7 @@ use App\Http\Controllers\CMSControllers\DynamicFormManagementController;
 use App\Http\Controllers\CMSControllers\GalleryManagementController;
 use App\Http\Controllers\CMSControllers\NewsManagementController;
 use App\Http\Controllers\CMSControllers\TenderManagementController;
+use App\Http\Controllers\CMSControllers\TenderTypeController;
 use App\Http\Controllers\CMSControllers\EventsManagementController;
 use App\Http\Controllers\CMSControllers\ModuleManagementController;
 use App\Http\Controllers\CMSControllers\SystemLogsController;
@@ -152,7 +153,13 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         Route::get('/tender-show', [TenderManagementController::class, 'show'])->name('tender.show');
         Route::get('/tender-list', [TenderManagementController::class, 'index'])->name('tender.list');
     });
-    
+    Route::prefix('tendertype')->group(function(){
+        Route::get('/tendertype-create', [TenderTypeController::class, 'create'])->name('tendertype.create');
+        Route::get('/tendertype-edit', [TenderTypeController::class, 'edit'])->name('tendertype.edit');
+        Route::get('/tendertype-show', [TenderTypeController::class, 'show'])->name('tendertype.show');
+        Route::get('/tendertype-list', [TenderTypeController::class, 'index'])->name('tendertype.list');
+    });
+
     Route::prefix('event')->group(function(){
         Route::get('/event-create', [EventsManagementController::class, 'create'])->name('event.create');
         Route::get('/event-edit', [EventsManagementController::class, 'edit'])->name('event.edit');

@@ -120,6 +120,43 @@
                                  <!--end::Col-->
                               </div>
                            </div>
+                           @if(config('particularAssets.tender_cost') == 'true' || config('particularAssets.tender_type') == 'true')
+                           <div class="fv-row mb-10">
+                              <div class="row g-9 mb-7">
+                                 @if(config('particularAssets.tender_cost') == 'true')
+                                 <!--begin::Col-->
+                                 <div class="col-md-3 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-6 fw-semibold mb-2">Est.Cost(RS.)</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control form-control-solid tender_cost" type="number" id="tender_cost" placeholder="" name="tender_cost" value="" />
+                                    <!--end::Input-->
+                                 </div>
+                                 <!--end::Col-->
+                                 @endif
+                                 <!--begin::Col-->
+                                 @if(config('particularAssets.tender_type') == 'true')
+                                    <div class="col-md-3 fv-row">
+                                       <!--begin::Label-->
+                                       <label class="required fs-6 fw-semibold mb-2">Tender Type</label>
+                                       <!--end::Label-->
+                                       <div class="w-100">
+                                       <select class="form-select form-select-solid tender_typeid" name="tender_typeid" id="tender_typeid" data-control="select2" data-placeholder="Select an option">
+                                          <option></option>
+                                          @if(isset($tendertype) && count($tendertype)>0)
+                                             @foreach($tendertype as $tendertypes)
+                                                <option value="{{$tendertypes->type_slug}}">{{$tendertypes->type_name_en}}</option>
+                                             @endforeach
+                                          @endif
+                                       </select>
+                                    </div>
+                                 </div>
+                                 @endif
+                                 <!--end::Col-->
+                              </div>
+                           </div>
+                           @endif
                             <!--begin::Input group-->
                             <div class="mb-10 fv-row">
                               <!--begin::Label-->

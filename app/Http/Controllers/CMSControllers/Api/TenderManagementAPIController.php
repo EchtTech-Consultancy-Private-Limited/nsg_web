@@ -77,6 +77,8 @@ class TenderManagementAPIController extends Controller
                         'tab_type' => $request->tabtype,
                         'title_name_en' => $request->title_name_en,
                         'title_name_hi' => $request->title_name_hi,
+                        'tender_cost' => $request->tender_cost,
+                        'tender_typeid' => $request->tender_typeid,
                         'start_date'=> $request->startdate,
                         'end_date' => $request->enddate,
                         'opening_date' => $request->openingdate??'NULL',

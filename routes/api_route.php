@@ -8,6 +8,7 @@ use App\Http\Controllers\CMSControllers\Api\RolesAndPermissionAPIController;
 use App\Http\Controllers\CMSControllers\Api\FooterManagementAPIController;
 use App\Http\Controllers\CMSControllers\Api\SocialLinksAPIController;
 use App\Http\Controllers\CMSControllers\Api\TenderManagementAPIController;
+use App\Http\Controllers\CMSControllers\Api\TenderTypeAPIController;
 use App\Http\Controllers\CMSControllers\Api\DynamicContentPageManagamentAPIController;
 use App\Http\Controllers\CMSControllers\Api\EventsManagementAPIController;
 use App\Http\Controllers\CMSControllers\Api\NewsManagementAPIController;
@@ -119,7 +120,15 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::post('/update-ten',[TenderManagementAPIController::class,'update'])->name('tender-update');
             Route::delete('/delete-ten/{id}',[TenderManagementAPIController::class,'destroy'])->name('tender-delete');
             Route::post('/delete-pdf-tender',[TenderManagementAPIController::class,'deletePDFIMG'])->name('pdf-delete-tender');
-    
+           
+            /****** Tender Type tentype:tender type */
+            Route::post('/create-tentype',[TenderTypeAPIController::class,'store'])->name('tendertype-save')->middleware('throttle:custom_Limit');
+            Route::get('/list-tentype',[TenderTypeAPIController::class,'index'])->name('tendertype-list');
+            Route::get('/edit-tentype/{id}',[TenderTypeAPIController::class,'edit'])->name('tendertype-edit');
+            Route::get('/show/{id}',[TenderTypeAPIController::class,'show'])->name('tendertype-show');
+            Route::post('/update-tentype',[TenderTypeAPIController::class,'update'])->name('tendertype-update');
+            Route::delete('/delete-tentype/{id}',[TenderTypeAPIController::class,'destroy'])->name('tendertype-delete');
+
     
             /****** Content Page Setting cpi: content page information */
             Route::post('/create-cpi',[DynamicContentPageManagamentAPIController::class,'basicInformation'])->name('pagemetatag-save')->middleware('throttle:custom_Limit');
@@ -313,6 +322,7 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             Route::post('/approve-rti/{id}',[CommonApprovalAPIController::class,'rtiAssetsApprovePublish'])->name('rtiassets-approve');
             Route::post('/approve-aut/{id}',[CommonApprovalAPIController::class,'auditReportApprovePublish'])->name('aut-approve');
             Route::post('/approve-tender/{id}',[CommonApprovalAPIController::class,'tenderApprovePublish'])->name('tender-approve');
+            Route::post('/approve-tendertype/{id}',[CommonApprovalAPIController::class,'tenderTypeApprovePublish'])->name('tendertype-approve');
             Route::post('/approve-ue/{id}',[CommonApprovalAPIController::class,'userManagementApprovePublish'])->name('user-approve');
             Route::post('/approve-loginue/{id}',[CommonApprovalAPIController::class,'loginUserApprovePublish'])->name('loginuser-approve');
             Route::post('/approve-sociallink/{id}',[CommonApprovalAPIController::class,'websiteCoreSettingsSocialLinkApprovePublish'])->name('socialLink-approve');

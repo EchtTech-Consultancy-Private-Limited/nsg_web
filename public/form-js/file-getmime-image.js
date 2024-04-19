@@ -7,7 +7,6 @@ $(document).on('change', '.checkmime', function(e){
    // console.log(e.target.files[0]);
     axios.post('../mimeimagecheck',formdata, {
         }).then(function (response) {
-            console.log(response)
         if (response.data.status ==200) {
             toastr.success(
                 "Matches file extension!", 
