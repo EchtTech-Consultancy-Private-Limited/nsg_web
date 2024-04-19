@@ -99,52 +99,24 @@
                   <h2 class="heading-red">
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ln_hi') }} @else {{ config('staticTextLang.ln_en') }} @endif
                   </h2>
-                  <a href="#" class="link-yellow">
+                  <a href="{{ route('news-list') }}" class="link-yellow">
                   @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
                <div class="list-wrap">
                   <ul class="common-scrollbar">
+                  @if(isset($news_managements) && count($news_managements)>0)
+                     @foreach($news_managements as $news_management)
                      <li>
-                        <span class="date">9th August, 2023</span>
+                        <span class="date">
+                           {{\Carbon\Carbon::parse($news_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($news_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($news_management->startDate)->format('Y')}}
+                        </span>
                         <p class="desc">
-                           The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal for
-                           Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of Republic Day,
-                           2024.
+                           @if(Session::get('locale') == 'hi') {{ $news_management->title_name_hi }} @else {{ $news_management->title_name_en }} @endif
                         </p>
                      </li>
-                     <li>
-                        <span class="date">9th August, 2023</span>
-                        <p class="desc">
-                           The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal for
-                           Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of Republic Day,
-                           2024.
-                        </p>
-                     </li>
-                     <li>
-                        <span class="date">9th August, 2023</span>
-                        <p class="desc">
-                           The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal for
-                           Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of Republic Day,
-                           2024.
-                        </p>
-                     </li>
-                     <li>
-                        <span class="date">9th August, 2023</span>
-                        <p class="desc">
-                           The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal for
-                           Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of Republic Day,
-                           2024.
-                        </p>
-                     </li>
-                     <li>
-                        <span class="date">9th August, 2023</span>
-                        <p class="desc">
-                           The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal for
-                           Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of Republic Day,
-                           2024.
-                        </p>
-                     </li>
+                     @endforeach
+                  @endif
                   </ul>
                </div>
             </div>
@@ -197,210 +169,36 @@
          <div class="col-md-12 col-lg-6">
           <div class="award-wrap">
             <ul class="nav nav-tabs" id="blackTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="tenders-tab" data-bs-toggle="tab"
-                  data-bs-target="#tenders-tab-pane" type="button" role="tab" aria-controls="tenders-tab-pane"
-                  aria-selected="true">Current Tenders</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="eoi-tab" data-bs-toggle="tab" data-bs-target="#eoi-tab-pane"
-                  type="button" role="tab" aria-controls="eoi-tab-pane" aria-selected="false">Current Auctions</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="draft-tab" data-bs-toggle="tab" data-bs-target="#draft-tab-pane"
-                  type="button" role="tab" aria-controls="draft-tab-pane" aria-selected="false">QRS for Comments</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="award-tab" data-bs-toggle="tab" data-bs-target="#award-tab-pane"
-                  type="button" role="tab" aria-controls="award-tab-pane" aria-selected="false">Tenders Awarded</button>
-              </li>
+               @if(isset($tenderTypes) && count($tenderTypes)>0)
+                  @foreach($tenderTypes as $tenderTyp)
+                     <li class="nav-item" role="presentation">
+                        <button class="nav-link " id="{{$tenderTyp->type_slug}}" data-bs-toggle="tab"
+                           data-bs-target="#tenders-tab-pane" type="button" role="tab" aria-controls="tenders-tab-pane"
+                           aria-selected="true">
+                           @if(Session::get('locale') == 'hi') {{ $tenderTyp->type_name_hi }} @else {{ $tenderTyp->type_name_en }} @endif
+                        </button>
+                     </li>
+                  @endforeach
+               @endif
             </ul>
             <div class="tab-content" id="blackTabContent">
-              <div class="tab-pane fade show active" id="tenders-tab-pane" role="tabpanel" aria-labelledby="tenders-tab"
-                tabindex="0">
-                <div class="list-wrap">
-                  <ul class="common-scrollbar">
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="eoi-tab-pane" role="tabpanel" aria-labelledby="eoi-tab" tabindex="0">
-                <div class="list-wrap">
-                  <ul class="common-scrollbar">
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="draft-tab-pane" role="tabpanel" aria-labelledby="draft-tab" tabindex="0">
-                <div class="list-wrap">
-                  <ul class="common-scrollbar">
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="award-tab-pane" role="tabpanel" aria-labelledby="award-tab" tabindex="0">
-                <div class="list-wrap">
-                  <ul class="common-scrollbar">
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                    <li>
-                      <span class="date">9th August, 2023</span>
-                      <p class="desc">
-                        The President is pleased to award “President’s Medal for Distinguished Service”(PSM) and “Medal
-                        for Meritorious Service”(MSM) to the following officers and men of CRPF on the occasion of
-                        Republic Day, 2024.
-                      </p>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+               <div class="tab-pane fade show active" id="tenders-tab-pane" role="tabpanel" aria-labelledby="tenders-tab"
+                  tabindex="0">
+                  <div class="list-wrap">
+                     <ul class="common-scrollbar">
+                     @if(isset($tender_managements) && count($tender_managements)>0)
+                        @foreach($tender_managements as $tender_management)
+                        <li>
+                           <span class="date">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($tender_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($tender_management->startDate)->format('Y')}}</span>
+                           <p class="desc">
+                              @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
+                           </p>
+                        </li>
+                        @endforeach
+                     @endif
+                     </ul>
+                  </div>
+               </div>
             </div>
             <a href="#" class="link-yellow">
                @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif

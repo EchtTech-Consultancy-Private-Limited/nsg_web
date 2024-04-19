@@ -45,9 +45,40 @@ class HomeController extends Controller
                             ->where('sl.soft_delete', 0)
                             ->where('sl.status', 3)
                             ->get();
-       
+        $tenderType = DB::table('tender_type')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
+        
+        $news_management = DB::table('news_management')
+                                ->select('news_management.start_date as startDate'
+                                ,'news_management.title_name_en as title_name_en'
+                                ,'news_management.title_name_en as title_name_hi','news_details.*')
+                                ->where('news_management.soft_delete', 0)
+                                ->where('news_management.status', 3)
+                                ->leftjoin('news_details', 'news_management.uid', '=', 'news_details.news_id')
+                                ->where('news_details.soft_delete', 0)
+                                ->whereDate('news_details.archivel_date', '>=', now()->toDateString())
+                                ->latest('news_management.created_at')
+                                ->latest('news_details.created_at')
+                                ->get();
+
+        $tender_management = DB::table('tender_management')
+                                ->select('tender_management.start_date as startDate'
+                                ,'tender_management.title_name_en as title_name_en'
+                                ,'tender_management.title_name_en as title_name_hi','tender_details.*')
+                                ->where('tender_management.soft_delete', 0)
+                                ->where('tender_management.status', 3)
+                                ->leftjoin('tender_details', 'tender_management.uid', '=', 'tender_details.tender_id')
+                                ->where('tender_details.soft_delete', 0)
+                                ->whereDate('tender_details.archivel_date', '>=', now()->toDateString())
+                                ->latest('tender_management.created_at')
+                                ->latest('tender_details.created_at')
+                                ->get();
+        //dd($tender_management);
         return view('home', ['title' => $titleName,'sectionData'=>$sectionTwo??[],
-                  'sectionZero' =>$sectionZero??[], 'sectionOne'=>$sectionOne??[]  ]);
+                  'sectionZero' =>$sectionZero??[], 'sectionOne'=>$sectionOne??[],
+                  'tenderTypes'=>$tenderType??[],
+                  'tender_managements' =>$tender_management,
+                  'news_managements'=>$news_management
+                 ]);
     }
     public function SetLang(Request $request)
     {
@@ -155,6 +186,27 @@ class HomeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function newsList(Request $request)
+    {
+        $titleName = 'News';
+        $news_management = DB::table('news_management')
+                                ->select('news_management.start_date as startDate'
+                                ,'news_management.title_name_en as title_name_en'
+                                ,'news_management.title_name_en as title_name_hi','news_details.*')
+                                ->where('news_management.soft_delete', 0)
+                                ->where('news_management.status', 3)
+                                ->leftjoin('news_details', 'news_management.uid', '=', 'news_details.news_id')
+                                ->where('news_details.soft_delete', 0)
+                                ->whereDate('news_details.archivel_date', '>=', now()->toDateString())
+                                ->latest('news_management.created_at')
+                                ->latest('news_details.created_at')
+                                ->get();
+       return view('pages.news-list',[
+                    'title' => $titleName,
+                    'news_managements'=>$news_management
+    ]);
+    }
+
     public function contactUs(Request $request)
     {
         $titleName = 'Contact Us';
@@ -181,9 +233,10 @@ class HomeController extends Controller
      */
     public function feedbackDataSave(Request $request)
     {
-       
-        $CustomCaptchas = new CaptchaCode;
-        $CustomCaptch = $CustomCaptchas->generateCaptcha();
+        
+        $CustomCaptchas = new CaptchaCode();
+        
+        $CustomCaptch = $CustomCaptchas->generateCaptchaCode();
         //dd($CustomCaptch);
         $titleName = 'Feed Back';
         return view('pages.feedback',['title' => $titleName,'captchaCode'=>$CustomCaptch ]);
