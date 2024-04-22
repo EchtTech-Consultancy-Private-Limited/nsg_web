@@ -104,7 +104,7 @@
             @endif
         </div>
         {{-- Add Pagination Links --}}
-        <div class="search-page mt-4">
+        <div class="search-page mt-4 mb-5">
             <div class="mt-4">
                 {{-- {{ $data->links() }} --}}
                 {{ $data->withPath(url()->current())->appends(['search_key' => request('search_key')])->links() }}
