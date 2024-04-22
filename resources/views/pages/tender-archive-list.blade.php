@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title')
-{{ __('Tender') }}
+{{ __('Tender Archive') }}
 @endsection
 @section('content')
 <section class="contact-wrap pt-3 pb-5 bg-grey common-bg-right">
@@ -17,7 +17,7 @@
                 </nav>
               </div>
               <h2 class="heading-black">
-                Tenders List
+                Archive Tenders List
               </h2>
             </div>
             <div class="col-md-12">
@@ -45,8 +45,12 @@
                                         @foreach($tender_managements as $key=>$tender_management)
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
-                                            <td>{{$tender_management->title_name_en }}</td>
-                                            <td>{!! $tender_management->description_en !!}</td>
+                                            <td>
+                                            @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
+                                            </td>
+                                            <td>
+                                            @if(Session::get('locale') == 'hi') {!! $tender_management->description_hi !!} @else {!! $tender_management->description_en !!} @endif
+                                            </td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
                                             <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">

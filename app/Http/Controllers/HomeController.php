@@ -112,7 +112,7 @@ class HomeController extends Controller
             $titleName='Tenders';
          }
         // dd($tender_management);
-        return view('pages.current-tender-list',[
+        return view('pages.tender-list',[
             'title' => $titleName,
             'tender_managements' =>$tender_management,
             ]);

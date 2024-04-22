@@ -74,7 +74,7 @@ class CommonComposer
                 ->where('type', 0)
                 ->where('status', 3)
                 ->where('soft_delete', 0)
-                ->latest('created_at')->take(20)
+                ->latest('created_at')->take(10)
                 ->get();
             $galleryData = [];
             $gallery = DB::table('gallery_management')
