@@ -101,7 +101,7 @@
                                     <div class="form-card-bdr">
                                         <h2 class="title-black">
                                             Details of reps of the firm attending presentation
-                                        </h2>
+                                        </h2>`
                                         <div class="row g-3 py-3">
                                             <div class="col-md-2 mb-3">
                                                 <label class="form-label">S.No <span class="char-red">*</span></label>
