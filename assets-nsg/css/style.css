@@ -2993,6 +2993,9 @@ marquee.marquee {
 .client-slider-content img {
   height: 130px;
 }
+}
+
+a{text-decoration: none !important;}
 .sitemap-header-list{padding: 0px;}
 
 

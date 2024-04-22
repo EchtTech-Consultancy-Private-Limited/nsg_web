@@ -50,7 +50,7 @@ class HomeController extends Controller
         $news_management = DB::table('news_management')
                                 ->select('news_management.start_date as startDate'
                                 ,'news_management.title_name_en as title_name_en'
-                                ,'news_management.title_name_en as title_name_hi','news_details.*')
+                                ,'news_management.title_name_hi as title_name_hi','news_details.*')
                                 ->where('news_management.soft_delete', 0)
                                 ->where('news_management.status', 3)
                                 ->leftjoin('news_details', 'news_management.uid', '=', 'news_details.news_id')
@@ -63,7 +63,9 @@ class HomeController extends Controller
         $tender_management = DB::table('tender_management')
                                 ->select('tender_management.start_date as startDate'
                                 ,'tender_management.title_name_en as title_name_en'
-                                ,'tender_management.title_name_en as title_name_hi','tender_details.*')
+                                ,'tender_management.title_name_hi as title_name_hi','tender_management.tender_typeid',
+                                'tender_management.tender_cost',
+                                'tender_details.*')
                                 ->where('tender_management.soft_delete', 0)
                                 ->where('tender_management.status', 3)
                                 ->leftjoin('tender_details', 'tender_management.uid', '=', 'tender_details.tender_id')
@@ -79,6 +81,41 @@ class HomeController extends Controller
                   'tender_managements' =>$tender_management,
                   'news_managements'=>$news_management
                  ]);
+    }
+
+    public function getTenderData(Request $request, $slug){
+        
+        $tender_management = DB::table('tender_management')
+                            ->select('tender_management.start_date as startDate','tender_management.end_date as endDate'
+                            ,'tender_management.title_name_en as title_name_en'
+                            ,'tender_management.title_name_hi as title_name_hi','tender_management.tender_typeid',
+                            'tender_management.tender_cost','tender_management.description_en','tender_management.description_hi',
+                            'tender_details.*')
+                            ->where('tender_management.soft_delete', 0)
+                            ->where('tender_management.status', 3)
+                            ->leftjoin('tender_details', 'tender_management.uid', '=', 'tender_details.tender_id')
+                            ->where('tender_management.tender_typeid', $slug)
+                            ->where('tender_details.soft_delete', 0)
+                            ->whereDate('tender_details.archivel_date', '>=', now()->toDateString())
+                            ->latest('tender_management.created_at')
+                            ->latest('tender_details.created_at')
+                            ->get();
+         if(isset($slug) && $slug== 'current-tenders'){
+            $titleName='Current Tenders';
+         }elseif(isset($slug) && $slug== 'current-auctions'){
+            $titleName='Current Auctions';
+         }elseif(isset($slug) && $slug== 'qrs-for-comments'){
+            $titleName='QR'.'s'.' for Comments';
+         }elseif(isset($slug) && $slug== 'tenders-awarded'){
+            $titleName='Tenders Awarded';
+         }else{
+            $titleName='Tenders';
+         }
+        // dd($tender_management);
+        return view('pages.current-tender-list',[
+            'title' => $titleName,
+            'tender_managements' =>$tender_management,
+            ]);
     }
     public function SetLang(Request $request)
     {
