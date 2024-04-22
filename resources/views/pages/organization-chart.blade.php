@@ -172,7 +172,7 @@
                                 </p>
                                 <hr />
                                 <p class="tree-node-text">
-                                  (OPS & TRG)
+                                  (TRG CENTRE)
                                 </p>
                               </div>
                             </div>
