@@ -210,7 +210,7 @@
                               <span class="tree-node-bg bg-blue"></span>
                               <div class="tree-node tree-node-blue">
                                 <p class="tree-node-text">
-                                  NBDC
+                                  DIG
                                 </p>
                                 <hr />
                                 <p class="tree-node-text">
