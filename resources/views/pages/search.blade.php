@@ -15,6 +15,7 @@
                     {{ __('messages.Search_Page') }}
                     @endif
                 </h2>
+                
             </div>
         </div>
     </div>
@@ -29,13 +30,12 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
                                     <a href="{{ url('/') }}">
-                                        @if (Session::get('Lang') == 'hi')
-                                        होम पेज
-                                        @else
-                                        Home
-                                        @endif
+                                        @if (Session::get('locale') == 'hi') होम पेज @else Home @endif
                                     </a>
-                                </li>                              
+                                </li>       
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    @if(Session::get('locale') == 'hi') {{ 'खोज' }} @else {{ 'Search' }} @endif
+                                </li>                       
                                 <li class="breadcrumb-item active" aria-current="page">
                                    {{ Request::get('search_key') }}
                                 </li>
