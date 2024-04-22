@@ -134,10 +134,12 @@ class TenderManagementController extends Controller
         }else{
             return view('cms-view.errors.500');
         }
+        $tendertypeList = DB::table('tender_type')->where([['status',3],['soft_delete',0]])->get();
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
         'data'=> $result,
         'pdfData' => isset($pdfData)?$pdfData:'',
+        'tendertype'=>$tendertypeList
     ]);
     }
 
