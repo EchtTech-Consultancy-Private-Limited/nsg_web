@@ -483,7 +483,7 @@ table thead th {
 
 .site-header {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  top: 55px;
+  top: 0px;
   transition: all 0.2s ease;
   z-index: 1000;
   position: sticky;
@@ -601,7 +601,7 @@ table thead th {
   font-size: 1em;
   font-weight: 500;
   color: #000000;
-  padding: 8px 10px;
+  padding: 7px 10px;
 }
 
 .site-header .navbar .nav-item .dropdown-item:active {
@@ -2993,6 +2993,9 @@ marquee.marquee {
 .client-slider-content img {
   height: 130px;
 }
+.sitemap-header-list{padding: 0px;}
+
+
 }
 
 img {
