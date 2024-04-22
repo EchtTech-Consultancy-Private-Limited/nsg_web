@@ -172,8 +172,8 @@
                @if(isset($tenderTypes) && count($tenderTypes)>0)
                   @foreach($tenderTypes as $tenderTyp)
                      <li class="nav-item" role="presentation">
-                        <button class="nav-link " id="{{$tenderTyp->type_slug}}" data-bs-toggle="tab"
-                           data-bs-target="#tenders-tab-pane" type="button" role="tab" aria-controls="tenders-tab-pane"
+                        <button class="nav-link" id="{{$tenderTyp->type_slug}}" data-bs-toggle="tab"
+                           data-bs-target="#{{$tenderTyp->type_slug}}_tab" type="button" role="tab" aria-controls="{{$tenderTyp->type_slug}}_tab"
                            aria-selected="true">
                            @if(Session::get('locale') == 'hi') {{ $tenderTyp->type_name_hi }} @else {{ $tenderTyp->type_name_en }} @endif
                         </button>
@@ -182,27 +182,30 @@
                @endif
             </ul>
             <div class="tab-content" id="blackTabContent">
-               <div class="tab-pane fade show active" id="tenders-tab-pane" role="tabpanel" aria-labelledby="tenders-tab"
-                  tabindex="0">
-                  <div class="list-wrap">
-                     <ul class="common-scrollbar">
-                     @if(isset($tender_managements) && count($tender_managements)>0)
-                        @foreach($tender_managements as $tender_management)
-                        <li>
-                           <span class="date">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($tender_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($tender_management->startDate)->format('Y')}}</span>
-                           <p class="desc">
-                              @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
-                           </p>
-                        </li>
-                        @endforeach
-                     @endif
-                     </ul>
+               @if(isset($tender_managements) && count($tender_managements)>0)
+                  @foreach($tender_managements as $tender_management)
+                  <div class="tab-pane fade @php if(isset($tender_management->tender_typeid) && $tender_management->tender_typeid =='current-tenders'){ echo 'active show'; }else{ ''; } @endphp" id="{{$tender_management->tender_typeid??''}}_tab" role="tabpanel" aria-labelledby="{{$tender_management->tender_typeid??''}}"
+                     tabindex="0">
+                     <div class="list-wrap">
+                        <ul class="common-scrollbar">
+                           <li>
+                              <span class="date">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($tender_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($tender_management->startDate)->format('Y')}}</span>
+                              <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
+                                 <p class="desc">
+                                    @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
+                                 </p>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                     <a href="{{ url('tender/'.$tender_management->tender_typeid) }}" class="link-yellow">
+                        @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
+                     </a>
                   </div>
-               </div>
+                  @endforeach
+               @endif
             </div>
-            <a href="#" class="link-yellow">
-               @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
-            </a>
+            
           </div>
         </div>
         @if(isset($sectionData) && count($sectionData)>0)

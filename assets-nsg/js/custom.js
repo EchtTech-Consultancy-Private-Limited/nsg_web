@@ -349,6 +349,11 @@ $('#photoCarousel .carousel-indicators.common-scrollbar button:first').addClass(
 
 $('.veer-accordion .accordion .accordion-item:first .accordion-button').removeClass('collapsed');
 $('.veer-accordion .accordion .accordion-item:first .accordion-collapse.collapse').addClass('show');
+
+$('#blackTab li.nav-item:first button.nav-link').addClass('active');
+// $('#blackTabContent .tab-pane:first').addClass('active show');
+
+
 new DataTable('#nsg_datatableForm', {});
 DataTable.ext.errMode = 'none';
 

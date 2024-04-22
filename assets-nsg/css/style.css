@@ -2994,3 +2994,5 @@ marquee.marquee {
   height: 130px;
 }
 }
+
+a{text-decoration: none !important;}

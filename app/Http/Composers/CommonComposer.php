@@ -42,7 +42,7 @@ class CommonComposer
             $news_management = DB::table('news_management')
                                 ->select('news_management.start_date as startDate'
                                 ,'news_management.title_name_en as title_name_en'
-                                ,'news_management.title_name_en as title_name_hi','news_details.*')
+                                ,'news_management.title_name_hi as title_name_hi','news_details.*')
                                 ->where('news_management.soft_delete', 0)
                                 ->where('news_management.status', 3)
                                 ->leftjoin('news_details', 'news_management.uid', '=', 'news_details.news_id')
