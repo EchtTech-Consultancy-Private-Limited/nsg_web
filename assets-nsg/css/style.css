@@ -2989,4 +2989,8 @@ marquee.marquee {
   .breadcrumb-item {
     font-size: .8em;
 }
+
+.client-slider-content img {
+  height: 120px;
+}
 }
