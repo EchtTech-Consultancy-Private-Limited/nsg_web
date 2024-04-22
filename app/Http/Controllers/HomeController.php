@@ -124,6 +124,7 @@ class HomeController extends Controller
             }else{
                 return view('pages.error');
             }
+            $getForm = '';
         if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         if(isset($metaData) && $metaData != null){
@@ -134,12 +135,25 @@ class HomeController extends Controller
             $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
         }
         elseif($slug){
+           
             $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
-            $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
-            if(!empty($getForm)){
-                $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
+            if($single_menu !=null){
+                $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
+                if(!empty($getForm)){
+                    $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                }
             }
         }
+       // dd($getForm);
+       if(!empty($getForm)){
+        foreach(json_decode($getForm->content) as $tableHead){
+                if($tableHead->label != 'Submit' && $tableHead->label != 'submit' && $tableHead->label != 'save' && $tableHead->label != 'Save'){
+                    $head[]=$tableHead;
+                }
+            }
+        }
+        
+       
         $data = new \stdClass;
         $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
@@ -147,7 +161,8 @@ class HomeController extends Controller
         $data->pageGallerys =$pageGallery??[];
         $data->pageBanners =$pageBanner??'';
         $data->formbuilderdata =$getFormData??[];
-        $data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
+        //$data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
+        $data->formDataTableHead =isset($head)?$head:[];
         $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
         //dd($slug);
@@ -224,7 +239,7 @@ class HomeController extends Controller
         $titleName = 'Register For NCNC';
         $CustomCaptchas = new CaptchaCode();
         $CustomCaptch = $CustomCaptchas->generateCode();
-        Session::put('captcha_code', $CustomCaptch);
+        Session::put('captcha', $CustomCaptch);
         return view('pages.register-for-ncnc',['title' => $titleName,'CustomCaptch'=>$CustomCaptch]);
     }
 
@@ -373,7 +388,7 @@ class HomeController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required',
             'registration_No_of_the_firm' => 'required',
-            //'fileUpload' => 'required|mimes:jpeg,bmp,png,gif,svg|max:25000',
+            'fileUpload' => 'required|mimes:jpeg,bmp,png,gif,svg|max:25000',
             's_no' => 'required',
             'name_dt' => 'required',
             'designation_dt' => 'required',
@@ -382,7 +397,7 @@ class HomeController extends Controller
             'id_no' => 'required',
             'email' => 'required',
             'remark' => 'required',
-            'captchacode' => 'required|in:'.Session::get('captcha_code'),
+            'captcha' => 'required|in:'.Session::get('captcha'),
         ],[
             'name.required' => 'The name field is required.',
             'name.string' => 'The name must be a string.',
@@ -393,15 +408,15 @@ class HomeController extends Controller
             'designation.required' => 'The designation field is required.',
             'designation_dt.required' => 'The designation details field is required.',
             'registration_No_of_the_firm.required' => 'The registration No of the firm field is required.',
-           // 'fileUpload.required' => 'The file upload field is required.',
+            'fileUpload.required' => 'The file upload field is required.',
             's_no.required' => 'The s no field is required.',
             'name_dt.required' => 'The name field is required.',
             'nationality.required' => 'The nationality field is required.',
             'passport_no.required' => 'The passport no field is required.',
             'id_no.required' => 'The id no field is required.',
             'passport_no.required' => 'The passport no field is required.',
-            'captchacode.required' => 'The Captcha field is required.',
-            'captchacode.captchacode' => 'Please enter a valid Captcha',
+            'captcha.required' => 'The Captcha field is required.',
+            'captcha.captcha' => 'Please enter a valid Captcha',
         ]);
         if($request->hasFile('fileUpload')){    
             $file=$request->file('fileUpload');

@@ -87,12 +87,12 @@
                                                 <label class="form-label">Term of Service <span class="char-red">*</span></label>
                                                 <div class="upload-wrap">
                                                     <div class="btn-wrap">
-                                                        <img src="{{ asset('assets-nsg/images/upload.svg') }}" alt="upload" class="me-3 img-fluid /">
-                                                        <div class="btn-red btn-upload">
+                                                        <!-- <img src="{{ asset('assets-nsg/images/upload.svg') }}" alt="upload" class="me-3 img-fluid /"> -->
+                                                        <!-- <div class="btn-red btn-upload">
                                                             <label for="file">Choose File</label>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
-                                                    <input type="file" hidden="" name="fileUpload" id="file" class="form-control">
+                                                    <input type="file" name="fileUpload" id="fileUpload" class="form-control">
                                                     <p class="upload-text">Maximum upload file size 25 MB, allowed files PDF,JPG,PNG *</p>
                                                 </div>
                                             </div>
