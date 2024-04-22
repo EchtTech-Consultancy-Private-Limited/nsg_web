@@ -222,7 +222,10 @@ class HomeController extends Controller
     public function RegisterForNCNC(Request $request)
     {
         $titleName = 'Register For NCNC';
-        return view('pages.register-for-ncnc',['title' => $titleName]);
+        $CustomCaptchas = new CaptchaCode();
+        $CustomCaptch = $CustomCaptchas->generateCode();
+        Session::put('captcha_code', $CustomCaptch);
+        return view('pages.register-for-ncnc',['title' => $titleName,'CustomCaptch'=>$CustomCaptch]);
     }
 
     /**
@@ -236,10 +239,11 @@ class HomeController extends Controller
         
         $CustomCaptchas = new CaptchaCode();
         
-        //$CustomCaptch = $CustomCaptchas->generateCaptchaCode();
+        $CustomCaptch = $CustomCaptchas->generateCode();
+        Session::put('captcha', $CustomCaptch);
         //dd($CustomCaptch);
         $titleName = 'Feed Back';
-        return view('pages.feedback',['title' => $titleName]);
+        return view('pages.feedback',['title' => $titleName,'CustomCaptch'=>$CustomCaptch]);
     }
 
     /**
@@ -337,7 +341,7 @@ class HomeController extends Controller
             'feedbackRelatedTo' => 'required',
             'email' => 'required|email',
             'remark' => 'required|string',
-            //'captchacode' => 'required|in:'.Session::get('captcha_code'),
+            'captchacode' => 'required|in:'.Session::get('captcha'),
             // Add more validation rules as needed
         ],[
             'fullname.required' => 'The name field is required.',
@@ -347,7 +351,7 @@ class HomeController extends Controller
             'email.email' => 'Please enter a valid email address.',
             'remark.required' => 'The remark field is required.',
             'feedbackRelatedTo.required' => 'The feedback Related To field is required.',
-            //'captchacode.required' => 'The Captcha field is required.',
+            'captchacode.required' => 'The Captcha field is required.',
             'captchacode.captchacode' => 'Please enter a valid Captcha',
         ]);
         // Create or save the data
@@ -378,7 +382,7 @@ class HomeController extends Controller
             'id_no' => 'required',
             'email' => 'required',
             'remark' => 'required',
-            //'captchacode' => 'required',
+            'captchacode' => 'required|in:'.Session::get('captcha_code'),
         ],[
             'name.required' => 'The name field is required.',
             'name.string' => 'The name must be a string.',
@@ -396,8 +400,8 @@ class HomeController extends Controller
             'passport_no.required' => 'The passport no field is required.',
             'id_no.required' => 'The id no field is required.',
             'passport_no.required' => 'The passport no field is required.',
-            //'captchacode.required' => 'The Captcha field is required.',
-            //'captchacode.captchacode' => 'Please enter a valid Captcha',
+            'captchacode.required' => 'The Captcha field is required.',
+            'captchacode.captchacode' => 'Please enter a valid Captcha',
         ]);
         if($request->hasFile('fileUpload')){    
             $file=$request->file('fileUpload');

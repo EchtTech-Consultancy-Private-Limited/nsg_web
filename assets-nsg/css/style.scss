@@ -2414,3 +2414,30 @@ marquee.marquee {
   display: flex;
   align-items: center;
 }
+
+
+@media (max-width: 767px) {
+  .m-neg {
+    margin-top: -8rem;
+  }
+
+  .width-sm-mobile {
+    width: 85%;
+    float: left;
+    padding-right: 0;
+  }
+
+  .width-sm-mobile-right {
+    width: 15%;
+    padding-right: 0;
+  }
+
+  .width-sm-mobile .border-left-1 {
+    padding-left: 5px;
+    margin-left: 5px !important;
+  }
+
+  .header-top-left .content .title {
+    font-size: 0.7em !important;
+  }
+}
