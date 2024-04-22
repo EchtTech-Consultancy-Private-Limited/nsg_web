@@ -8,12 +8,14 @@ $(document).ready(function() {
     var baseURL = $("meta[name='baseURL']").attr('content');
     $('#nsg_add_registerforncnc_submit').click(function(e) {
         e.preventDefault();
-        var formData = $('#registerforncnc_add_form').serialize();
+        //var formData = $('#registerforncnc_add_form').serialize();
+        var formData = new FormData($('#registerforncnc_add_form')[0]);
         $.ajax({
             type: 'POST',
             url:  baseURL + 'register-for-ncnc-save',
             data: formData,
-            dataType: 'json',
+            processData: false,
+            contentType: false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
