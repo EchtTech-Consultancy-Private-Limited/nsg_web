@@ -39,7 +39,20 @@ class CommonComposer
             $menus = DB::table('website_menu_management')->whereIn('menu_place', [0,3,4])->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
             $menuName = $this->getMenuTree($menus, 0);
             // dd($footerMenu);
-            $news_management = DB::table('news_management')->where('soft_delete', 0)->where('status', 3)->latest('created_at')->take(3)->get();
+            $news_management = DB::table('news_management')
+                                ->select('news_management.start_date as startDate'
+                                ,'news_management.title_name_en as title_name_en'
+                                ,'news_management.title_name_en as title_name_hi','news_details.*')
+                                ->where('news_management.soft_delete', 0)
+                                ->where('news_management.status', 3)
+                                ->leftjoin('news_details', 'news_management.uid', '=', 'news_details.news_id')
+                                ->where('news_details.soft_delete', 0)
+                                ->whereDate('news_details.archivel_date', '>=', now()->toDateString())
+                                ->latest('news_management.created_at')
+                                ->latest('news_details.created_at')
+                                ->take(10)
+                                ->get();
+
             $social_links = DB::table('social_links')->where('status', 3)->where('soft_delete', 0)->first();
             $logo = DB::table('website_core_settings')->where('status', 3)->where('soft_delete', 0)->first();
             $notification= DB::table('recent_activities')->where('end_date', '>=', now()->toDateString())->where('notification_others',1)->where('status', 3)->where('soft_delete', 0)->latest('created_at')->get();

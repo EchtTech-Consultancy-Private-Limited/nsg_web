@@ -12,7 +12,7 @@
             @if(isset($news_management) && count($news_management)>0 )
                     @foreach($news_management as $news_managements)
                     <li>
-                        <a href="{{ $news_managements->public_url }}" target="@php if($news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
+                        <a href="{{ route('news-list') }}" target="@php if($news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
                             @if(Session::get('locale') == 'hi')  {{ $news_managements->title_name_hi }} @else {{ $news_managements->title_name_en }} @endif
                         </a>
                     </li>
@@ -24,7 +24,7 @@
             </marquee>
         </div>
         <div class="btn-wrap">
-            <button class="btn btn-yellow-outline">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.View_All_hi') }} @else {{ config('staticTextLang.View_All_en') }} @endif</button>
+            <a href="{{ route('news-list') }}" class="btn btn-yellow-outline">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.View_All_hi') }} @else {{ config('staticTextLang.View_All_en') }} @endif</a>
         </div>
         </div>
     </div>
