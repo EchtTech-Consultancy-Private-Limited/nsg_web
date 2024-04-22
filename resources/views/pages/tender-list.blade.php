@@ -16,9 +16,14 @@
                   </ol>
                 </nav>
               </div>
-              <h2 class="heading-black">
-                Tenders List
-              </h2>
+              <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="heading-black">
+                    Tenders List
+                    </h2>
+                  <div class="btn-wrap">
+                      <a href="{{ url('archive-tender/'.$slug) }}" class="btn btn-red px-3 py-2">Archive Tenders</a>
+                  </div>
+              </div>
             </div>
             <div class="col-md-12">
                 <div class="common-card p-5 mt-4">
@@ -45,8 +50,12 @@
                                         @foreach($tender_managements as $key=>$tender_management)
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
-                                            <td>{{$tender_management->title_name_en }}</td>
-                                            <td>{!! $tender_management->description_en !!}</td>
+                                            <td>
+                                            @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi??'N/A' }} @else {{ $tender_management->title_name_en??'N/A' }} @endif
+                                            </td>
+                                            <td>
+                                            @if(Session::get('locale') == 'hi') {!! $tender_management->description_hi??'N/A' !!} @else {!! $tender_management->description_en??'N/A' !!} @endif
+                                            </td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
                                             <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
@@ -55,7 +64,7 @@
                                             </td>
                                             <td class="text-center">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d-m-Y')}}</td>
                                             <td class="text-center">{{\Carbon\Carbon::parse($tender_management->endDate)->format('d-m-Y')}}</td>
-                                            <td class="text-center">{{ $tender_management->tender_cost??'00' }}</td>
+                                            <td class="text-center">{{ $tender_management->tender_cost??'N/A' }}</td>
                                             @php
                                             $start_datetime = new DateTime($tender_management->startDate);
                                             $end_datetime = new DateTime($tender_management->endDate);
@@ -63,8 +72,8 @@
                                             $time = $time_diff->format('%a');
                                             @endphp
                                             <td class="text-center">{{ $time*24??'00' }}hours</td>
-                                            <td class="text-center">{{ $tender_management->remark??'-' }}</td>
-                                            <td class="text-center">{{ $tender_management->amendments??'-' }}</td>
+                                            <td class="text-center">{{ $tender_management->remark??'N/A' }}</td>
+                                            <td class="text-center">{{ $tender_management->amendments??'N/A' }}</td>
                                         </tr>
                                         @endforeach
                                     @endif
