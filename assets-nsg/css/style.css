@@ -2994,3 +2994,7 @@ marquee.marquee {
   height: 130px;
 }
 }
+
+img {
+  max-width: 100%;
+}
