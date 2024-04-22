@@ -27,21 +27,21 @@
                             <div class="table-responsive">
                                 <table id="nsg_datatable" class="table table-striped table-bordered mb-0">
                                     <thead>
-                                      <tr>
-                                        <th scope="col" class="text-center">S.No</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Tender No.</th>
-                                        <th scope="col">Download</th>
-                                        <th scope="col">Date of Release</th>
-                                        <th scope="col">End Date</th>
-                                        <th scope="col">Est.Cost(Rs.)</th>
-                                        <th scope="col">Timings</th>
-                                        <th scope="col">Remarks</th>
-                                        <th scope="col">Amendments</th>
-                                      </tr>
+                                        <tr>
+                                            <th scope="col" class="text-center">S.No</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Tender No.</th>
+                                            <th scope="col">Download</th>
+                                            <th scope="col">Date of Release</th>
+                                            <th scope="col">End Date</th>
+                                            <th scope="col">Est.Cost(Rs.)</th>
+                                            <th scope="col">Timings</th>
+                                            <th scope="col">Remarks</th>
+                                            <th scope="col">Amendments</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                    @if(isset($tender_managements) && count($tender_managements)>0)
+                                        @if(isset($tender_managements) && count($tender_managements)>0)
                                         @foreach($tender_managements as $key=>$tender_management)
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
@@ -53,12 +53,18 @@
                                             </td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
-                                            <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
-                                                Download
-                                            </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$tender_management->pdfimage_size}})</span>
+                                                <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}"
+                                                    download="" tabindex="0" target="_blank">
+                                                    Download
+                                                </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i> <span
+                                                    class="size">({{$tender_management->pdfimage_size}})</span>
                                             </td>
-                                            <td class="text-center">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d-m-Y')}}</td>
-                                            <td class="text-center">{{\Carbon\Carbon::parse($tender_management->endDate)->format('d-m-Y')}}</td>
+                                            <td class="text-center">
+                                                {{\Carbon\Carbon::parse($tender_management->startDate)->format('d-m-Y')}}
+                                            </td>
+                                            <td class="text-center">
+                                                {{\Carbon\Carbon::parse($tender_management->endDate)->format('d-m-Y')}}
+                                            </td>
                                             <td class="text-center">{{ $tender_management->tender_cost??'00' }}</td>
                                             @php
                                             $start_datetime = new DateTime($tender_management->startDate);
@@ -71,9 +77,9 @@
                                             <td class="text-center">{{ $tender_management->amendments??'-' }}</td>
                                         </tr>
                                         @endforeach
-                                    @endif
+                                        @endif
                                     </tbody>
-                                  </table>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -81,5 +87,5 @@
             </div>
         </div>
     </div>
-  </section>
+</section>
 @endsection
