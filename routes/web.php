@@ -44,6 +44,7 @@ Route::middleware(['visitingcounter'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
     Route::get('/tender/{slug}', [HomeController::class, 'getTenderData'])->name('tender/{slug}');
+    Route::get('/archive-tender/{slug}', [HomeController::class, 'getArchiveTenderData'])->name('archive-tender/{slug}');
     Route::get('news-list', [HomeController::class, 'newsList'])->name('news-list');
     Route::get('contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
     Route::get('feedback', [HomeController::class, 'feedbackDataSave'])->name('feedback');

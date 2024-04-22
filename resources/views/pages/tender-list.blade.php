@@ -16,9 +16,14 @@
                   </ol>
                 </nav>
               </div>
-              <h2 class="heading-black">
-                Tenders List
-              </h2>
+              <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="heading-black">
+                    Tenders List
+                    </h2>
+                  <div class="btn-wrap">
+                      <a href="{{ url('archive-tender/'.$slug) }}" class="btn btn-red px-3 py-2">Archive Tenders</a>
+                  </div>
+              </div>
             </div>
             <div class="col-md-12">
                 <div class="common-card p-5 mt-4">
