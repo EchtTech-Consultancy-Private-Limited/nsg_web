@@ -146,17 +146,14 @@
                   <!-- Form Builder Data Begin -->
                   @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                      <div class="table-responsive">
-                        <table id="nsg_datatable" class="display common-table" style="width:100%">
+                        <table id="nsg_datatableForm" class="display common-table" style="width:100%">
                            <thead>
                                  <tr>
                                     @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
-                                       @php $i = isset($pageData->formDataTableHeadCount)?$pageData->formDataTableHeadCount:'0'; @endphp
                                        @foreach($pageData->formDataTableHead as $head)
-                                          @if($head->label !='Submit' && $head->label !='submit')
                                           <th>
-                                             {{  $head->label??'' }}
+                                             {{  $head->label }}
                                           </th>
-                                          @endif
                                        @endforeach
                                     @endif
                                  </tr>
