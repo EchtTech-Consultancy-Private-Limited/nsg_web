@@ -1487,7 +1487,9 @@ table thead th {
 }
 
 .client-slider-content img {
-  height: 70px;
+  height: 80px;
+    object-fit: cover;
+    background: #fff;
 }
 
 .contact-info {
@@ -2981,4 +2983,10 @@ marquee.marquee {
   .header-top-left .content .title {
     font-size: 0.7em !important;
   }
+  .client-slider-content {
+    padding: 0px 0 30px;
+  }
+  .breadcrumb-item {
+    font-size: .8em;
+}
 }
