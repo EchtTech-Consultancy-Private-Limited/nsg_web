@@ -3195,3 +3195,11 @@ div#gallerySlider .owl-item .item img {
   display: block;
   border-radius: 50%;
 }
+
+
+@media (max-width: 1350px) {
+  div#gallerySlider .owl-item .item img {
+    height: 380px;
+    object-fit: cover;
+}
+}
