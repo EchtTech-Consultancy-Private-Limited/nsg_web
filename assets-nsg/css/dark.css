@@ -33,14 +33,14 @@ body{
 .site-header .navbar .nav-link {
   color: yellow;
 }
-.site-header .navbar .nav-link:hover, .link-yellow, .award-wrap .nav-tabs .nav-link, .site-header .navbar .nav-item .dropdown-item, .breadcrumb-item a, a, .qm-active a.nav-link {
+.site-header .navbar .nav-link:hover, .link-yellow, .award-wrap .nav-tabs .nav-link, .site-header .navbar .nav-item .dropdown-item, .breadcrumb-item a, a, .qm-active a.nav-link, a p {
   color: #ffff00 !important;
 }
 .site-header .navbar .nav-item .dropdown-toggle::after {
   filter: invert(1);
 }
 
-.heading-red, .list-wrap .date{color: #fff !important;}
+.heading-red, .list-wrap .date, .veer-accordion .veer-info ul li .title{color: #fff !important;}
 .btn-red{
   background: #000;
   border: 1px solid #fec941 !important;
@@ -54,7 +54,7 @@ body{
   background-color: #3d3f3e;
 }
 
-.gallery-wrap .card-black, .award-wrap, .achievement-wrap .card-white, .eliminator-video, .qm-active{
+.gallery-wrap .card-black, .award-wrap, .achievement-wrap .card-white, .eliminator-video, .qm-active, .header-top-right .content ul li .text-increment-btn.active{
   background: #000000 !important;
   border: 1px solid #fec941;
 }
@@ -73,24 +73,33 @@ body{
   background: #fff;
 
 }
+
+.veer-accordion .accordion-header{background-color: #fff;}
+
 .award-wrap .nav-tabs .nav-link.active {
   background:#343434;
   color: #ffff00;
 }
-.news-title, .site-header .navbar .nav-item .dropdown-menu{
+.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item{
   background: #000;
   border: 1px solid #fff;
   color: #fff;
 }
+
+.news-title{border-right: 1px solid #fafafa;  background: #000;}
+
 .site-header .navbar .nav-item .dropdown-menu, .organization-wrap .common-card{border: 1px solid #a58636;}
-.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active {
+.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover {
   background-color: #424141;
 }
 
-table tr td, table tr th{
+table tr td, table tr th, .header-top-left .content .title{
   color: #fff !important;
 }
-table tr td a, table tr th a{
+table tr td, table tr th{
+  background: #262626 !important;
+}
+table tr td a, table tr th a, .qm-active i, .qm-active a{
   color: #ffff00 !important;
 }
 
