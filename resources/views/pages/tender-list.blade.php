@@ -58,7 +58,7 @@
                                             </td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
-                                            <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
+                                            <a href="{{ asset('resources/uploads/TenderManagement/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
                                                 Download
                                             </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$tender_management->pdfimage_size}})</span>
                                             </td>

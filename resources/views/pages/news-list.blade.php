@@ -41,7 +41,7 @@
                                             <td>{{$news_management->title_name_en }}</td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
-                                            <a href="{{ asset('resources/uploads/PageContentPdf/'.$news_management->public_url) }}" download="" tabindex="0" target="_blank">
+                                            <a href="{{ asset('resources/uploads/NewsManagement/'.$news_management->public_url) }}" download="" tabindex="0" target="_blank">
                                                 Download
                                             </a> <i class="fa fa-file-pdf-o text-danger ms-2"></i>  <span class="size">({{$news_management->pdfimage_size}})</span>
                                             </td>

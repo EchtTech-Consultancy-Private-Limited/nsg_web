@@ -25,14 +25,14 @@
             <div class="col-md-5">
               <div class="copyright-content">
                 <p>
-                  Website Content Managed by  <strong>National Security Guard</strong>
+                @if(Session::get('locale') == 'hi') {!! config('staticTextLang.Website_Content_Managed_by_National_Security_Guard_hi') !!} @else {!! config('staticTextLang.Website_Content_Managed_by_National_Security_Guard_en') !!} @endif
                   <br />
                   <span>
-                    Designed, Developed and Hosted by 
-                    <a href="http://www.nic.in/" 
+                  <a href="http://www.nic.in/" 
                     onclick="return confirm('{{ $alertMessage }}')"
                     title="NIC, External Link that opens in a new window" target="_blank">
-                      <strong>National Informatics Centre( NIC )</strong>
+                      @if(Session::get('locale') == 'hi') {!! config('staticTextLang.Designed_Developed_hi') !!} @else {!! config('staticTextLang.Designed_Developed_en') !!} @endif
+                    
                     </a> 
                   </span> 
                   <br />

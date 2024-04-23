@@ -143,6 +143,15 @@
                                        <div class="w-100">
                                        <select class="form-select form-select-solid tender_typeid" name="tender_typeid" id="tender_typeid" data-control="select2" data-placeholder="Select an option">
                                           <option></option>
+                                          @if(isset($tendertype) && count($tendertype)>0)
+                                             @foreach($tendertype as $tendertypes)
+                                               @if($tendertypes->type_slug == $data->tender_typeid)
+                                                <option value="{{$tendertypes->type_slug}}" selected>{{$tendertypes->type_name_en}}</option>
+                                                @else
+                                                <option value="{{$tendertypes->type_slug}}">{{$tendertypes->type_name_en}}</option>
+                                                @endif
+                                             @endforeach
+                                          @endif
                                        </select>
                                     </div>
                                  </div>

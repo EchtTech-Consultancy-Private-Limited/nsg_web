@@ -190,7 +190,7 @@
                         <ul class="common-scrollbar">
                            <li>
                               <span class="date">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($tender_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($tender_management->startDate)->format('Y')}}</span>
-                              <a href="{{ asset('resources/uploads/PageContentPdf/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
+                              <a href="{{ asset('resources/uploads/TenderManagement/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
                                  <p class="desc">
                                     @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
                                  </p>

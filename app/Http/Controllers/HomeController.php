@@ -131,7 +131,7 @@ class HomeController extends Controller
                             ->leftjoin('tender_details', 'tender_management.uid', '=', 'tender_details.tender_id')
                             ->where('tender_management.tender_typeid', $slug)
                             ->where('tender_details.soft_delete', 0)
-                            //->whereDate('tender_details.archivel_date', '>=', now()->toDateString())
+                            ->whereDate('tender_details.archivel_date', '<=', now()->toDateString())
                             ->latest('tender_management.created_at')
                             ->latest('tender_details.created_at')
                             ->get();
