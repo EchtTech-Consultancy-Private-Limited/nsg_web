@@ -137,32 +137,16 @@
                      @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                   </a>
                </div>
-               <div id="photoCarousel" class="carousel slide photo-slider" data-interval="false">
-                  <div class="carousel-inner">
+               <div class="galleryslider common-slider">
+                  <div class="owl-carousel owl-theme" id="gallerySlider">
                      @if(isset($homegallery) && count($homegallery)>0)
                         @foreach($homegallery as $homegallerys)
-                        <div class="carousel-item">
-                           <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="slide" />
-                        </div>
-                        @endforeach
+                           <div class="item">
+                              <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="slide" />
+                           </div>
+                           @endforeach
                      @endif
                   </div>
-                  <div class="carousel-indicators common-scrollbar">
-                     @if(isset($homegallery) && count($homegallery)>0)
-                        @foreach($homegallery as $key=>$homegallerys)
-                        <button type="button" data-bs-target="#photoCarousel" data-bs-slide-to="{{$key}}" class=""
-                           aria-current="true" aria-label="Slide {{$key+1}}">
-                           <img src="{{ asset('resources/uploads/GalleryManagement/'.$homegallerys->public_url)}}" class="img-fluid" alt="thumbnail" />
-                        </button>
-                        @endforeach
-                     @endif
-                  </div>
-                  <button class="carousel-control-prev" type="button" data-bs-target="#photoCarousel" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  </button>
-                  <button class="carousel-control-next" type="button" data-bs-target="#photoCarousel" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  </button>
                </div>
             </div>
          </div>
