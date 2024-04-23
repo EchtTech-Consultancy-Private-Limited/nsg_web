@@ -99,7 +99,7 @@ table tr td, table tr th, .header-top-left .content .title, .form-card-bdr .form
 table tr td, table tr th{
   background: #262626 !important;
 }
-table tr td a, table tr th a, .qm-active i, .qm-active a, .photogallery-wrap .photogallery-tabs .nav-tabs .nav-item .nav-link{
+table tr td a, table tr th a, .qm-active i, .qm-active a, .photogallery-wrap .photogallery-tabs .nav-tabs .nav-item .nav-link, .photogallery-wrap .photogallery-tabs .nav-tabs .nav-item .nav-link{
   color: #ffff00 !important;
 }
 
