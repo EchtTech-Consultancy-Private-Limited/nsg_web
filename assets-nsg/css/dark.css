@@ -54,7 +54,7 @@ body{
   background-color: #3d3f3e;
 }
 
-.gallery-wrap .card-black, .award-wrap, .achievement-wrap .card-white, .eliminator-video, .qm-active, .header-top-right .content ul li .text-increment-btn.active{
+.gallery-wrap .card-black, .award-wrap, .achievement-wrap .card-white, .eliminator-video, .qm-active, .header-top-right .content ul li .text-increment-btn.active, .contact-info .img-wrap{
   background: #000000 !important;
   border: 1px solid #fec941;
 }
