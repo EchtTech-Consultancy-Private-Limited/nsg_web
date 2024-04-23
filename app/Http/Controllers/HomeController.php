@@ -365,13 +365,6 @@ class HomeController extends Controller
     public function photoGallery(Request $request)
     {
         $titleName = 'Photo Gallery';
-        $galleryData = [];
-            $gallery = DB::table('gallery_management')
-                ->where('type', 0)
-                ->where('status', 3)
-                ->where('soft_delete', 0)
-                ->latest('created_at')
-                ->get();
 
             if (count($gallery) > 0) {
                 foreach ($gallery as $images) {
