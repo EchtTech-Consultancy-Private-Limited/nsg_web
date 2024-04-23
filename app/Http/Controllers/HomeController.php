@@ -365,29 +365,25 @@ class HomeController extends Controller
     public function photoGallery(Request $request)
     {
         $titleName = 'Photo Gallery';
-
-            if (count($gallery) > 0) {
-                foreach ($gallery as $images) {
-                    $gallay_images = DB::table('gallery_details')
-                        ->where('soft_delete', 0)
-                        ->where('gallery_id', $images->uid)
-                        ->latest('created_at')
-                        ->get();
-
-                    if (count($gallay_images) > 0) {
-                        $galleryData[] = [
-                            'gallery' => $images,
-                            'gallery_details' => $gallay_images
-                        ];
-                    }
-                }
+       
+        $gallerylist = DB::table('gallery_management')->where([['type', 0],['status', 3],['soft_delete', 0]])->get();
+       
+        foreach($gallerylist as $gallerylists){
+            $galleryData = new \stdClass;
+            $galleryData =$gallerylists;
+            $gallay_images = DB::table('gallery_details')->where([['type', 0],['soft_delete', 0]])->where('gallery_id',$gallerylists->uid)->get();
+            if($gallay_images){
+                $galleryData->gallery_details=$gallay_images;
+                //$galleryData->year=$gallay_images[0]->start_date;
             }
+            $finalData[] = $galleryData;
+        }  
         $now = date('Y');
         $then = $now - 8;
         $years = range( $now, $then );
-        //dd($galleryData);
+       //dd($finalData);
             return view('pages.photo-gallery',['title' => $titleName,
-            'photogallery'=>$galleryData,
+            'photogallery'=>$finalData,
             'years'=>$years,
         ]);
     }
