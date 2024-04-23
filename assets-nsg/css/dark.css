@@ -1,3 +1,6 @@
+body{
+  color: #fff;
+}
 .header-top {
   background-color: #000;
 }
@@ -20,6 +23,7 @@
   color: #000;
 }
 
+
 .site-header .navbar {
   background-color: #000;
   border: 1px solid rgba(255, 255, 255, 0.5);
@@ -29,26 +33,74 @@
 .site-header .navbar .nav-link {
   color: yellow;
 }
-.site-header .navbar .nav-link:hover {
-  color: yellow;
+.site-header .navbar .nav-link:hover, .link-yellow, .award-wrap .nav-tabs .nav-link, .site-header .navbar .nav-item .dropdown-item, .breadcrumb-item a, a, .qm-active a.nav-link, a p {
+  color: #ffff00 !important;
 }
 .site-header .navbar .nav-item .dropdown-toggle::after {
   filter: invert(1);
 }
 
-.achievement-wrap {
-  background-color: #000000;
+.heading-red, .list-wrap .date, .veer-accordion .veer-info ul li .title{color: #fff !important;}
+.btn-red{
+  background: #000;
+  border: 1px solid #fec941 !important;
+  color:#ffff00 !important;
+}
+
+.achievement-wrap, .hero-wrap, .achievement-wrap .card-white, .gallery-slider, .gallery-wrap .card-red, .site-footer-bottom , .site-footer-top, .common-card, .qm-active a.nav-link, .wrapper .link-wrap, .organization-chart .tree-node{
+  background: #000000;
 }
 .achievement-wrap .nsg-vision {
   background-color: #3d3f3e;
 }
 
-.eliminator-wrap {
+.gallery-wrap .card-black, .award-wrap, .achievement-wrap .card-white, .eliminator-video, .qm-active, .header-top-right .content ul li .text-increment-btn.active{
+  background: #000000 !important;
+  border: 1px solid #fec941;
+}
+
+.news-wrap{
+  border: 1px solid #c9c0c0;
+}
+
+.eliminator-wrap, .common-bg-right {
   background-color: #000;
 }
-.search-btn-d .btn{color: #fff;}
+.search-btn-d .btn, p, .hero-wrap .title, .breadcrumb-item+.breadcrumb-item::before, .breadcrumb-item{color: #fff !important;}
 
 .client-slider-content {
   padding: 40px 10px;
   background: #fff;
-}/*# sourceMappingURL=dark.css.map */
+
+}
+
+.veer-accordion .accordion-header{background-color: #fff;}
+
+.award-wrap .nav-tabs .nav-link.active {
+  background:#343434;
+  color: #ffff00;
+}
+.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item{
+  background: #000;
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.news-title{border-right: 1px solid #fafafa;  background: #000;}
+
+.site-header .navbar .nav-item .dropdown-menu, .organization-wrap .common-card{border: 1px solid #a58636;}
+.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover {
+  background-color: #424141;
+}
+
+table tr td, table tr th, .header-top-left .content .title{
+  color: #fff !important;
+}
+table tr td, table tr th{
+  background: #262626 !important;
+}
+table tr td a, table tr th a, .qm-active i, .qm-active a{
+  color: #ffff00 !important;
+}
+
+/*# sourceMappingURL=dark.css.map */

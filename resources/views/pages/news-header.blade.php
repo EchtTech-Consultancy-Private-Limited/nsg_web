@@ -7,7 +7,7 @@
     <div class="col-md-10 pe-0">
         <div class="news-list-wrap pe-lg-5">
         <div class="news-list">
-            <marquee class="marquee" direction="left" loop="">
+            <marquee class="marquee" direction="left" loop="" onMouseOver="this.stop()" onMouseOut="this.start()">
             <ul>
             @if(isset($news_management) && count($news_management)>0 )
                     @foreach($news_management as $news_managements)

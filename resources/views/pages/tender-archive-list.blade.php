@@ -7,19 +7,19 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-              <div class="breadcrumb-wrap mb-4">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{route('/')}}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tenders</li>
-                    <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
-                  </ol>
-                </nav>
-              </div>
-             
-              <div class="d-flex justify-content-between align-items-center">
+                <div class="breadcrumb-wrap mb-4">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{{route('/')}}">Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Tenders</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center">
                     <h2 class="heading-black">
-                    Archive Tenders List
+                        Archive Tenders List
                     </h2>
                     <div class="btn-wrap">
                         <a href="{{ url('tender/'.$slug) }}" class="btn btn-red px-3 py-2">Tenders</a>
@@ -52,10 +52,14 @@
                                         <tr>
                                             <td class="text-center">{{$key+1}}</td>
                                             <td>
-                                            @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
+                                                @if(Session::get('locale') == 'hi')
+                                                {{ $tender_management->title_name_hi }} @else
+                                                {{ $tender_management->title_name_en }} @endif
                                             </td>
                                             <td>
-                                            @if(Session::get('locale') == 'hi') {!! $tender_management->description_hi !!} @else {!! $tender_management->description_en !!} @endif
+                                                @if(Session::get('locale') == 'hi') {!!
+                                                $tender_management->description_hi !!} @else {!!
+                                                $tender_management->description_en !!} @endif
                                             </td>
                                             <td class="views-field views-field-field-amount-rs- download" data-label="
                                             Request Doc">
