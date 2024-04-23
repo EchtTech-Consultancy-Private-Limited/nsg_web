@@ -74,6 +74,7 @@ class CommonComposer
                 ->where('type', 0)
                 ->where('status', 3)
                 ->where('soft_delete', 0)
+                ->whereYear('start_date', date('Y'))
                 ->latest('created_at')->take(10)
                 ->get();
             $galleryData = [];
@@ -81,6 +82,7 @@ class CommonComposer
                 ->where('type', 0)
                 ->where('status', 3)
                 ->where('soft_delete', 0)
+                ->where('year', date('Y'))
                 ->latest('created_at')
                 ->get();
 
@@ -89,6 +91,7 @@ class CommonComposer
                     $gallay_images = DB::table('gallery_details')
                         ->where('soft_delete', 0)
                         ->where('gallery_id', $images->uid)
+                        ->whereYear('start_date', date('Y'))
                         ->latest('created_at')
                         ->get();
 
