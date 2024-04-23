@@ -3127,3 +3127,71 @@ marquee.marquee ul li:not(:last-child) {
   border-right: 1px solid #fec941;
   margin-right: 15px;
 }
+
+div#gallerySlider .owl-item .item img {
+  height: 390px;
+  object-fit: cover;
+}
+
+.common-form-wrap .common-card {
+  padding: 30px 20px !important;
+}
+.common-slider .owl-nav button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 47%;
+  border-radius: 0;
+  width: 25px;
+  height: 25px;
+  background-color: #ffffff !important;
+}
+.common-slider .owl-nav button:hover {
+  background-color: #cc2832 !important;
+}
+.common-slider .owl-nav button:hover span {
+  filter: brightness(10);
+}
+.common-slider .owl-nav button span {
+  font-size: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 10px;
+  width: 15px;
+  height: 15px;
+}
+.common-slider .owl-nav .owl-prev {
+  left: 0;
+}
+.common-slider .owl-nav .owl-prev span {
+  background-image: url("../images/prev.svg");
+}
+.common-slider .owl-nav .owl-next {
+  right: 0;
+}
+.common-slider .owl-nav .owl-next span {
+  background-image: url("../images/next.svg");
+}
+.common-slider .owl-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  margin: 5px;
+}
+.common-slider .owl-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.common-slider .owl-dot.active {
+  background: #b01116 !important;
+}
+.common-slider .owl-dot span {
+  border: 1px solid #707070;
+  width: 12px;
+  height: 12px;
+  display: block;
+  border-radius: 50%;
+}
