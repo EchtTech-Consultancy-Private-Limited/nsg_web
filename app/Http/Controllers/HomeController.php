@@ -30,6 +30,7 @@ class HomeController extends Controller
                             ->where('sl.sort_order',0)
                             ->where('sl.soft_delete', 0)
                             ->where('sl.status', 3)
+                            ->orderBy('sd.sort_order', 'ASC')
                             ->get();
         $sectionOne = DB::table('home_page_sections_list as sl')
                             ->select('sd.*')
@@ -37,6 +38,7 @@ class HomeController extends Controller
                             ->where('sl.sort_order',1)
                             ->where('sl.soft_delete', 0)
                             ->where('sl.status', 3)
+                            ->orderBy('sd.sort_order', 'ASC')
                             ->get();
         $sectionTwo = DB::table('home_page_sections_list as sl')
                             ->select('sd.*')
@@ -44,6 +46,7 @@ class HomeController extends Controller
                             ->where('sl.sort_order',2)
                             ->where('sl.soft_delete', 0)
                             ->where('sl.status', 3)
+                            ->orderBy('sd.sort_order', 'ASC')
                             ->get();
         $tenderType = DB::table('tender_type')->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
         
