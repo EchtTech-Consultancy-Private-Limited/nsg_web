@@ -119,7 +119,6 @@ class TenderTypeController extends Controller
         }else{
             return view('cms-view.errors.500');
         }
-        dd();
         return view('cms-view.'.$this->edit,
         ['crudUrlTemplate' =>  json_encode($crudUrlTemplate),
             'textMessage' =>$accessPermission??'',

@@ -3,7 +3,7 @@
 
 return [
     'home_en' => 'Home',
-    'home_hi' => 'घर',
+    'home_hi' => 'होम',
     'wtowonsg_en'=>'Welcome to Official Website of National Security Guard',
     'wtowonsg_hi'=>'राष्ट्रीय सुरक्षा गार्ड की आधिकारिक वेबसाइट में आपका स्वागत है',
     'Sitemap_en' => 'Sitemap',
