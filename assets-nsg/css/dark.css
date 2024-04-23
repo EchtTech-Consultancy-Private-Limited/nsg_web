@@ -93,7 +93,7 @@ body{
   background-color: #424141;
 }
 
-table tr td, table tr th, .header-top-left .content .title, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger{
+table tr td, table tr th, .header-top-left .content .title, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger, .veer-accordion .accordion-body .brief-wrap .title{
   color: #fff !important;
 }
 table tr td, table tr th{
@@ -102,5 +102,7 @@ table tr td, table tr th{
 table tr td a, table tr th a, .qm-active i, .qm-active a, .photogallery-wrap .photogallery-tabs .nav-tabs .nav-item .nav-link, .photogallery-wrap .photogallery-tabs .nav-tabs .nav-item .nav-link{
   color: #ffff00 !important;
 }
-
+.veer-accordion .accordion-body .brief-wrap .title + img {
+  display: none !important;
+}
 /*# sourceMappingURL=dark.css.map */
