@@ -93,7 +93,7 @@ body{
   background-color: #424141;
 }
 
-table tr td, table tr th, .header-top-left .content .title{
+table tr td, table tr th, .header-top-left .content .title, .form-card-bdr .form-label{
   color: #fff !important;
 }
 table tr td, table tr th{
