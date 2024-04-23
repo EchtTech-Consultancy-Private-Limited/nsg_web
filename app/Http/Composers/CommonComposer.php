@@ -75,6 +75,7 @@ class CommonComposer
                 ->where('status', 3)
                 ->where('soft_delete', 0)
                 ->whereYear('start_date', date('Y'))
+                ->whereMonth('start_date', date('m'))
                 ->latest('created_at')->take(10)
                 ->get();
             $galleryData = [];
