@@ -14,12 +14,12 @@
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('/') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.home_hi') }} @else {{ config('staticTextLang.home_en') }} @endif</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Feedback</li>
+                            <li class="breadcrumb-item active" aria-current="page">@if(Session::get('locale') == 'hi') {{ 'प्रतिक्रिया' }} @else {{ 'Feedback' }} @endif</li>
                         </ol>
                     </nav>
                 </div>
                 <h2 class="heading-black">
-                    Feedback
+                    @if(Session::get('locale') == 'hi') {{ 'प्रतिक्रिया' }} @else {{ 'Feedback' }} @endif
                 </h2>
             </div>
             <div class="col-md-12">
@@ -30,15 +30,15 @@
                                 <form id="feedback_add_form" enctype="multipart/form-data">
                                     <div class="form-card-bdr">
                                         <h2 class="title-black">
-                                            Basic Information
+                                            @if(Session::get('locale') == 'hi') {{ 'मूल जानकारी' }} @else {{ 'Basic Information' }} @endif
                                         </h2>
                                         <div class="row g-3 py-3">
                                             <div class="col-md-3 mb-lg-0 mb-3">
-                                                <label class="form-label">Name <span class="char-red">*</span></label>
+                                                <label class="form-label">@if(Session::get('locale') == 'hi') {{ 'नाम' }} @else {{ 'Name' }} @endif <span class="char-red">*</span></label>
                                                 <input type="text" name="fullname" value="{{ old('fullname') }}" class="form-control" placeholder="Enter Name">
                                             </div>
                                             <div class="col-md-3 mb-lg-0 mb-3">
-                                                <label class="form-label">Feedback Related To <span class="char-red">*</span></label>
+                                                <label class="form-label">@if(Session::get('locale') == 'hi') {{ 'से संबंधित प्रतिक्रिया' }} @else {{ 'Feedback Related To' }} @endif <span class="char-red">*</span></label>
                                                 <select class="form-select" name="feedbackRelatedTo">
                                                     <option value="">Select</option>
                                                     <option value="Suggestion">Suggestion</option>
@@ -47,11 +47,11 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-6 mb-lg-0 mb-3">
-                                                <label class="form-label">Email Address <span class="char-red">*</span></label>
+                                                <label class="form-label">@if(Session::get('locale') == 'hi') {{ 'मेल पता' }} @else {{ 'Email Address' }} @endif <span class="char-red">*</span></label>
                                                 <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Enter Email Address">
                                             </div>
                                             <div class="col-md-6 mb-3">
-                                                <label class="form-label">Remarks <span class="char-red">*</span></label>
+                                                <label class="form-label">@if(Session::get('locale') == 'hi') {{ 'टिप्पणी' }} @else {{ 'Remarks' }} @endif <span class="char-red">*</span></label>
                                                 <textarea class="form-control-textarea" name="remark" rows="5" placeholder="Enter Remarks">{{ old('remark') }}</textarea>
                                             </div>
                                         </div>

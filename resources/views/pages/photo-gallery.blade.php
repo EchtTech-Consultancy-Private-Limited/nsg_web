@@ -11,13 +11,13 @@
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('/') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.home_hi') }} @else {{ config('staticTextLang.home_en') }} @endif</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Gallery</li>
-                            <li class="breadcrumb-item active" aria-current="page">Photo Gallery Category</li>
+                            <li class="breadcrumb-item active" aria-current="page">@if(Session::get('locale') == 'hi') {{ 'गैलरी' }} @else {{ 'Gallery' }} @endif</li>
+                            <li class="breadcrumb-item active" aria-current="page">@if(Session::get('locale') == 'hi') {{ 'फोटो गैलरी' }} @else {{ 'Photo Gallery' }} @endif</li>
                         </ol>
                     </nav>
                 </div>
                 <h2 class="heading-black">
-                    Photo Gallery Category
+                    @if(Session::get('locale') == 'hi') {{ 'फोटो गैलरी' }} @else {{ 'Photo Gallery' }} @endif
                 </h2>
             </div>
             <div class="col-md-12">
