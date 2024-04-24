@@ -146,7 +146,7 @@
                   <!-- Form Builder Data Begin -->
                   @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                      <div class="table-responsive">
-                        <table id="nsg_datatableForm" class="display common-table" style="width:100%">
+                        <table id="nsg_datatable" class="display common-table" style="width:100%">
                            <thead>
                                  <tr>
                                     @if(isset($pageData->formDataTableHead) && count($pageData->formDataTableHead)>0)
@@ -162,11 +162,11 @@
                            @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                               @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                        <tr>
-                                          @foreach(json_decode($formbuilderdatas->content) as $key=>$fdata)
-                                             @if($key !=null && $key !='')
-                                             <td>{{$fdata}}</td>
-                                             @endif
-                                          @endforeach
+                                       @foreach($formbuilderdatas as $key=>$value)
+                                          @if($key !=null && $key !='')
+                                          <td>{{$value}}</td>
+                                          @endif
+                                       @endforeach
                                        </tr>
                               @endforeach
                            @endif
