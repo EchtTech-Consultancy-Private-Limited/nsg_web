@@ -135,7 +135,7 @@ class CommonComposer
             $view->with(['notification'=>$notification,'press_release'=>$press_release,'social_links' => $social_links, 'logo' => $logo, 
             'visitCounters' => $visitCounter, 'quickLink' => $quickLink, 'alertMessage' => $this->checkLanguage(),
              'headerMenu' => $menuName, 'footerMenu' => $footerMenu, 'banner' => $banner,
-             'news_management' => $news_management,
+             'news_managements' => $news_management,
              'privateGovCLients'=> $privateGovCLient,
              'tender_management' => $tender_management,'galleryData'=>$galleryData,'homegallery' =>$galleryHome,
              'galleryVideo' => $galleryVideo]);
