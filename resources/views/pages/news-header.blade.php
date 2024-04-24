@@ -9,8 +9,8 @@
         <div class="news-list">
             <marquee class="marquee" direction="left" loop="" onMouseOver="this.stop()" onMouseOut="this.start()">
             <ul>
-            @if(isset($news_management) && count($news_management)>0 )
-                    @foreach($news_management as $news_managements)
+            @if(isset($news_managements) && count($news_managements)>0 )
+                    @foreach($news_managements as $news_managements)
                     <li>
                         <a href="{{ route('news-list') }}" target="@php if($news_managements->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp">
                             @if(Session::get('locale') == 'hi')  {{ $news_managements->title_name_hi }} @else {{ $news_managements->title_name_en }} @endif

@@ -291,7 +291,7 @@ table thead th {
 }
 
 .common-table tbody tr td {
-  font-size: 0.875em;
+  font-size: 0.94em;
   letter-spacing: 0px;
   color: #2d2d2d;
   padding: 15px;
@@ -779,14 +779,14 @@ table thead th {
 .hero-wrap .name {
   color: #000000;
   margin-bottom: 5px;
-  font-size: 0.875em;
+  font-size: 0.94em;
   font-weight: 600;
   line-height: 20px;
 }
 
 .hero-wrap .title {
   color: #2e2e2e;
-  font-size: 0.813em;
+  font-size: 0.86em;
   font-weight: 500;
   margin: 0;
   line-height: 20px;
@@ -2957,6 +2957,7 @@ marquee.marquee {
 
 .common-card p {
   text-align: justify;
+  font-size: 0.94em;
 }
 
 @media (max-width: 767px) {
@@ -3202,4 +3203,9 @@ div#gallerySlider .owl-item .item img {
     height: 380px;
     object-fit: cover;
 }
+}
+
+
+#nsg_datatableForm tbody tr td:last-child, #nsg_datatableForm thead tr th:last-child{
+  display: none !important;
 }

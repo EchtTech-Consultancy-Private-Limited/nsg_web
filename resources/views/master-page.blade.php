@@ -156,17 +156,18 @@
                                           </th>
                                        @endforeach
                                     @endif
+                                    <th></th>
                                  </tr>
                            </thead>
                            <tbody>
                            @if(isset($pageData->formbuilderdata) && count($pageData->formbuilderdata)>0)
                               @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                        <tr>
-                                          @foreach(json_decode($formbuilderdatas->content) as $key=>$fdata)
-                                             @if($key !=null && $key !='')
-                                             <td>{{$fdata}}</td>
-                                             @endif
-                                          @endforeach
+                                       @foreach($formbuilderdatas as $key=>$value)
+                                          @if($key !=null && $key !='')
+                                          <td>{{$value}}</td>
+                                          @endif
+                                       @endforeach
                                        </tr>
                               @endforeach
                            @endif
