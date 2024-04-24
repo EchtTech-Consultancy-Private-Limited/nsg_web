@@ -3204,3 +3204,8 @@ div#gallerySlider .owl-item .item img {
     object-fit: cover;
 }
 }
+
+
+#nsg_datatableForm tbody tr td:last-child, #nsg_datatableForm thead tr th:last-child{
+  display: none !important;
+}

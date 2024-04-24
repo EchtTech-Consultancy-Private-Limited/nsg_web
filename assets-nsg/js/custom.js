@@ -372,9 +372,41 @@ $('.veer-accordion .accordion .accordion-item:first .accordion-collapse.collapse
 $('#blackTab li.nav-item:first button.nav-link').addClass('active');
 // $('#blackTabContent .tab-pane:first').addClass('active show');
 
+// $(document).ready(function(){
+//     // Get all <tr> elements in the <tbody>
+// let rows = document.querySelectorAll('#nsg_datatable tbody tr');
+// console.log(rows)
+// // Iterate over each <tr> element
+// rows.forEach(function(row) {
+//     // Get all <td> elements in the row
+//     let cells = row.querySelectorAll('td');
+// console.log(cells)
+//     // Get the last <td> element
+//     let lastCell = cells[cells.length - 1];
+//     console.log(cellastCellls)
+//     // Check if the last <td> is empty
+//     if (lastCell.innerHTML.trim() === '') {
+//         // Remove the last <td> element from its parent
+//         row.removeChild(lastCell);
+//     }
+// });
+// })
 
-new DataTable('#nsg_datatableForm', {});
-DataTable.ext.errMode = 'none';
+// new DataTable('#nsg_datatableForm', {})
+new DataTable('#nsg_datatableForm', {
+    language: {
+        search: 'Search:',
+        lengthMenu: 'Show _MENU_ Entries',
+        info: 'Showing _START_ to _END_ of _TOTAL_ Entries',
+        infoEmpty: 'Showing 0 to 0 of 0 Entries',
+        infoFiltered: '(filtered from _MAX_ total Entries)',
+        infoPostFix: '',
+        loadingRecords: 'Loading...',
+        zeroRecords: 'No matching entries found',
+        emptyTable: 'No data available in table'
+      },
+});
+// DataTable.ext.err    Mode = 'none';
 
 new DataTable('#nsg_datatable', {
   
