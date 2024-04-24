@@ -569,6 +569,8 @@ table thead th {
   .site-header .navbar-nav {
     border: 1px solid #d3d3d3;
     margin-top: 15px;
+    max-height: 500px;
+    overflow: auto;
   }
 }
 
@@ -643,6 +645,7 @@ table thead th {
 @media (max-width: 1199.98px) {
   .site-header .navbar .nav-item .dropdown-submenu ul li a {
     padding-left: 40px;
+    white-space: normal;
   }
 }
 
