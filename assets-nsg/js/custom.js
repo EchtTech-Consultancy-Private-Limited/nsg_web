@@ -500,6 +500,11 @@ $('.search-show-popup').click(() => {
     $('.serch-box-show').toggleClass('d-none')
 })
 
+$('.site-header .navbar .nav-item.dropdown .dropdown-menu li.dropdown-submenu a.dropdown-item').click(() => {      
+    $('.site-header .navbar .nav-item.dropdown .dropdown-menu li.dropdown-submenu a.dropdown-item + ul.dropdown-menu.show').removeClass('show');
+    $('.site-header .navbar .nav-item.dropdown .dropdown-menu li.dropdown-submenu a.dropdown-item + ul.dropdown-menu').addClass('show');
+})
+
 function ctime() {
     if (document.getElementById) {
         timeElement = document.getElementById("timeid");
@@ -518,3 +523,4 @@ function ctime() {
     }
 }
 setInterval(ctime, 1000);
+
