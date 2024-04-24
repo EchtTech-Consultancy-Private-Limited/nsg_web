@@ -57,7 +57,12 @@
                         <li class="accordion accordion-flush position-relative sl-accordion" id="sidebarDropdown_{{$key}}">
                            <div class="accordion-item">
                               <div class="list-start @php if(isset($slug) && $subMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp" id="flush-headingOne_{{$key}}">
-                                 <a href="{{ $subMenu->url }}"
+                                 <a href="
+                                    @php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo 'javascript:void(0)'; }else{ 
+                                       if(isset($subMenu->tab_type) && $subMenu->tab_type ==1){echo $subMenu->url; }else{ echo url($sideMenu->main_menu->url.'/'.$subMenu->url);
+                                      } }
+                                       @endphp
+                                    "
                                     onclick="@php if($subMenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                     target="@php if(isset($subMenu->tab_type) && $subMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
                                     class="nav-link @php if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0){ echo'collapsed'; }else{ echo ''; } @endphp" type="button" 
@@ -76,7 +81,9 @@
                                        @if(isset($subMenu->sub_sub_menu) && count($subMenu->sub_sub_menu)>0)
                                           @foreach($subMenu->sub_sub_menu as $key=>$subsubMenu)
                                           <li class="@php if(isset($slug) && $subsubMenu->url ==$slug){ echo 'qm-active'; }else{ echo ''; } @endphp">
-                                             <a href="{{ $subsubMenu->url }}" 
+                                             <a href="
+                                             @php if(isset($subsubMenu->tab_type) && $subsubMenu->tab_type ==1){echo $subsubMenu->url; }else{ echo url($sideMenu->main_menu->url.'/'.$subMenu->url.'/'.$subsubMenu->url ); } @endphp
+                                             " 
                                              class="" tabindex="0"
                                              onclick="@php if($subsubMenu->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
                                              target="@php if(isset($subsubMenu->tab_type) && $subsubMenu->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
