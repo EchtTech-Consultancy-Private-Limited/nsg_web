@@ -2500,6 +2500,7 @@ table thead th {
   font-weight: 600;
   color: #000000;
   margin: 0;
+  text-align: left;
 }
 
 .veer-accordion .veer-img {
@@ -2592,6 +2593,7 @@ table thead th {
 
 .veer-accordion .accordion-body .brief-wrap .title span {
   font-weight: normal;
+  text-transform: capitalize;
 }
 
 .veer-accordion .accordion-body .brief-wrap .desc {
@@ -3204,7 +3206,9 @@ div#gallerySlider .owl-item .item img {
     object-fit: cover;
 }
 }
-
+img.copyprevention-processed {
+  width: 100%;
+}
 
 #nsg_datatableForm tbody tr td:last-child, #nsg_datatableForm thead tr th:last-child{
   display: none !important;
