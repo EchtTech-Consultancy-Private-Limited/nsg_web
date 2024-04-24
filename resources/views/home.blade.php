@@ -83,7 +83,12 @@
                      Successful NSG Operation at Taj, Mumbai
                   </p>
                   <a href="{{ url('more-links/achievements/international-competitions-seminar') }}" class="view-more">
-                  <img src="{{ asset('assets-nsg/images/view.svg')}}" alt="view" class="img-fluid" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 25.243">
+                  <g id="Icon_feather-arrow-right" data-name="Icon feather-arrow-right" transform="translate(-6 -5.379)">
+                     <path id="Path_108123" data-name="Path 108123" d="M7.5,18h21" fill="none" stroke="#cc2832" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                     <path id="Path_108124" data-name="Path 108124" d="M18,7.5,28.5,18,18,28.5" fill="none" stroke="#cc2832" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+                  </g>
+                  </svg>
                   </a>
                </div>
             </div>

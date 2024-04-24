@@ -93,7 +93,7 @@ body{
   background-color: #424141;
 }
 
-table tr td, table tr th, .header-top-left .content .title,.heading-black, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger, .veer-accordion .accordion-body .brief-wrap .title{
+table tr td, table tr th, .header-top-left .content .title,.heading-black, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger, .veer-accordion .accordion-body .brief-wrap .title, div.dt-container .dt-paging .dt-paging-button.disabled, div.dt-container .dt-paging .dt-paging-button.disabled:active, div.dt-container .dt-paging .dt-paging-button.disabled:hover{
   color: #fff !important;
 }
 table tr td, table tr th{
@@ -117,4 +117,14 @@ select option {
 .form-card-bdr .form-label .char-red {
   color: #ffff00;
 }
+
+.qm-active{
+  padding-left: 0px !important;
+}
+
+g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Path_108124, svg path {
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
 /*# sourceMappingURL=dark.css.map */
