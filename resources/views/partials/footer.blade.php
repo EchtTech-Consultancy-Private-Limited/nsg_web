@@ -5,10 +5,14 @@
           <div class="col-md-10">
             <div class="footer-links">
               <ul>
+              @php if(Session::get('locale') == 'hi'){  $alrt ="return confirm('यह लिंक आपको एक बाहरी वेब साइट पर ले जाएगा।')"; } else { $alrt ="return confirm('This link will take you to an external web site.')"; } @endphp
                 @if(isset($footerMenu) && count($footerMenu)>0)
                   @foreach($footerMenu as $footerMenus)
                   <li>
-                    <a href="{{ url($footerMenus->url) }}" @if($footerMenus->tab_type ==1) target='_blank' @endif>@if(Session::get('locale') == 'hi')  {{ $footerMenus->name_hi }} @else {{ $footerMenus->name_en }} @endif</a>
+                    <a href="{{ url($footerMenus->url) }}" 
+                    target="@php if(isset($footerMenus->tab_type) && $footerMenus->tab_type ==1){ echo'_blank'; }else{ echo ''; } @endphp"
+                    onclick="@php if($footerMenus->tab_type ==1){ echo $alrt; }else{ echo ''; } @endphp"
+                    >@if(Session::get('locale') == 'hi')  {{ $footerMenus->name_hi }} @else {{ $footerMenus->name_en }} @endif</a>
                   </li>
                   @endforeach
                 @endif
