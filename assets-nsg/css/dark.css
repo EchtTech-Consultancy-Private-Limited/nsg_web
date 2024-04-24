@@ -80,7 +80,7 @@ body{
   background:#343434;
   color: #ffff00;
 }
-.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item{
+.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item, .photogallery-wrap .photogallery-slider .img-title{
   background: #000;
   border: 1px solid #fff;
   color: #fff;
@@ -89,11 +89,11 @@ body{
 .news-title{border-right: 1px solid #fafafa;  background: #000;}
 
 .site-header .navbar .nav-item .dropdown-menu, .organization-wrap .common-card{border: 1px solid #a58636;}
-.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover {
+.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active,.btn-yellow-outline:hover, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover {
   background-color: #424141;
 }
 
-table tr td, table tr th, .header-top-left .content .title, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger, .veer-accordion .accordion-body .brief-wrap .title{
+table tr td, table tr th, .header-top-left .content .title,.heading-black, .form-card-bdr .form-label, i.fa.fa-file-pdf-o.text-danger, .veer-accordion .accordion-body .brief-wrap .title{
   color: #fff !important;
 }
 table tr td, table tr th{
@@ -104,5 +104,17 @@ table tr td a, table tr th a, .qm-active i, .qm-active a, .photogallery-wrap .ph
 }
 .veer-accordion .accordion-body .brief-wrap .title + img {
   display: none !important;
+}
+
+.photogallery-slider h2 img {
+  display: none;
+}
+
+select option {
+  background: #000;
+  color: #ffff00 !important;  
+}
+.form-card-bdr .form-label .char-red {
+  color: #ffff00;
 }
 /*# sourceMappingURL=dark.css.map */
