@@ -569,6 +569,8 @@ table thead th {
   .site-header .navbar-nav {
     border: 1px solid #d3d3d3;
     margin-top: 15px;
+    max-height: 500px;
+    overflow: auto;
   }
 }
 
@@ -643,6 +645,7 @@ table thead th {
 @media (max-width: 1199.98px) {
   .site-header .navbar .nav-item .dropdown-submenu ul li a {
     padding-left: 40px;
+    white-space: normal;
   }
 }
 
@@ -2701,7 +2704,7 @@ table thead th {
 
 @media (max-width: 767px) {
   .site-footer-top .footer-links ul li {
-    width: 100%;
+    width: auto;
   }
 }
 
@@ -3206,10 +3209,29 @@ div#gallerySlider .owl-item .item img {
     object-fit: cover;
 }
 }
-img.copyprevention-processed {
+/* img.copyprevention-processed {
   width: 100%;
-}
+} */
 
 #nsg_datatableForm tbody tr td:last-child, #nsg_datatableForm thead tr th:last-child{
   display: none !important;
+}
+
+@media (max-width: 767px) {
+  #common-slider .owl-nav button{
+    top: 40%;
+    border-radius: 0;
+    width: 20px;
+    height: 20px;
+  }
+  .achievement-wrap {
+    padding: 3em 0;
+}
+.achievement-wrap .card-white{margin-top: 15px;}
+.list-wrap .date{margin-bottom: 3px;}
+.site-footer-bottom .col-md-5.col-5 {
+  width: 100%;
+}
+.site-footer-middle{padding: 26px 0 20px;}
+
 }
