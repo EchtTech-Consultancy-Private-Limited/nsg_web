@@ -234,7 +234,7 @@ class HomeController extends Controller
             }
         }
         
-       //dd($dataForm);
+      // dd($dataForm);
         $data = new \stdClass;
         $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
@@ -244,7 +244,7 @@ class HomeController extends Controller
         $data->formbuilderdata =$dataForm??[];
         //$data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
         $data->formDataTableHead =isset($head)?$head:[];
-        $data->formDataTableHeadCount =isset($getForm->content)?(count(json_decode($getForm->content))-1):'';
+        $data->formDataTableHeadCount =isset($head)?(count($head)):'';
         if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
         //dd($slug);
        // dd($data);
