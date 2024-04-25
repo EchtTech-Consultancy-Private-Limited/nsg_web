@@ -16,7 +16,7 @@
               </ol>
             </nav>
           </div>
-         <div class="d-flex justify-content-between">
+         <div class="d-flex justify-content-between align-items-center">
           <h2 class="heading-black">
             Veer Gatha
           </h2>

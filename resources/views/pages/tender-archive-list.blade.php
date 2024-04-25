@@ -30,8 +30,8 @@
                 <div class="common-card p-5 mt-4">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="table-responsive">
-                                <table id="nsg_datatable" class="table table-striped table-bordered mb-0">
+                            <div class="">
+                                <table id="nsg_datatable" class="table table-striped table-bordered d-block table-responsive w-100 mb-0">
                                     <thead>
                                         <tr>
                                             <th scope="col" class="text-center">S.No</th>

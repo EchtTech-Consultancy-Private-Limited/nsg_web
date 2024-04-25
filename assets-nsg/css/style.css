@@ -3234,4 +3234,15 @@ div#gallerySlider .owl-item .item img {
 }
 .site-footer-middle{padding: 26px 0 20px;}
 
+form.row.info1 .search-box button.more.gallery-more-btn.submit-btn-apply {
+  margin-top: 10px !important;
+}
+
+table.dataTable {
+  overflow: auto;
+  display: block;
+  width: 100% !important;
+}
+
+
 }
