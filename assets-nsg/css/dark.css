@@ -89,7 +89,7 @@ body{
 .news-title{border-right: 1px solid #fafafa;  background: #000;}
 
 .site-header .navbar .nav-item .dropdown-menu, .organization-wrap .common-card{border: 1px solid #a58636;}
-.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active,.btn-yellow-outline:hover, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover {
+.dropdown-item:focus, .dropdown-item:hover, .site-header .navbar .nav-item .dropdown-item:active,.btn-yellow-outline:hover, .wrapper .link-wrap ul li a:hover, .site-header .navbar .btn-red:hover, .header-top-right .content ul li .text-increment-btn:hover, .header-top-right .content ul li .text-increment-btn.active, .photogallery-wrap .photogallery-slider .owl-nav button:hover {
   background-color: #424141;
 }
 
