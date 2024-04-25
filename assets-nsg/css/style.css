@@ -3243,6 +3243,26 @@ table.dataTable {
   display: block;
   width: 100% !important;
 }
+.veer-info {
+  margin-top: 16px;
+}
+.veer-accordion .veer-info ul li{
+  margin-bottom: 10px;
+}
 
+.veer-accordion .veer-info ul li .desc {
+        font-size: 1em;
+        width: 57%;
+        text-align: right;
+      }
 
+  .veer-accordion .veer-info ul li .title{width: 43%;font-size: 14px;}
+  .veer-accordion .accordion-body .brief-wrap.show img{display: none;}
+  .veer-accordion .accordion-body .brief-wrap .title{font-size: 1.2em;}
+  .btn-wrap.d-flex.flex-wrap.mt-5 {
+    margin-top: 1.2rem !important;
+}
+.common-card {
+  word-wrap: break-word;
+}
 }
