@@ -22,7 +22,8 @@
           </h2>
           <div class="btn-wrap">
             <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2"
-            onclick="@php echo $alrt @endphp">Bharat ke Veer</a>
+            onclick="@php echo $alrt @endphp">
+            @if(Session::get('locale') == 'hi') {{ 'भारत के वीर' }} @else {{ 'Bharat ke Veer' }} @endif</a>
           </div>
          </div>
         </div>
