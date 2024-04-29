@@ -3262,7 +3262,11 @@ table.dataTable {
   .btn-wrap.d-flex.flex-wrap.mt-5 {
     margin-top: 1.2rem !important;
 }
-.common-card {
+.common-card {  
   word-wrap: break-word;
+} 
+
+#common-slider .owl-dots {
+  display: block;
 }
 }
