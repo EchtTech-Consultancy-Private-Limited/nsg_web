@@ -1,5 +1,6 @@
 body{
   color: #fff;
+  background-color: #000 !important;
 }
 .header-top {
   background-color: #000;
@@ -126,8 +127,31 @@ g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Pat
   fill: #fff !important;
   stroke: #fff !important;
 }
-.hero-wrap .name{
+.hero-wrap .name, h4.text-danger, .sitemap-header-list ul li h3{
   color: #fff !important;
 }
 
+.serch-box-show .submit-btn-apply, .submit-btn-apply{
+  background-color: #000 !important;
+  border: 1px solid #fff;
+}
+
+.sitemap-header-list ul li h3:before{
+  background-color: #fff !important;
+}
+.seprator hr {
+  border-top: 1px dashed #ffffff;
+}
+
+.search-page nav[role=navigation] div:nth-child(2) div p{
+  background-color: #000;
+  border: 1px solid #fff;
+}
+.search-page nav[role=navigation] div:nth-child(2) div span .text-sm, .search-page nav[role=navigation] div:nth-child(2) div span a {
+  background: #000 !important;
+}
+.search-page nav[role=navigation] div:nth-child(2) div span[aria-current=page] span{
+  background-color: #fff !important;
+  color: #000 !important;
+}
 /*# sourceMappingURL=dark.css.map */
