@@ -198,7 +198,7 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
             //Route::post('/create-faq',[DynamicPagesAPIController::class,'faqStore'])->name('faq-save');
             Route::get('/list-dmfeed',[DataManagementAPIController::class,'feedBackIndex'])->name('dm-list-feedback');
             Route::get('/list-dmcontact',[DataManagementAPIController::class,'contactUSIndex'])->name('dm-list-contactus');
-           // Route::get('/edit-faq/{id}',[DynamicPagesAPIController::class,'edit'])->name('faq-edit');
+           Route::get('/other-list',[DataManagementAPIController::class,'othersIndex'])->name('other-list');
             //Route::post('/update-faq/{id}',[DynamicPagesAPIController::class,'update'])->name('faq-update');
           //  Route::delete('/delete-faq/{id}',[DynamicPagesAPIController::class,'destroy'])->name('faq-delete');
     

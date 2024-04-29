@@ -189,7 +189,7 @@ Route::middleware(['auth','prevent-back-history','EnsureTokenIsValid'])->group(f
         //Route::get('/audittrail-create', [SystemLogsController::class, 'create'])->name('audittrail.create');
         Route::get('/contactus-list', [DataManagementController::class, 'contactUSIndex'])->name('datamanagement.list-contact');
         Route::get('/feedback-list', [DataManagementController::class, 'FeedbackIndex'])->name('datamanagement.list-feedback');
-        //Route::get('/audittrail-edit', [SystemLogsController::class, 'edit'])->name('audittrail.edit');
+        Route::get('/other-list', [DataManagementController::class, 'otherIndex'])->name('datamanagement.list-other');
     });
     
     Route::prefix('recentactivity')->group(function(){
