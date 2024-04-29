@@ -3224,6 +3224,24 @@ div.dt-container .dt-paging .dt-paging-button {
   background: #f3e2b4 !important;
   color: #fff !important;
 }
+div.dt-container .dt-paging .dt-paging-button {
+  color: #000 !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button:hover {
+  background-color: #e78006 !important;
+  color: #fff !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button.next, div.dt-container .dt-paging .dt-paging-button.previous, div.dt-container .dt-paging .dt-paging-button.first, div.dt-container .dt-paging .dt-paging-button.last{
+  background-color: #e78006 !important;
+  color: #fff !important;
+}
+div.dt-container .dt-paging .dt-paging-button.disabled.next, div.dt-container .dt-paging .dt-paging-button.disabled.previous, div.dt-container .dt-paging .dt-paging-button.disabled.first, div.dt-container .dt-paging .dt-paging-button.disabled.last{
+  background-color: #f3e2b4 !important;
+  color: #000 !important;
+}
+
 @media (max-width: 1350px) {
   div#gallerySlider .owl-item .item img {
     height: 380px;
