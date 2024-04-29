@@ -11,14 +11,14 @@
           <div class="breadcrumb-wrap mb-4">
             <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
               <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{ route('/') }}">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Veer Gatha</li>
+                <li class="breadcrumb-item"><a href="{{ route('/') }}">@if(Session::get('locale') == 'hi') {{ config('staticTextLang.home_hi') }} @else {{ config('staticTextLang.home_en') }} @endif</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@if(Session::get('locale') == 'hi') {{ 'वीर गाथा' }} @else {{ 'Veer Gatha' }} @endif</li>
               </ol>
             </nav>
           </div>
          <div class="d-flex justify-content-between align-items-center">
           <h2 class="heading-black">
-            Veer Gatha
+            @if(Session::get('locale') == 'hi') {{ 'वीर गाथा' }} @else {{ 'Veer Gatha' }} @endif
           </h2>
           <div class="btn-wrap">
             <a href="https://bharatkeveer.gov.in/" target="_blank" class="btn btn-red px-3 py-2"
