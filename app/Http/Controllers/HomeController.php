@@ -402,7 +402,7 @@ class HomeController extends Controller
         $veergathalist = DB::table('employee_directories as emp')
                 ->select('emp.*','deprt.name_en as desi_name_en','deprt.name_hi as desi_name_hi',
                     DB::raw("CONCAT(emp.fname_en, ' ',CASE WHEN emp.mname_en IS NOT NULL THEN emp.mname_en ELSE '' END, ' ', emp.lname_en) as name_en"),
-                    DB::raw("CONCAT(emp.fname_hi, ' ', emp.mname_hi, ' ', emp.lname_hi) as name_hi"))
+                    DB::raw("CONCAT(emp.fname_hi, ' ',CASE WHEN emp.mname_hi IS NOT NULL THEN emp.mname_hi ELSE '' END, ' ', emp.lname_hi) as name_hi"))
                 ->leftjoin('emp_depart_designations as deprt','emp.designation_id','=','deprt.uid')
                 ->where('emp.status', 3)
                 ->where('emp.soft_delete', 0)
