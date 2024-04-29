@@ -343,16 +343,26 @@
          <div  class="menu-item pt-5" >
             <div  class="menu-content"><span class="menu-heading fw-bold text-uppercase fs-7">Apps</span></div>
          </div>
-         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'hover show' : '' }}{{ (request()->is('datamanagement/feedback-list/*')) ? 'hover show' : '' }}" >
+         <div  data-kt-menu-trigger="click" class="menu-item menu-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} 
+         {{ (request()->is('datamanagement/contactus-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('datamanagement/feedback-list/*')) ? 'hover show' : '' }}
+         {{ (request()->is('datamanagement/other-list/*')) ? 'hover show' : '' }}
+         " >
             <span class="menu-link" ><span  class="menu-icon" ><i class="ki-outline ki-information-4 fs-2"></i></span><span  class="menu-title" >{{ config('menu.datamanagement') }}</span><span  class="menu-arrow" ></span></span><!--end:Menu link--><!--begin:Menu sub-->
-            <div  class="menu-sub menu-sub-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'show' : '' }}{{ (request()->is('datamanagement/feedback-list/*')) ? 'show' : '' }}" >
+            <div  class="menu-sub menu-sub-accordion {{ set_active(['datamanagement/contactus-list','datamanagement/list-feedback']) }} 
+            {{ (request()->is('datamanagement/contactus-list/*')) ? 'show' : '' }}
+            {{ (request()->is('datamanagement/feedback-list/*')) ? 'show' : '' }}
+            {{ (request()->is('datamanagement/other-list/*')) ? 'show' : '' }}
+            " >
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['datamanagement/contactus-list']) }} {{ (request()->is('datamanagement/contactus-list/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-contact') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Contact List</span></a><!--end:Menu link-->
                </div>
                <div  class="menu-item" >
                   <a class="menu-link {{ set_active1(['datamanagement/list-feedback']) }} {{ (request()->is('datamanagement/list-feedback/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-feedback') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Feedback List</span></a><!--end:Menu link-->
                </div>
-               
+               <div  class="menu-item" >
+                  <a class="menu-link {{ set_active1(['datamanagement/list-other']) }} {{ (request()->is('datamanagement/list-other/*')) ? 'active' : '' }}" href="{{ route('datamanagement.list-other') }}" ><span  class="menu-bullet" ><span class="bullet bullet-dot"></span></span><span  class="menu-title" >Other List</span></a><!--end:Menu link-->
+               </div>
             </div>
          </div>
          @if(isset(Auth::user()->role_id) == '1' && Auth::user()->role_id == '1')
