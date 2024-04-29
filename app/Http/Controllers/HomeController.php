@@ -458,7 +458,7 @@ class HomeController extends Controller
             'name' => 'required|string|max:255',
             'designation' => 'required',
             'registration_No_of_the_firm' => 'required',
-            'fileUpload' => 'required|mimes:jpeg,bmp,png,gif,svg|max:25000',
+            'fileUpload' => 'required|mimes:jpeg,bmp,png,gif,svg,pdf|max:25000',
             's_no' => 'required',
             'name_dt' => 'required',
             'designation_dt' => 'required',
