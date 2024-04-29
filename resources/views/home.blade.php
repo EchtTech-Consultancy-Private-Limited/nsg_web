@@ -13,7 +13,7 @@
             @endforeach
          @endif
          </div>
-         <div class="col-md-12 col-lg-6">
+         <div class="col-md-12 col-lg-9">
             <div class="banner-slider" id="common-slider">
                <div class="owl-carousel owl-theme" id="bannerSlider">
                   @if(isset($banner) && count($banner)>0)
@@ -28,9 +28,9 @@
                </div>
             </div>
          </div>
-         <div class="col-md-12 col-lg-3 d-flex justify-content-center">
+         <!-- <div class="col-md-12 col-lg-3 d-flex justify-content-center">
             <div class="minister-wrap" data-aos="fade-left" data-aos-duration="3000">
-               <!-- <div class="minister-content mb-3">
+               <div class="minister-content mb-3">
                   <div class="minister-info">
                      <h3 class="name">
                         Shri. Narendra Modi
@@ -55,10 +55,11 @@
                   <div class="img-wrap">
                      <img src="{{ asset('assets-nsg/images/amit-shah.png')}}" alt="Shri. Amit Shah" class="img-fluid" />
                   </div>
-               </div> -->
+               </div>
             </div>
-         </div>
+         </div>-->
       </div>
+       
    </div>
 </section>
 
