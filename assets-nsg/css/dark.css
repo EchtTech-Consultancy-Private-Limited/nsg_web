@@ -80,13 +80,11 @@ body{
   background:#343434;
   color: #ffff00;
 }
-.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item, .photogallery-wrap .photogallery-slider .img-title, #common-slider .owl-nav button, .common-slider .owl-nav button, .common-slider .owl-nav button:hover, #common-slider .owl-dot.active{
-  background: #000 !important;
-  border: 1px solid #fff !important;
+.site-header .navbar .nav-item .dropdown-menu, .veer-accordion .accordion-item, .photogallery-wrap .photogallery-slider .img-title{
+  background: #000;
+  border: 1px solid #fff;
   color: #fff;
 }
-
-#common-slider .owl-nav span, .common-slider .owl-nav button span{filter: brightness(10);}
 
 .news-title{border-right: 1px solid #fafafa;  background: #000;}
 
@@ -127,6 +125,9 @@ select option {
 g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Path_108124, svg path {
   fill: #fff !important;
   stroke: #fff !important;
+}
+.hero-wrap .name{
+  color: #fff !important;
 }
 
 /*# sourceMappingURL=dark.css.map */
