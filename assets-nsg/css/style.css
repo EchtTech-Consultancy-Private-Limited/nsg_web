@@ -3201,8 +3201,29 @@ div#gallerySlider .owl-item .item img {
   display: block;
   border-radius: 50%;
 }
+/* datatable css */
+.table-responsive{
+  width: auto !important;
+  scrollbar-width: thin;
+}
+.contact-wrap button.dt-paging-button.current, div.dt-container .dt-paging .dt-paging-button.current {
+  padding: 4px 7px !important;
+  font-size: 16px;
+  background: #e78006 !important;
+  color: #fff !important;
+  border: 0 !important;
+}
 
-
+div.dt-container .dt-paging .dt-paging-button {
+  padding: 4px 8px !important;
+  border: 1px solid #efe8d4 !important;
+  min-width: auto;
+  min-height: auto !important;
+  height: auto;
+  line-height: 1 !important;
+  background: #f3e2b4 !important;
+  color: #fff !important;
+}
 @media (max-width: 1350px) {
   div#gallerySlider .owl-item .item img {
     height: 380px;
@@ -3243,6 +3264,7 @@ table.dataTable {
   display: block;
   width: 100% !important;
 }
+
 .veer-info {
   margin-top: 16px;
 }
