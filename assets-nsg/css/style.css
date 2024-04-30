@@ -3216,30 +3216,32 @@ div#gallerySlider .owl-item .item img {
 
 div.dt-container .dt-paging .dt-paging-button {
   padding: 4px 8px !important;
-  border: 1px solid #efe8d4 !important;
+  border: 1px solid #efe8d4 ;
   min-width: auto;
   min-height: auto !important;
   height: auto;
   line-height: 1 !important;
-  background: #f3e2b4 !important;
-  color: #fff !important;
+  background: #f3e2b4 ;
+  color: #fff ;
 }
 div.dt-container .dt-paging .dt-paging-button {
-  color: #000 !important;
+  color: #000 ;
 }
 
 div.dt-container .dt-paging .dt-paging-button:hover {
-  background-color: #e78006 !important;
-  color: #fff !important;
+  background: #e78006;
+  color: #fff;
+  border-color: inherit;
 }
 
 div.dt-container .dt-paging .dt-paging-button.next, div.dt-container .dt-paging .dt-paging-button.previous, div.dt-container .dt-paging .dt-paging-button.first, div.dt-container .dt-paging .dt-paging-button.last{
-  background-color: #e78006 !important;
-  color: #fff !important;
+  background-color: #e78006 ;
+  color: #fff ;
+  border: 1px solid #fff;
 }
 div.dt-container .dt-paging .dt-paging-button.disabled.next, div.dt-container .dt-paging .dt-paging-button.disabled.previous, div.dt-container .dt-paging .dt-paging-button.disabled.first, div.dt-container .dt-paging .dt-paging-button.disabled.last{
-  background-color: #f3e2b4 !important;
-  color: #000 !important;
+  background-color: #f3e2b4 ;
+  color: #000 ;
 }
 
 @media (max-width: 1350px) {
