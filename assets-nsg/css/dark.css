@@ -164,4 +164,6 @@ div.dt-container .dt-paging .dt-paging-button {
   background: #000 !important;
   color: #fff !important;
 }
-/*# sourceMappingURL=dark.css.map */
+ .owl-nav button:hover {
+  background-color: #484848 !important;
+}
