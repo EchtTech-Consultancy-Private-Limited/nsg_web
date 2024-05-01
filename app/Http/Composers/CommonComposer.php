@@ -76,6 +76,7 @@ class CommonComposer
                 ->where('soft_delete', 0)
                 ->whereYear('start_date', date('Y'))
                 ->whereMonth('start_date', date('m'))
+                ->orwhereMonth('start_date', date('m', strtotime('-1 month')))
                 ->latest('created_at')->take(10)
                 ->get();
             $galleryData = [];
@@ -129,7 +130,6 @@ class CommonComposer
                     }
                 }
             }
-
             $quickLink = DB::table('website_menu_management')->where('menu_place',4)->where('status', 3)->where('soft_delete', 0)->orderBy('sort_order', 'ASC')->get();
 
             $view->with(['notification'=>$notification,'press_release'=>$press_release,'social_links' => $social_links, 'logo' => $logo, 
