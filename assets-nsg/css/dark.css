@@ -154,4 +154,27 @@ g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Pat
   background-color: #fff !important;
   color: #000 !important;
 }
-/*# sourceMappingURL=dark.css.map */
+
+.contact-wrap button.dt-paging-button.current, div.dt-container .dt-paging .dt-paging-button.current {
+  background: #fff9f9 !important;
+  color: #000 !important;
+  border: 1px solid #fff !important;
+}
+
+div.dt-container .dt-paging .dt-paging-button {
+  background: #000 !important;
+  color: #fff !important;
+}
+ .owl-nav button:hover {
+  background-color: #484848 !important;
+}
+ .owl-nav button span{
+  filter: brightness(10) !important;
+ }
+
+ .owl-nav button, #common-slider .owl-dot.active{
+  background-color: #000 !important;
+  border: 1px solid #fff;
+ }
+
+ 
