@@ -3292,6 +3292,8 @@ table.dataTable {
   margin-bottom: 10px;
 }
 
+
+
 .veer-accordion .veer-info ul li .desc {
         font-size: 1em;
         width: 57%;
@@ -3311,4 +3313,8 @@ table.dataTable {
 #common-slider .owl-dots {
   display: block;
 }
+}
+
+.list-wrap ul li.tender_not_found{
+  color:#fff;
 }

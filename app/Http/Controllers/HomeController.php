@@ -77,7 +77,7 @@ class HomeController extends Controller
                                 ->latest('tender_management.created_at')
                                 ->latest('tender_details.created_at')
                                 ->get();
-        //dd($tender_management);
+        // dd($tender_management);
         return view('home', ['title' => $titleName,'sectionData'=>$sectionTwo??[],
                   'sectionZero' =>$sectionZero??[], 'sectionOne'=>$sectionOne??[],
                   'tenderTypes'=>$tenderType??[],
