@@ -156,7 +156,7 @@ use App\Http\Controllers\CMSControllers\Api\HomePageSectionsDesignAPIController;
     
             /****** News Setting nw:News */
             Route::post('/create-nw',[NewsManagementAPIController::class,'store'])->name('news-save')->middleware('throttle:custom_Limit');
-            Route::get('/list-nw',[NewsManagementAPIController::class,'index'])->name('news-list');
+            Route::get('/list-nw',[NewsManagementAPIController::class,'index'])->name('news-listed');
             Route::get('/edit-nw/{id}',[NewsManagementAPIController::class,'edit'])->name('news-edit');
             Route::post('/update-nw',[NewsManagementAPIController::class,'update'])->name('news-update');
             Route::delete('/delete-nw/{id}',[NewsManagementAPIController::class,'destroy'])->name('news-delete');
