@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <section class="hero-wrap">
-   <div class="container-fluid px-lg-5">
+   <div class="container-fluid ps-lg-5">
       <div class="row">
          <div class="col-md-12 col-lg-3 d-flex align-items-center justify-content-center">
          @if(isset($sectionZero) && count($sectionZero)>0)
@@ -13,7 +13,7 @@
             @endforeach
          @endif
          </div>
-         <div class="col-md-12 col-lg-9">
+         <div class="col-md-12 col-lg-9 pe-0 m-ps-0">
             <div class="banner-slider" id="common-slider">
                <div class="owl-carousel owl-theme" id="bannerSlider">
                   @if(isset($banner) && count($banner)>0)
