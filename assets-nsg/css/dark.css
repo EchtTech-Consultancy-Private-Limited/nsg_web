@@ -143,7 +143,7 @@ g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Pat
   border-top: 1px dashed #ffffff;
 }
 
-.search-page nav[role=navigation] div:nth-child(2) div p{
+.search-page nav[role=navigation] div:nth-child(2) div p, #common-slider .owl-nav .owl-prev, #common-slider .owl-nav .owl-next{
   background-color: #000;
   border: 1px solid #fff;
 }
@@ -164,4 +164,7 @@ div.dt-container .dt-paging .dt-paging-button {
   background: #000 !important;
   color: #fff !important;
 }
+
+#common-slider .owl-nav .owl-prev span, #common-slider .owl-nav .owl-next span{filter: brightness(10);}
+
 /*# sourceMappingURL=dark.css.map */
