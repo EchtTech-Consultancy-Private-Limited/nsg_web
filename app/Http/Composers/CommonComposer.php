@@ -77,7 +77,7 @@ class CommonComposer
                 ->whereYear('start_date', date('Y'))
                 ->whereMonth('start_date', date('m'))
                 ->orwhereMonth('start_date', date('m', strtotime('-1 month')))
-                ->latest('created_at')->take(10)
+                ->latest('created_at')->take(7)
                 ->get();
             $galleryData = [];
             $gallery = DB::table('gallery_management')
