@@ -1278,12 +1278,21 @@ table thead th {
   .gallery-slider .carousel-control-next {
     display: none;
   }
+
+  .award-wrap{
+    min-height: 484px;
+  }
 }
 
 @media (max-width: 1440px) {
   .gallery-slider {
     padding: 15px;
   }
+
+  .award-wrap{
+    min-height: 460px;
+  }
+
 }
 
 @media (max-width: 991px) {
@@ -3292,6 +3301,8 @@ table.dataTable {
   margin-bottom: 10px;
 }
 
+
+
 .veer-accordion .veer-info ul li .desc {
         font-size: 1em;
         width: 57%;
@@ -3311,4 +3322,8 @@ table.dataTable {
 #common-slider .owl-dots {
   display: block;
 }
+}
+
+.list-wrap ul li.tender_not_found{
+  color:#fff;
 }

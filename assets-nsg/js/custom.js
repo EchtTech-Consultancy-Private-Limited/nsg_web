@@ -34,6 +34,7 @@ $('#bannerSlider').owlCarousel({
 $('#gallerySlider').owlCarousel({
     loop: true,
     margin: 30,
+    autoplay: 3000,
     nav: true,
     dots: false,
     responsive: {
