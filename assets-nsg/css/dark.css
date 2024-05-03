@@ -156,8 +156,9 @@ g#Icon_feather-arrow-right path#Path_108123, g#Icon_feather-arrow-right path#Pat
 }
 
 .contact-wrap button.dt-paging-button.current, div.dt-container .dt-paging .dt-paging-button.current {
-  background: #000 !important;
-  color: #fff !important;
+  background: #fff9f9 !important;
+  color: #000 !important;
+  border: 1px solid #fff !important;
 }
 
 div.dt-container .dt-paging .dt-paging-button {
@@ -168,3 +169,16 @@ div.dt-container .dt-paging .dt-paging-button {
 #common-slider .owl-nav .owl-prev span, #common-slider .owl-nav .owl-next span{filter: brightness(10);}
 
 /*# sourceMappingURL=dark.css.map */
+ .owl-nav button:hover {
+  background-color: #484848 !important;
+}
+ .owl-nav button span{
+  filter: brightness(10) !important;
+ }
+
+ .owl-nav button, #common-slider .owl-dot.active{
+  background-color: #000 !important;
+  border: 1px solid #fff;
+ }
+
+ 

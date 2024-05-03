@@ -173,7 +173,9 @@
             </ul>
             <div class="tab-content" id="blackTabContent">
                @if(isset($tender_managements) && count($tender_managements)>0)
+               @foreach($tenderTypes as $tenderType)
                   @foreach($tender_managements as $tender_management)
+                  @if($tenderType->type_slug == $tender_management->tender_typeid)
                   <div class="tab-pane fade @php if(isset($tender_management->tender_typeid) && $tender_management->tender_typeid =='current-tenders'){ echo 'active show'; }else{ ''; } @endphp" id="{{$tender_management->tender_typeid??''}}_tab" role="tabpanel" aria-labelledby="{{$tender_management->tender_typeid??''}}"
                      tabindex="0">
                      <div class="list-wrap">
@@ -192,8 +194,19 @@
                         @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
                      </a>
                   </div>
+                  @else
+                  <div class="tab-pane fade @php if(isset($tenderType->type_slug) && $tenderType->type_slug =='current-tenders'){ echo 'active show'; }else{ ''; } @endphp" id="{{$tenderType->type_slug??''}}_tab" role="tabpanel" aria-labelledby="{{$tenderType->type_slug??''}}"
+                     tabindex="0">
+                        <div class="list-wrap">
+                           <ul class="common-scrollbar">
+                              <li class="tender_not_found">No Tender Found</li>
+                           </ul>
+                        </div>                 
+                     </div>
+                  @endif
                   @endforeach
-               @endif
+               @endforeach
+               @endif               
             </div>
             
           </div>
