@@ -1278,12 +1278,21 @@ table thead th {
   .gallery-slider .carousel-control-next {
     display: none;
   }
+
+  .award-wrap{
+    min-height: 484px;
+  }
 }
 
 @media (max-width: 1440px) {
   .gallery-slider {
     padding: 15px;
   }
+
+  .award-wrap{
+    min-height: 460px;
+  }
+
 }
 
 @media (max-width: 991px) {
