@@ -26,7 +26,7 @@ class NewsManagementController extends Controller
         $crudUrlTemplate = array();
         // xxxx to be replaced with ext_id to create valid endpoint
         if(isset($this->abortIfAccessNotAllowed()['read']) && $this->abortIfAccessNotAllowed()['read'] !=''){
-            $crudUrlTemplate['list'] = route('news-list');
+            $crudUrlTemplate['list'] = route('news-listed');
         }
         if(isset($this->abortIfAccessNotAllowed()['update']) && $this->abortIfAccessNotAllowed()['update'] !=''){
             $crudUrlTemplate['edit'] = route('news.edit', ['id' => 'xxxx']);
