@@ -200,7 +200,7 @@ class HomeController extends Controller
             }else{
                 return view('pages.error');
             }
-            $getForm = '';
+        $getForm = '';
         if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
         $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
         if(isset($metaData) && $metaData != null){
@@ -258,7 +258,72 @@ class HomeController extends Controller
                     'breadcum3' => $breadcums3,
                 ]);
     }
-
+    public function getMessagefromDirectorPastandPresentPageContent(Request $request, $slug = null)
+    {   
+       
+       $breadcum1 = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
+       if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
+       
+        $getForm = '';
+        if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
+        //$menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
+        $metaData = DB::table('dynamic_content_page_metatag')->where('menu_slug',$slug)->where([['soft_delete', 0],['status',3]])->first();
+        if(isset($metaData) && $metaData != null){
+            $pageContent = DB::table('dynamic_page_content')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
+            $pagePdf = DB::table('dynamic_content_page_pdf')->where('dcpm_id',$metaData->uid)
+                                ->where([['soft_delete', 0]])->orderBy(DB::raw("DATE_FORMAT(start_date,'%Y-%m-%d')"), 'desc')->get();
+            $pageGallery = DB::table('dynamic_content_page_gallery')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->get();
+            $pageBanner = DB::table('dynamic_page_banner')->where('dcpm_id',$metaData->uid)->where([['soft_delete', 0]])->first();
+        }
+        elseif($slug){
+           
+            $single_menu = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->first();
+            if($single_menu !=null){
+                $getForm = DB::table('form_designs_management')->where('website_menu_uid',$single_menu->uid)->where('soft_delete', 0)->where('status', 3)->first();
+                if(!empty($getForm)){
+                    $getFormData = DB::table('form_data_management')->where('form_design_id',$getForm->uid)->where('soft_delete', 0)->where('status', 3)->get();
+                }
+            }
+        }
+       // dd($getForm);
+       if(!empty($getForm)){
+        foreach(json_decode($getForm->content) as $tableHead){
+                if($tableHead->label != 'Submit' && $tableHead->label != 'submit' && $tableHead->label != 'save' && $tableHead->label != 'Save'){
+                    $head[]=$tableHead;
+                }
+            }
+        }
+        if(!empty($getFormData)){
+            foreach(json_decode($getFormData) as $key=>$formdata){
+                $dataForm[]=json_decode($formdata->content);
+            }
+        }
+        
+      // dd($dataForm);
+        $data = new \stdClass;
+        $data->metaDatas =$metaData??'';
+        $data->pageContents =$pageContent??[];
+        $data->pagePdfs =$pagePdf??[];
+        $data->pageGallerys =$pageGallery??[];
+        $data->pageBanners =$pageBanner??'';
+        $data->formbuilderdata =$dataForm??[];
+        //$data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
+        $data->formDataTableHead =isset($head)?$head:[];
+        $data->formDataTableHeadCount =isset($head)?(count($head)):'';
+        if(Session::get('locale') == 'hi'){  $titleName =$metaData->page_title_hi ?? 'जल्द आ रहा है'; } else {  $titleName =$metaData->page_title_en ?? 'coming soon';  }
+        //dd($breadcum1);
+        $menu = [
+                ['url'=> 'message-from-director-general', 'name_en'=>'Message from Director General', 'name_hi'=>'महानिदेशक का संदेश'],
+                ['url'=> 'past-&-present-dgs', 'name_en'=>'Past and Present DG’s', 'name_hi'=>'भूतपूर्व और वर्तमान महानिदेशक'],
+            ];
+        return view('pages.message-director-past-and-present', [
+                    'title' => $titleName,
+                    'pageData'=>$data,
+                    'slug' =>$slug??'',
+                    'breadcum1' => $breadcums1??'',
+                    'menus'=>$menu??'',
+                ]);
+    }
     function getMenuTree($menus, $parentId)
     {
         $branch = array();

@@ -43,6 +43,7 @@ Route::middleware(['visitingcounter'])->group(function () {
     /** Below the URL set login on home */
     Route::get('/', [HomeController::class, 'index'])->name('/');
     Route::get('/search', [SearchController::class, 'getSearchData'])->name('search');
+    Route::get('/mfdpap/{slug}', [HomeController::class, 'getMessagefromDirectorPastandPresentPageContent'])->name('mfdpap/{slug}');
     Route::get('/tender/{slug}', [HomeController::class, 'getTenderData'])->name('tender/{slug}');
     Route::get('/archive-tender/{slug}', [HomeController::class, 'getArchiveTenderData'])->name('archive-tender/{slug}');
     Route::get('news-list', [HomeController::class, 'newsList'])->name('news-list');
