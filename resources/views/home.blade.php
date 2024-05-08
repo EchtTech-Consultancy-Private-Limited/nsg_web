@@ -172,42 +172,43 @@
                @endif
             </ul>
             <div class="tab-content" id="blackTabContent">
-               @if(isset($tender_managements) && count($tender_managements)>0)
-               @foreach($tenderTypes as $tenderType)
-                  @foreach($tender_managements as $tender_management)
-                  @if($tenderType->type_slug == $tender_management->tender_typeid)
-                  <div class="tab-pane fade @php if(isset($tender_management->tender_typeid) && $tender_management->tender_typeid =='current-tenders'){ echo 'active show'; }else{ ''; } @endphp" id="{{$tender_management->tender_typeid??''}}_tab" role="tabpanel" aria-labelledby="{{$tender_management->tender_typeid??''}}"
-                     tabindex="0">
-                     <div class="list-wrap">
-                        <ul class="common-scrollbar">
-                           <li>
-                              <span class="date">{{\Carbon\Carbon::parse($tender_management->startDate)->format('d')}}th {{\Carbon\Carbon::parse($tender_management->startDate)->format('M')}}, {{\Carbon\Carbon::parse($tender_management->startDate)->format('Y')}}</span>
-                              <a href="{{ asset('resources/uploads/TenderManagement/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
-                                 <p class="desc">
-                                    @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
-                                 </p>
-                              </a>
-                           </li>
-                        </ul>
-                     </div>
-                     <a href="{{ url('tender/'.$tender_management->tender_typeid) }}" class="link-yellow">
-                        @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
-                     </a>
-                  </div>
-                  @else
-                  <div class="tab-pane fade @php if(isset($tenderType->type_slug) && $tenderType->type_slug =='current-tenders'){ echo 'active show'; }else{ ''; } @endphp" id="{{$tenderType->type_slug??''}}_tab" role="tabpanel" aria-labelledby="{{$tenderType->type_slug??''}}"
-                     tabindex="0">
-                        <div class="list-wrap">
-                           <ul class="common-scrollbar">
-                              <li class="tender_not_found">No Tender Found</li>
-                           </ul>
-                        </div>                 
-                     </div>
-                  @endif
-                  @endforeach
-               @endforeach
-               @endif               
-            </div>
+               @if(isset($tender_managements) && count($tender_managements) > 0)
+                   @foreach($tenderTypes as $tenderType)
+                       @php 
+                           $typeFound = false;
+                           $isActive = ($tenderType->type_slug == 'current-tenders' && count($tender_managements->where('tender_typeid', 'current-tenders')) > 0) ? 'active show' : '';
+                       @endphp
+                       <div class="tab-pane fade {{ $isActive }}" id="{{ $tenderType->type_slug }}_tab" role="tabpanel" aria-labelledby="{{ $tenderType->type_slug }}" tabindex="0">
+                           <div class="list-wrap">
+                               <ul class="common-scrollbar">
+                                   @foreach($tender_managements as $tender_management)
+                                       @if($tender_management->tender_typeid == $tenderType->type_slug)
+                                           @php 
+                                               $typeFound = true;
+                                               $isActive = ($tenderType->type_slug == 'current-tenders') ? 'active show' : '';
+                                           @endphp
+                                           <li>
+                                               <span class="date">{{ \Carbon\Carbon::parse($tender_management->startDate)->format('dS M, Y') }}</span>
+                                               <a href="{{ asset('resources/uploads/TenderManagement/'.$tender_management->public_url) }}" download="" tabindex="0" target="_blank">
+                                                   <p class="desc">
+                                                       @if(Session::get('locale') == 'hi') {{ $tender_management->title_name_hi }} @else {{ $tender_management->title_name_en }} @endif
+                                                   </p>
+                                               </a>
+                                           </li>
+                                       @endif
+                                   @endforeach
+                                   @if(!$typeFound)
+                                       <li class="tender_not_found">No Tender Found</li>
+                                   @endif
+                               </ul>
+                           </div>
+                           <a href="{{ url('tender/'.$tenderType->type_slug) }}" class="link-yellow">
+                               @if(Session::get('locale') == 'hi') {{ config('staticTextLang.ba_hi') }} @else {{ config('staticTextLang.ba_en') }} @endif
+                           </a>
+                       </div>
+                   @endforeach
+               @endif
+           </div>                     
             
           </div>
         </div>
