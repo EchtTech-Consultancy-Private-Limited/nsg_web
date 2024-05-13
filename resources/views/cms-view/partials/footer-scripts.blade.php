@@ -7,4 +7,5 @@
 <script src="{{ asset('public/form-js/file-getmime-image.js') }}"></script>
 <script src="{{ asset('public/form-js/file-getmime-pdf.js') }}"></script>
 <script src="{{ asset('assets-cms/cms_js/form-builder/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets-cms/cms_js/form-builder/form-builder.min.js') }}"></script>
 @stack('post-scripts')

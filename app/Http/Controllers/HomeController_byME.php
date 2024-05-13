@@ -5,10 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Helpers\CaptchaCode;
 use Session, App, DB;
-#12/05/2024
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NCNCMail;
-#12/05/2024
 
 class HomeController extends Controller
 {
@@ -26,7 +24,6 @@ class HomeController extends Controller
 
     public function index()
     {
-
         $titleName = 'Home';
         $sectionZero = DB::table('home_page_sections_list as sl')
                             ->select('sd.*')
@@ -264,9 +261,10 @@ class HomeController extends Controller
     }
     public function getMessagefromDirectorPastandPresentPageContent(Request $request, $slug = null)
     {   
-        $breadcum1 = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'DESC')->first();
-        if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
-        
+       
+       $breadcum1 = DB::table('website_menu_management')->where('url',$slug)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->first();
+       if(Session::get('locale') == 'hi'){  $breadcums1 =$breadcum1->name_hi ?? ''; } else {  $breadcums1 =$breadcum1->name_en ?? '';  }
+       
         $getForm = '';
         if(Session::get('locale') == 'hi'){  $titleName =config('staticTextLang.comingsoon_hi')?? 'जल्द आ रहा है'; } else {  $titleName =config('staticTextLang.comingsoon_en')?? 'coming soon';  }
         //$menu->main_menu->sub_menu = DB::table('website_menu_management')->where('parent_id',$main_men->uid)->where('soft_delete', 0)->where('status', 3)->orderBy('sort_order', 'ASC')->get();
@@ -288,7 +286,7 @@ class HomeController extends Controller
                 }
             }
         }
-    //    dd($getFormData);
+       // dd($getForm);
        if(!empty($getForm)){
         foreach(json_decode($getForm->content) as $tableHead){
                 if($tableHead->label != 'Submit' && $tableHead->label != 'submit' && $tableHead->label != 'save' && $tableHead->label != 'Save'){
@@ -301,24 +299,8 @@ class HomeController extends Controller
                 $dataForm[]=json_decode($formdata->content);
             }
         }
-
-        // 11-05-24 ---------------------
-
-        foreach ($dataForm as $key => $value) {
-            $dataForm[$key]->from = date('d-m-Y', strtotime($value->from));
-            $dataForm[$key]->to = date('d-m-Y', strtotime($value->to));
-            // foreach ($dataForm as $entry) {
-            //     unset($entry->{'button-1711693373654-0'});
-            // }
-        }
-
-        usort($dataForm, function($a, $b) {
-            return strtotime($a->from) - strtotime($b->from);
-        });        
         
-        //end 11-05-24 ---------------------
-
-    //   dd($dataForm);
+      // dd($dataForm);
         $data = new \stdClass;
         $data->metaDatas =$metaData??'';
         $data->pageContents =$pageContent??[];
@@ -326,7 +308,6 @@ class HomeController extends Controller
         $data->pageGallerys =$pageGallery??[];
         $data->pageBanners =$pageBanner??'';
         $data->formbuilderdata =$dataForm??[];
-        // dd($data->formbuilderdata);
         //$data->formDataTableHead =isset($getForm->content)?json_decode($getForm->content):'';
         $data->formDataTableHead =isset($head)?$head:[];
         $data->formDataTableHeadCount =isset($head)?(count($head)):'';
