@@ -303,18 +303,34 @@ class HomeController extends Controller
         }
 
         // 11-05-24 ---------------------
-
-        foreach ($dataForm as $key => $value) {
-            $dataForm[$key]->from = date('d-m-Y', strtotime($value->from));
-            $dataForm[$key]->to = date('d-m-Y', strtotime($value->to));
-            // foreach ($dataForm as $entry) {
-            //     unset($entry->{'button-1711693373654-0'});
-            // }
+        if(isset($dataForm)){
+            foreach ($dataForm as $key => $value) {
+                
+                $dataForm[$key]->from =  date('d-m-Y', strtotime($value->from));
+                if($dataForm[$key]->to == '---'){
+                        $dataForm[$key]->to ='Till Date';
+                    }else{
+                        $dataForm[$key]->to = date('d-m-Y', strtotime($value->to));
+                    }
+                //$dataForm[$key]->to = $value->to === "----" ? 'Till Date' : date('d-m-Y', strtotime($value->to));
+            // foreach ($dataForm as $key => $value) {
+            //     $dataForm[$key]->from = date('d-m-Y', strtotime($value->from));
+                    // if($dataForm[$key]->to == '---'){
+                    //     $dataForm[$key]->to ='Till Date';
+                    // }else{
+                    //     $dataForm[$key]->to = date('d-m-Y', strtotime($value->to));
+                    // }
+            //     $dataForm[$key]->to = date('d-m-Y', strtotime($value->to));
+                // foreach ($dataForm as $entry) {
+                //     unset($entry->{'button-1711693373654-0'});
+                // }
+            }
+            usort($dataForm, function($a, $b) {
+            return strtotime($a->from) - strtotime($b->from);
+            });
         }
 
-        usort($dataForm, function($a, $b) {
-            return strtotime($a->from) - strtotime($b->from);
-        });        
+                
         
         //end 11-05-24 ---------------------
 
