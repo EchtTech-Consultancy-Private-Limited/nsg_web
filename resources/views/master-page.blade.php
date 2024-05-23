@@ -171,7 +171,7 @@
                               @foreach($pageData->formbuilderdata as $formbuilderdatas)
                                        <tr>
                                        @foreach($formbuilderdatas as $key=>$value)
-                                          @if($key !=null && $key !='')
+                                          @if($value !=null && $value !='')
                                           <td>{{$value}}</td>
                                           @endif
                                        @endforeach
