@@ -21,59 +21,33 @@
                 </h2>
             </div>
             <div class="col-md-12">
-                <div class="common-card p-5 mt-4">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="photogallery-tabs">
-                                <ul class="nav nav-tabs" id="photoGalleryTab" role="tablist">
-                                    @foreach($years as $v)
-                                    <li class="nav-item" role="presentation">
-                                        <button class="nav-link @if(date('Y') == $v) active @endif" id="year{{$v}}-tab" data-bs-toggle="tab"
-                                            data-bs-target="#year{{$v}}-tab-pane" type="button" role="tab"
-                                            aria-controls="year{{$v}}-tab-pane" aria-selected="true">{{$v}}</button>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            <div class="tab-content" id="myTabContent">
-                                @if(isset($photogallery) && count($photogallery)>0)
-                                    @foreach($photogallery as $key=>$photogallerys)
-                                        <div class="tab-pane fade @if(isset($photogallerys->year) && $photogallerys->year==date('Y')) show active @endif"
-                                         id="year{{$photogallerys->year}}-tab-pane" role="tabpanel"
-                                            aria-labelledby="year{{$photogallerys->year}}-tab" tabindex="0">
-                                            <div class="photogallery-slider">
-                                                <h2 class="heading-red py-3">
-                                                    Year {{$photogallerys->year}}
-                                                <img src="{{ asset('assets-nsg/images/dotted-vector-red.png')}}" alt="vector" class="img-fluid" />
-                                                </h2>
-                                                <div class="photogallery-wrap mt-3">
-                                                    <div class="photogallery-slider">
-                                                        <div class="owl-carousel owl-theme photoGallerySlider"
-                                                            id="photoGallerySlider2">
-                                                            @if(isset($photogallerys->gallery_details) && count($photogallerys->gallery_details)>0)
-                                                            @foreach($photogallerys->gallery_details as $galleryPhoto)
-                                                            <div class="item">
-                                                                <div class="photogallery-card">
-                                                                    <div class="img-wrap">
-                                                                        <img src="{{ asset('resources/uploads/GalleryManagement/'.$galleryPhoto->public_url) }}" alt="photo-gallery" class="img-fluid" />
-                                                                    </div>
-                                                                    <div class="img-title">
-                                                                        <img src="{{ asset('assets-nsg/images/dotted-vector.png')}}"
-                                                                            alt="vector" class="img-fluid" />
-                                                                        <p class="text-center">
-                                                                            {{ $photogallerys->title_name_en }}
-                                                                        </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            @endforeach
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
+                <div class="common-card p-4 mt-4">
+                    <div class="photogallery-wrap">
+                        <div class="photogallery-slider">
+                            <div class="row">
+                            @if(isset($photogallery) && count($photogallery)>0)
+                                @foreach($photogallery as $key=>$photogallerys)
+                                    <div class="col-md-3 mt-15">
+                                        <a href="{{ url('gallery/gallery-details/'.$photogallerys->uid) }}" class="photogallery-card mb-4">
+                                            <div class="img-wrap">
+                                            @if(isset($photogallerys->gallery_details) && count($photogallerys->gallery_details)>0)
+                                                <img src="{{ asset('resources/uploads/GalleryManagement/'.$photogallerys->gallery_details[0]->public_url) }}" alt="photo-gallery" class="img-fluid" />
+                                            @endif
+                                                <span class="total-img">
+                                                    {{ count($photogallerys->gallery_details)??'00' }} Pics
+                                                </span>
                                             </div>
-                                        </div>
-                                    @endforeach
-                                @endif
+                                            <div class="img-title">
+                                                <!-- <img src="assets/images/dotted-vector.png"
+                                                    alt="vector" class="img-fluid" /> -->
+                                                <p class="text-center">
+                                                    @if(Session::get('locale') == 'hi') {{ $photogallerys->title_name_hi }} @else {{ $photogallerys->title_name_en }} @endif
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                @endforeach
+                            @endif
                             </div>
                         </div>
                     </div>

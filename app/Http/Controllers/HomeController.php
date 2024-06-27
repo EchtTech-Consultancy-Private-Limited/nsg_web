@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Helpers\CaptchaCode;
 use Session, App, DB;
+use Smalot\PdfParser\Parser;
 #12/05/2024
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NCNCMail;
@@ -496,6 +497,15 @@ class HomeController extends Controller
             'years'=>$years,
         ]);
     }
+    public function photoGalleryDetails(Request $request, $id)
+    {
+        $titleName = 'Photo Gallery Details';
+       
+        $gallay_images = DB::table('gallery_details')->where([['type', 0],['soft_delete', 0]])->where('gallery_id',$id)->get();
+            return view('pages.photo-gallery-details',['title' => $titleName,
+            'allphotogallery'=>$gallay_images,
+        ]);
+    }
 
     public function veerGatha(Request $request)
     {
@@ -591,6 +601,12 @@ class HomeController extends Controller
         ]);
         if($request->hasFile('fileUpload')){    
             $file=$request->file('fileUpload');
+            $filePath = $file->getPathname();
+            // dd($this->inspectPDF($filePath));
+            // if (!$this->inspectPDF($filePath)) {
+            //     return response()->json(['error' => false, 'message' => 'The PDF contains potentially harmful content.']);
+            //     //return back()->withErrors(['pdf' => 'The PDF contains potentially harmful content.'])->withInput();
+            // }
             $newname=time().rand(10,99).'.'.$file->getClientOriginalExtension();
             $path=resource_path(env('IMAGE_FILE_FOLDER_WEB').'/registerforncncfiles');
             $file->move($path,$newname);
@@ -639,12 +655,26 @@ class HomeController extends Controller
                 'email_address'=>$request->email,
                 'remarks'=>$request->remark,
             ];
-            Mail::to('brijesh.mca12@gmail.com')->send(new NCNCMail($data));
+          //  Mail::to('brijesh.mca12@gmail.com')->send(new NCNCMail($data));
 
         } catch (Exception $e) {
             Log::info("|-------------------Mail Send Not DONE! -------------------|");
         }
         return response()->json(['success' => true, 'message' => 'Data saved successfully']);
     }
-    
+
+
+    public function inspectPDF($filePath)
+        {
+            $parser = new Parser();
+            
+            $pdf = $parser->parseFile($filePath);
+            $text = $pdf->getText();
+           // dd(strpos($text, 'JavaScript'));
+            if (strpos($text, 'JavaScript') != false || strpos($text, '<script>') != false) {
+                return false;
+            }else{
+                return true;
+            }
+        }
 }
